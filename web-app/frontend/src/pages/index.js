@@ -5,7 +5,7 @@ import Logo from "../images/favicon.png"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="CEG Capstone Project" />
     <h1>Hi everyone! </h1>
     <p>Welcome to our CEG Captone Dashboard</p>
     <p>We are gonna build something great!</p>
