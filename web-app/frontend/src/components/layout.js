@@ -8,7 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
 import "./layout.css"
 
@@ -34,10 +33,12 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+        <footer style={{ textAlign: "center" }}>
+          Copyright © {new Date().getFullYear()}, Built Source
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://github.com/iDuckDark/CEG-Capstone">Code</a> {` `}
+          and {` `}
+          <a href="https://trello.com/b/1iLa3eKF/ceg-4912-capstone">Trello</a>
         </footer>
       </div>
     </>
