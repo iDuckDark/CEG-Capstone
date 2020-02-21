@@ -3,6 +3,8 @@ import Map from "pigeon-maps";
 import Marker from "pigeon-marker";
 import Overlay from "pigeon-overlay";
 
+// Reference
+// https://github.com/mariusandra/pigeon-maps
 class Dashboard extends Component {
     render() {
         return (
@@ -17,6 +19,12 @@ class Dashboard extends Component {
                 >
                     <Marker
                         anchor={[45.4112, -75.6981]}
+                        payload={1}
+                        onClick={({ event, anchor, payload }) => {}}
+                    />
+
+                    <Marker
+                        anchor={[45.4212, -75.6981]}
                         payload={1}
                         onClick={({ event, anchor, payload }) => {}}
                     />
