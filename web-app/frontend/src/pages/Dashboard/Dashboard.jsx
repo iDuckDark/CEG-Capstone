@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { mapDispatchToProps } from "../../helpers/actions";
+
 import Map from "pigeon-maps";
 import Marker from "pigeon-marker";
 import Overlay from "pigeon-overlay";
@@ -6,6 +9,24 @@ import Overlay from "pigeon-overlay";
 // Reference
 // https://github.com/mariusandra/pigeon-maps
 class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { apiResponse: "" };
+    }
+
+    componentDidMount() {
+        this.callAPI();
+    }
+
+    callAPI() {
+        const { actions } = this.props;
+        actions.getUsers().then(() => {
+            const { users } = this.props;
+            console.log(users);
+            this.setState({ apiResponse: users });
+        });
+    }
+
     render() {
         return (
             <div
@@ -38,4 +59,8 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = ({ actionReducer }) => {
+    return { users: actionReducer.users };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
