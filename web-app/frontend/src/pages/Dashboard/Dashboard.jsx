@@ -5,6 +5,7 @@ import { isServerSideRendering } from "../../helpers/utils";
 import Map from "pigeon-maps";
 import Marker from "pigeon-marker";
 import Overlay from "pigeon-overlay";
+import logo from "../../images/favicon.png";
 
 // Reference
 // https://github.com/mariusandra/pigeon-maps
@@ -50,8 +51,8 @@ class Dashboard extends Component {
                         onClick={({ event, anchor, payload }) => {}}
                     />
 
-                    <Overlay anchor={[45.4112, -75.6981]} offset={[120, 79]}>
-                        <img src='pigeon.jpg' width={240} height={158} alt='' />
+                    <Overlay anchor={[45.4112, -75.6981]} offset={[10, 9]}>
+                        <img src={logo} width={50} height={50} alt='' />
                     </Overlay>
                 </Map>
             </div>
