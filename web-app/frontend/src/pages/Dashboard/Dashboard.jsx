@@ -19,12 +19,12 @@ class Dashboard extends Component {
     }
 
     callAPI() {
-        const { actions } = this.props;
-        actions.getUsers().then(() => {
-            const { users } = this.props;
-            console.log(users);
-            this.setState({ apiResponse: users });
-        });
+        // const { actions } = this.props;
+        // actions.getUsers().then(() => {
+        //     const { users } = this.props;
+        //     console.log(users);
+        //     this.setState({ apiResponse: users });
+        // });
     }
 
     render() {
