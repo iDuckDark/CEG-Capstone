@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
-
+import { isServerSideRendering } from "../../helpers/utils";
 import Map from "pigeon-maps";
 import Marker from "pigeon-marker";
 import Overlay from "pigeon-overlay";
@@ -63,5 +63,6 @@ const mapStateToProps = ({ actionReducer }) => {
     return { users: actionReducer.users };
 };
 
-export default(Dashboard);
-// export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default isServerSideRendering()
+    ? Dashboard
+    : connect(mapStateToProps, mapDispatchToProps)(Dashboard);
