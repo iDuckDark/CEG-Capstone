@@ -63,4 +63,5 @@ const mapStateToProps = ({ actionReducer }) => {
     return { users: actionReducer.users };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default(Dashboard);
+// export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
