@@ -2,40 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { isServerSideRendering } from "../../helpers/utils";
-// import Map from "pigeon-maps";
-// import Marker from "pigeon-marker";
-// import Overlay from "pigeon-overlay";
+
 import logo from "../../images/favicon.png";
 
 import Map from "./Map";
-
-// const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoicGlnZW9uLW1hcHMiLCJhIjoiY2l3eW01Y2E2MDA4dzJ6cWh5dG9pYWlwdiJ9.cvdCf-7PymM1Y3xp5j71NQ'
-
-// const mapbox = (mapboxId, accessToken) => (x, y, z, dpr) => {
-//   return `https://api.mapbox.com/styles/v1/mapbox/${mapboxId}/tiles/256/${z}/${x}/${y}${dpr >= 2 ? '@2x' : ''}?access_token=${accessToken}`
-// }
-
-// const providers = {
-//     osm: (x, y, z) => {
-//         const s = String.fromCharCode(97 + ((x + y + z) % 3));
-//         return `https://${s}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
-//     },
-//     wikimedia: (x, y, z, dpr) => {
-//         return `https://maps.wikimedia.org/osm-intl/${z}/${x}/${y}${
-//             dpr >= 2 ? "@2x" : ""
-//         }.png`;
-//     },
-//     stamen: (x, y, z, dpr) => {
-//         return `https://stamen-tiles.a.ssl.fastly.net/terrain/${z}/${x}/${y}${
-//             dpr >= 2 ? "@2x" : ""
-//         }.jpg`;
-//     },
-//     streets: mapbox("streets-v10", MAPBOX_ACCESS_TOKEN),
-//     satellite: mapbox("satellite-streets-v10", MAPBOX_ACCESS_TOKEN),
-//     outdoors: mapbox("outdoors-v10", MAPBOX_ACCESS_TOKEN),
-//     light: mapbox("light-v9", MAPBOX_ACCESS_TOKEN),
-//     dark: mapbox("dark-v9", MAPBOX_ACCESS_TOKEN),
-// };
+import Thermometer from "react-thermometer-component";
 
 // Reference
 // https://github.com/mariusandra/pigeon-maps
@@ -64,6 +35,27 @@ class Dashboard extends Component {
             <div
                 style={{ height: "100vh", width: "100%", textAlign: "center" }}
             >
+                <div
+                    style={{
+                        marginLeft: "20%",
+                        // marginBottom: "50%",
+                        zIndex:"2",
+                        position: "absolute",
+                        // float: "right"
+                        // display: "absolute",
+                    }}
+                >
+                    <Thermometer
+                        theme='dark'
+                        value='10'
+                        max='100'
+                        // steps='3'
+                        format='°C'
+                        // size='large'
+                        height='300'
+                    />
+
+                </div>
                 <Map />
             </div>
         );

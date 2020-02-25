@@ -138,7 +138,7 @@ export default class App extends Component {
 
     return (
       <div style={{textAlign: 'center', marginTop: 50}}>
-        <Banner />
+        {/* <Banner /> */}
         <div style={{maxWidth: 600, margin: '0 auto'}}>
           <Map
             limitBounds='edge'
