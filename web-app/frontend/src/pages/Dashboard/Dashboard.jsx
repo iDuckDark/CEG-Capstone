@@ -83,10 +83,10 @@ class Dashboard extends Component {
         return (
             <>
                 <div style={{ display: "inline-block", marginLeft: "20%" }}>
-                    {this.renderSpeedometer(altitude, "Pressure")}
+                    {this.renderSpeedometer(altitude, "Altitude")}
                 </div>
                 <div style={{ display: "inline-block", marginLeft: "20%" }}>
-                    {this.renderSpeedometer(pressure, "Altitude")}
+                    {this.renderSpeedometer(pressure, "Pressure")}
                 </div>
             </>
         );
