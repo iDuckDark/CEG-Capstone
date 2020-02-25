@@ -58,7 +58,7 @@ const members = [
     {
         name: "Shail",
         email: "spate127@uottawa.ca",
-        position: "Reseacher",
+        position: "Reseacher & Quality Assurance",
         src: logo5,
     },
 ];
