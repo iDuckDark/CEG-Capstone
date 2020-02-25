@@ -6,6 +6,14 @@ const routes = [
         path: '/'
     },
     {
+        title: 'Stream',
+        link: '/Restreamer/Restreamer'
+    },
+    {
+        title: 'Architecture',
+        link: '/Architecture/Architecture'
+    },
+    {
         title: 'Gallery',
         link: '/Gallery/Gallery'
     },
@@ -16,6 +24,10 @@ const routes = [
     {
         title: 'About',
         link: '/About/About'
+    },
+    {
+        title: 'Feedback',
+        link: '/Feedback/Feedback'
     },
 ];
 

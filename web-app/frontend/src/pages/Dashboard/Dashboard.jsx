@@ -6,8 +6,10 @@ import { isServerSideRendering } from "../../helpers/utils";
 import logo from "../../images/favicon.png";
 
 import Map from "./Map";
+// import Restreamer from "../Restreamer/Restreamer";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
+import GaugeChart from 'react-gauge-chart';
 
 // Reference
 // https://github.com/mariusandra/pigeon-maps
@@ -64,6 +66,7 @@ class Dashboard extends Component {
                     value={value}
                     needleColor='red'
                     needleTransition='easeElastic'
+                    needleTransitionDuration={50}
                     // startColor='green'
                     segments={5}
                     // endColor='blue'
@@ -123,6 +126,7 @@ class Dashboard extends Component {
             <div
                 style={{ height: "100vh", width: "100%", marginBottom: "15%" }}
             >
+                {/* <Restreamer /> */}
                 {this.renderSpeedometers()}
                 {this.renderTemp()}
                 <Map />
