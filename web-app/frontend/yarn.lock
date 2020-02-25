@@ -10882,7 +10882,7 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-"react-click-outside@github:tj/react-click-outside":
+react-click-outside@tj/react-click-outside:
   version "1.1.1"
   resolved "https://codeload.github.com/tj/react-click-outside/tar.gz/a833ddc5be47490307f9fcc6ed09d8c353108510"
 
@@ -12157,9 +12157,9 @@ slugify@^1.3.6:
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.3.6.tgz#ba5fd6159b570fe4811d02ea9b1f4906677638c3"
   integrity sha512-wA9XS475ZmGNlEnYYLPReSfuz/c3VQsEMoU43mi6OnKMCdbnFXd4/Yg7J0lBv8jkPolacMpOrWEaoYxuE1+hoQ==
 
-"smooth-dnd@git+https://github.com/rcdexta/smooth-dnd.git":
+"smooth-dnd@https://github.com/rcdexta/smooth-dnd":
   version "0.6.3"
-  resolved "git+https://github.com/rcdexta/smooth-dnd.git#f13924c67bf6ffe4613d97bb1ee83f11d364eb1e"
+  resolved "https://github.com/rcdexta/smooth-dnd#f13924c67bf6ffe4613d97bb1ee83f11d364eb1e"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

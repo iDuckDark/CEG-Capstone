@@ -10,10 +10,31 @@ const Restreamer = () => {
                     height: "100vh",
                     width: "100%",
                     marginTop: "2%",
-                    marginBottom: "15%",
                     textAlign: "center",
                 }}
             >
+                <Title variant='h5' gutterBottom className='title'>
+                    Past Streams
+                </Title>
+                <iframe
+                    width='560'
+                    height='315'
+                    src='https://www.youtube.com/embed/t9YXkrnr4_4'
+                    frameborder='0'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    allowfullscreen
+                ></iframe>
+
+                <iframe
+                    width='853'
+                    height='480'
+                    src='https://www.youtube.com/embed/EkogkDwx1pA'
+                    frameborder='0'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    allowfullscreen
+                ></iframe>
+
+                <div style={{ marginBottom: "20px" }}></div>
                 <Title variant='h5' gutterBottom className='title'>
                     Live Stream
                 </Title>
