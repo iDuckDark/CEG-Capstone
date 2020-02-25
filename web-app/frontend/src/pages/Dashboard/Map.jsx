@@ -36,7 +36,7 @@ const providers = {
 }
 
 const markers = {
-    Drone: [[45.4212, -75.6981], 13],
+    Drone: [[45.423, -75.6838], 13],
 //   leuven1: [[50.879, 4.6997], 13],
 //   leuven2: [[50.874, 4.6947], 13],
 //   brussels: [[50.85050, 4.35149], 11],
@@ -82,8 +82,8 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      center: [45.4212, -75.6981],
-      zoom: 12,
+      center: [45.423, -75.6838],
+      zoom: 15,
       provider: 'osm',
       metaWheelZoom: false,
       twoFingerDrag: false,
@@ -94,7 +94,7 @@ export default class App extends Component {
       touchEvents: true,
       minZoom: 1,
       maxZoom: 18,
-      dragAnchor: [45.4212, -75.6981]
+      dragAnchor: [45.423, -75.6838]
     }
   }
 
