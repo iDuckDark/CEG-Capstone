@@ -53,8 +53,8 @@ export default class DraggableOverlay extends Component {
     }
 
     componentWillUnmount() {
-        this.unBindMouseEvents();
-        this.unBindTouchEvents();
+        // this.unBindMouseEvents();
+        // this.unBindTouchEvents();
     }
 
     wa = (e, t, o) => window.addEventListener(e, t, o);
