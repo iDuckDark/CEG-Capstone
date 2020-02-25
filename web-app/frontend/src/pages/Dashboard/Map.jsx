@@ -36,7 +36,7 @@ const providers = {
 }
 
 const markers = {
-    leuven1: [[45.4212, -75.6981], 13],
+    Drone: [[45.4212, -75.6981], 13],
 //   leuven1: [[50.879, 4.6997], 13],
 //   leuven2: [[50.874, 4.6947], 13],
 //   brussels: [[50.85050, 4.35149], 11],
@@ -229,7 +229,7 @@ export default class App extends Component {
           ))}
         </div>
         <div style={{marginTop: 20}}>
-          <a href='https://github.com/mariusandra/pigeon-maps'>Documentation and more on GitHub</a>
+          {/* <a href='https://github.com/mariusandra/pigeon-maps'>Documentation and more on GitHub</a> */}
         </div>
       </div>
     )
