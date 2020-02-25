@@ -9,13 +9,15 @@ import { isServerSideRendering } from "../../helpers/utils";
 const photos = () => {
     let arr = [];
     if (isServerSideRendering()) return arr;
-    for (let i = 1; i < 8; i++) {
+    for (let i = 9; i >= 1; i--) {
         const src = require(`../../assets/progress/${String(i)}.jpg`);
-        arr.push({
-            src,
-            width: 2 + i,
-            height: 3 + i,
-        });
+        let width = i + 3;
+        let height = i + 4;
+        if (i == 9) {
+            width = 5;
+            height = 4;
+        }
+        arr.push({ src, width, height });
     }
     return arr;
 };
