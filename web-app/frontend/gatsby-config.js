@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: `CEG Capstone Project Winter 2020 - Fall 2020`,

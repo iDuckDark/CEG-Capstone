@@ -25,14 +25,14 @@ const ExecCard = props => {
     };
 
     const { image, name, position, email } = props;
-
+    console.log(image);
     const imageComponent = image ? (
         <CardMedia
             component={Img}
-            fixed={image.childImageSharp.fixed}
+            // fixed={image.childImageSharp.fixed} 
             title={name}
             style={imageStyle}
-            src={image.childImageSharp.fixed.src}
+            src={image}
         />
     ) : (
         <CardMedia

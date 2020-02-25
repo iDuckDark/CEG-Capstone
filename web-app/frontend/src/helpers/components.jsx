@@ -1,6 +1,6 @@
 // import Calendar from '../components/Event/Calendar';
 // import Event from '../components/Event/Event';
-// import ExecCard from '../components/Cards/ExecCard/ExecCard';
+import ExecCard from '../components/Cards/ExecCard/ExecCard';
 // import Footer from '../components/Footer/Footer';
 // import Form from '../components/Form/Form';
 // import GalleryCard from '../components/Cards/GalleryCard/GalleryCard';
@@ -29,7 +29,7 @@ export {
     ChevronRightIcon,
     CloseIcon,
     // Event,
-    // ExecCard,
+    ExecCard,
     FlaskIcon,
     // Footer,
     // Form,

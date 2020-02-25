@@ -12,7 +12,11 @@ const routes = [
     {
         title: 'Members',
         link: '/Members/Members'
-    }
+    },
+    {
+        title: 'About Us',
+        link: '/About/About'
+    },
 ];
 
 const getPath = title => {
