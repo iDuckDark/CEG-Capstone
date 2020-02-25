@@ -20,7 +20,7 @@ NavButton.defaultProps = {
 };
 
 NavButton.propTypes = {
-    component: PropTypes.func,
+    component: PropTypes.any,
     loadable: PropTypes.any,
     link: PropTypes.string,
     title: PropTypes.string,
