@@ -2,16 +2,34 @@ import React from "react";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Title from "../../components/Titles/Title";
+import logo from "../../images/favicon.png";
+import Gallery from "react-photo-gallery";
+import { isServerSideRendering } from "../../helpers/utils";
 
-const Gallery = () => (
+const photos = () => {
+    let arr = [];
+    if (isServerSideRendering()) return arr;
+    for (let i = 1; i < 8; i++) {
+        const src = require(`../../assets/${String(i)}.jpg`);
+        arr.push({
+            src,
+            width: 2,
+            height: 3,
+        });
+    }
+    return arr;
+};
+
+const Gallery2 = () => (
     <Layout>
         <SEO title='CEG Capstone Project' />
         <div className='center-horizontal' style={{ marginTop: "20px" }}>
             <Title variant='h5' gutterBottom className='title'>
-                Gallery (Coming Soon)
+                Gallery
             </Title>
+            <Gallery photos={photos()} />;
         </div>
     </Layout>
 );
 
-export default Gallery;
+export default Gallery2;

@@ -63,10 +63,12 @@ class Dashboard extends Component {
                     maxValue={value * 1.5}
                     value={value}
                     needleColor='red'
-                    needleTransition="easeElastic"
+                    needleTransition='easeElastic'
                     // startColor='green'
                     segments={5}
                     // endColor='blue'
+                    // startColor='#27ae60'
+                    // endColor='#c0392b'
                     currentValueText={`${label} : ${value}`}
                 />
             </div>

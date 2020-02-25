@@ -29,6 +29,7 @@
     "react-d3-speedometer": "^0.9.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-photo-gallery": "^8.0.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-style-proptype": "^3.2.2",
