@@ -112,17 +112,17 @@ export default class App extends Component {
 
   handleBoundsChange = ({ center, zoom, bounds, initial }) => {
     if (initial) {
-      console.log('Got initial bounds: ', bounds)
+      // console.log('Got initial bounds: ', bounds)
     }
     this.setState({ center, zoom })
   }
 
   handleClick = ({ event, latLng, pixel }) => {
-    console.log('Map clicked!', latLng, pixel)
+    // console.log('Map clicked!', latLng, pixel)
   }
 
   handleMarkerClick = ({ event, payload, anchor }) => {
-    console.log(`Marker #${payload} clicked at: `, anchor)
+    // console.log(`Marker #${payload} clicked at: `, anchor)
   }
 
   handleAnimationStart = () => {
@@ -175,8 +175,8 @@ export default class App extends Component {
             <DraggableOverlay
               anchor={this.state.dragAnchor}
             //   offset={[60, 87]}
-              onDragMove={(anchor) => console.log('moving pigeon', anchor)}
-              onDragEnd={(anchor) => { console.log('moved pigeon', anchor); this.setState({ dragAnchor: anchor }) }}
+              // onDragMove={(anchor) => console.log('moving pigeon', anchor)}
+              onDragEnd={(anchor) => {  this.setState({ dragAnchor: anchor }) }}
               style={{ 
                 //   clipPath: 'polygon(100% 0, 83% 0, 79% 15%, 0 68%, 0 78%, 39% 84%, 43% 96%, 61% 100%, 79% 90%, 69% 84%, 88% 71%, 100% 15%)' 
                   }}>
