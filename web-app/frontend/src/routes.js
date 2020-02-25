@@ -14,7 +14,7 @@ const routes = [
         link: '/Members/Members'
     },
     {
-        title: 'About Us',
+        title: 'About',
         link: '/About/About'
     },
 ];

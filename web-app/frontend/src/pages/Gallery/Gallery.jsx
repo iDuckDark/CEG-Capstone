@@ -23,7 +23,10 @@ const photos = () => {
 const Gallery2 = () => (
     <Layout>
         <SEO title='CEG Capstone Project' />
-        <div className='center-horizontal' style={{ marginTop: "20px" }}>
+        <div
+            className='center-horizontal'
+            style={{ marginTop: "20px", marginBottom: "18%" }}
+        >
             <Title variant='h5' gutterBottom className='title'>
                 Gallery
             </Title>
