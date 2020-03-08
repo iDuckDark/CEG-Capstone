@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
 import Layout from "../../components/layout";
-import { Typography, GridList } from "@material-ui/core";
 import Title from "../../components/Titles/Title";
 
 import "./Members.scss";
@@ -9,14 +9,6 @@ import logo2 from "../../assets/members/Peter.jpg";
 import logo3 from "../../assets/members/Divyang.jpg";
 import logo4 from "../../assets/members/Paul.jpg";
 import logo5 from "../../assets/members/Shail.jpg";
-
-import {
-    Card,
-    CardContent,
-    CardMedia,
-    FormControlLabel,
-    IconButton,
-} from "@material-ui/core";
 
 const imageStyle = {
     margin: "16px auto 0",
@@ -73,7 +65,13 @@ const Members = () => {
                 <div>
                     {members.map((item, key) => {
                         return (
-                            <div key={key} style={{ display: "inline-block", marginLeft: "1%" }}>
+                            <div
+                                key={String(key)}
+                                style={{
+                                    display: "inline-block",
+                                    marginLeft: "1%",
+                                }}
+                            >
                                 <Card
                                     style={{
                                         margin: "16px 16px",
@@ -86,7 +84,7 @@ const Members = () => {
                                         height='166'
                                         image={item.src}
                                         src={item.src}
-                                        title={"ddkvnkdnv"}
+                                        title={item.src}
                                         style={imageStyle}
                                     />
                                     <CardContent>

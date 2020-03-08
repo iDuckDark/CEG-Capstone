@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import Board from "react-trello";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
-import Board from "react-trello";
 
 const data = {
     lanes: [
@@ -50,7 +50,7 @@ const Feedback = () => {
                 <Title variant='h5' gutterBottom className='title'>
                     Feedback
                 </Title>
-                <Board data={data} editable/>
+                <Board data={data} editable />
                 {/* <iframe
                     width='640'
                     height='360'

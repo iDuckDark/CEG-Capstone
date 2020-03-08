@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Thermometer from "react-thermometer-component";
+import ReactSpeedometer from "react-d3-speedometer";
+// import GaugeChart from "react-gauge-chart";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { isServerSideRendering } from "../../helpers/utils";
 
-import logo from "../../images/favicon.png";
+// import logo from "../../images/favicon.png";
 
 import Map from "./Map";
 // import Restreamer from "../Restreamer/Restreamer";
-import Thermometer from "react-thermometer-component";
-import ReactSpeedometer from "react-d3-speedometer";
-import GaugeChart from 'react-gauge-chart';
-
 // Reference
 // https://github.com/mariusandra/pigeon-maps
 class Dashboard extends Component {
@@ -61,7 +60,7 @@ class Dashboard extends Component {
                 <ReactSpeedometer
                     // width={300}
                     height={200}
-                    forceRender={true}
+                    forceRender
                     maxValue={value * 1.5}
                     value={value}
                     needleColor='red'

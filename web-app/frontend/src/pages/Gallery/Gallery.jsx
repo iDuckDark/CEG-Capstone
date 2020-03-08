@@ -13,7 +13,7 @@ const photos = () => {
         const src = require(`../../assets/progress/${String(i)}.jpg`);
         let width = i + 3;
         let height = i + 4;
-        if (i == 9) {
+        if (i === 9) {
             width = 5;
             height = 4;
         }

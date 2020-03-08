@@ -1,11 +1,10 @@
 import React from "react";
+import { Provider } from "react-redux";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Dashboard from "../pages/Dashboard/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import "./index.scss";
 import Title from "../components/Titles/Title";
-// Redux
-import { Provider } from "react-redux";
 import store from "../store";
 
 const IndexPage = () => (
@@ -23,12 +22,3 @@ const IndexPage = () => (
 );
 
 export default IndexPage;
-
-{
-    /* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div> */
-}
-{
-    /* <Link to="/page-2/">Go to page 2</Link> */
-}

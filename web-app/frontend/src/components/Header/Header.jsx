@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { AppBar, Toolbar, Button, Hidden, IconButton } from "@material-ui/core"
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { AppBar, Toolbar, Button, Hidden, IconButton } from "@material-ui/core";
 import {
     CloseIcon,
     Link,
@@ -9,20 +9,20 @@ import {
     NavButton,
     NavDropDown,
     // Toggle
-} from "../../helpers/components"
+} from "../../helpers/components";
 // import { sun, moon, logo2 as logo } from '../../helpers/theme';
-import logo from "../../images/favicon.png"
-import { routes } from "../../routes"
+import logo from "../../images/favicon.png";
+import { routes } from "../../routes";
 
 class Header extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isOpen: false,
             anchorEl: null,
-        }
-        this.handleMenuClick = this.handleMenuClick.bind(this)
-        this.handleMenuClose = this.handleMenuClose.bind(this)
+        };
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.handleMenuClose = this.handleMenuClose.bind(this);
         // this.handleMenuTheme = this.handleMenuTheme.bind(this)
     }
 
@@ -35,14 +35,14 @@ class Header extends Component {
         this.setState({
             isOpen: true,
             anchorEl: currentTarget,
-        })
+        });
     }
 
     handleMenuClose() {
         this.setState({
             isOpen: false,
             anchorEl: null,
-        })
+        });
     }
 
     renderLogo() {
@@ -60,7 +60,7 @@ class Header extends Component {
                     }}
                 />
             </Link>
-        )
+        );
     }
 
     renderMenuItems() {
@@ -87,11 +87,11 @@ class Header extends Component {
                     )
                 )}
             </div>
-        )
+        );
     }
 
     renderMobileMenuItems() {
-        const { isOpen, anchorEl } = this.state
+        const { isOpen, anchorEl } = this.state;
         return (
             <div>
                 <IconButton onClick={this.handleMenuClick}>
@@ -110,7 +110,7 @@ class Header extends Component {
                     />
                 )}
             </div>
-        )
+        );
     }
 
     renderThemeIcon(icon) {
@@ -124,7 +124,7 @@ class Header extends Component {
                     pointerEvents: "none",
                 }}
             />
-        )
+        );
     }
 
     // renderThemeToggle() {
@@ -160,18 +160,18 @@ class Header extends Component {
                     </Hidden>
                 </Toolbar>
             </AppBar>
-        )
+        );
     }
 }
 
 Header.defaultProps = {
     theme: null,
     toggleTheme: null,
-}
+};
 
 Header.propTypes = {
     theme: PropTypes.string,
     toggleTheme: PropTypes.func,
-}
+};
 
-export default Header
+export default Header;
