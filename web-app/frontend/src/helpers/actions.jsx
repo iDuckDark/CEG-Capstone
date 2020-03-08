@@ -5,6 +5,4 @@ export const mapDispatchToProps = dispatch => {
     return { actions: bindActionCreators(allActions, dispatch) };
 };
 
-export const mapStateToProps = () => {
-    return {};
-};
+export const mapStateToProps = () => {};

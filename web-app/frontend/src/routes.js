@@ -1,38 +1,38 @@
-const loader = require('path');
+const loader = require("path");
 
 const routes = [
     {
-        title: 'Home',
-        path: '/'
+        title: "Home",
+        path: "/",
     },
     {
-        title: 'Stream',
-        link: '/Restreamer/Restreamer'
+        title: "Stream",
+        link: "/Restreamer/Restreamer",
     },
     {
-        title: 'Architecture',
-        link: '/Architecture/Architecture'
+        title: "Architecture",
+        link: "/Architecture/Architecture",
     },
     {
-        title: 'Gallery',
-        link: '/Gallery/Gallery'
+        title: "Gallery",
+        link: "/Gallery/Gallery",
     },
     {
-        title: 'Members',
-        link: '/Members/Members'
+        title: "Members",
+        link: "/Members/Members",
     },
     {
-        title: 'About',
-        link: '/About/About'
+        title: "About",
+        link: "/About/About",
     },
     {
-        title: 'Feedback',
-        link: '/Feedback/Feedback'
+        title: "Feedback",
+        link: "/Feedback/Feedback",
     },
 ];
 
 const getPath = title => {
-    return `/${title.replace(/\s+/g, '-').toLowerCase()}`;
+    return `/${title.replace(/\s+/g, "-").toLowerCase()}`;
 };
 
 const getComponent = link => {
@@ -43,7 +43,7 @@ const getPage = route => {
     const { title, link } = route;
     return {
         path: getPath(title),
-        component: getComponent(link)
+        component: getComponent(link),
     };
 };
 
@@ -75,5 +75,5 @@ const getPages = () => {
 
 module.exports = {
     routes: getRoutes(),
-    getPages
+    getPages,
 };

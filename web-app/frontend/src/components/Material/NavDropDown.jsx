@@ -1,52 +1,52 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import { ChevronDownIcon, ChevronUpIcon } from "../Icons/icons"
-import MaterialMenu from "./MaterialMenu"
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { ChevronDownIcon, ChevronUpIcon } from "../Icons/icons";
+import MaterialMenu from "./MaterialMenu";
 
 class NavDropDown extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isOpen: false,
             anchorEl: null,
-        }
-        this.handleClick = this.handleClick.bind(this)
-        this.handleClose = this.handleClose.bind(this)
+        };
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     handleClick({ currentTarget }) {
-        const { isOpen } = this.state
+        const { isOpen } = this.state;
         this.setState({
             anchorEl: currentTarget,
             isOpen: !isOpen,
-        })
+        });
     }
 
     handleClose() {
         this.setState({
             anchorEl: null,
             isOpen: false,
-        })
+        });
     }
 
     render() {
-        const { anchorEl, isOpen } = this.state
+        const { anchorEl, isOpen } = this.state;
         const {
             onClick,
             children,
             items,
             clickbubbledown,
             component: DropdownComponent,
-        } = this.props
-        const icon = isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />
+        } = this.props;
+        const icon = isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />;
 
         return (
             <span>
                 <DropdownComponent
                     {...this.props}
                     onClick={e => {
-                        if (clickbubbledown || !onClick) this.handleClick(e)
-                        if (onClick) onClick(e)
+                        if (clickbubbledown || !onClick) this.handleClick(e);
+                        if (onClick) onClick(e);
                     }}
                 >
                     {children}
@@ -60,7 +60,7 @@ class NavDropDown extends Component {
                     items={items}
                 />
             </span>
-        )
+        );
     }
 }
 
@@ -70,7 +70,7 @@ NavDropDown.defaultProps = {
     component: null,
     items: null,
     onClick: null,
-}
+};
 
 NavDropDown.propTypes = {
     children: PropTypes.any,
@@ -78,6 +78,6 @@ NavDropDown.propTypes = {
     component: PropTypes.func,
     items: PropTypes.any,
     onClick: PropTypes.func,
-}
+};
 
-export default NavDropDown
+export default NavDropDown;

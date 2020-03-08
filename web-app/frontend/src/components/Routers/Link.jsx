@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link as GatsbyLink } from 'gatsby';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link as GatsbyLink } from "gatsby";
 
 const Link = props => {
     const { children, to, forceExternal, ...other } = props;
@@ -23,13 +23,13 @@ const Link = props => {
 Link.defaultProps = {
     children: null,
     to: null,
-    forceExternal: false
+    forceExternal: false,
 };
 
 Link.propTypes = {
     children: PropTypes.any,
     to: PropTypes.string,
-    forceExternal: PropTypes.bool
+    forceExternal: PropTypes.bool,
 };
 
 export default Link;
