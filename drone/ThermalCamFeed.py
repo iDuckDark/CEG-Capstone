@@ -44,9 +44,9 @@ def predict(model2,resizeVar=None):
         if classes:
             prediction = classes[prediction]
         
-        temperature = bmp280.get_temperature()
-        pressure = bmp280.get_pressure()
-        altitude = bmp280.get_altitude()
+        #temperature = bmp280.get_temperature()
+        #pressure = bmp280.get_pressure()
+        #altitude = bmp280.get_altitude()
                 
         imgPath = '/home/pi/img/%s.jpg' % (dt_string)
         img = cv2.imread(os.path.abspath(os.path.expanduser(imgPath)))
@@ -59,8 +59,8 @@ def predict(model2,resizeVar=None):
         fontColor              = (0,0,0)
         lineType               = 2
         
-        listVal = [prediction, str(round(temperature,2)), str(round(pressure,2)), str(round(altitude,2))]
-        cv2.putText(color,str(listVal), 
+        #listVal = [prediction, str(round(temperature,2)), str(round(pressure,2)), str(round(altitude,2))]
+        cv2.putText(color,prediction, 
             bottomLeftCornerOfText, 
             font, 
             fontScale,
