@@ -1,0 +1,1 @@
+docker run -d --restart always --name restreamer -e "RS_USERNAME=admin" -e "RS_PASSWORD=admin" -e "RS_MODE=RASPICAM" -p 8080:8080 -v /mnt/restreamer/db:/restreamer/db -v /opt/vc:/opt/vc --privileged datarhei/restreamer-armv7l:latest

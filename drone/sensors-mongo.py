@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from bmp280 import BMP280
 import time
+from gps import *
 
 try:
     from smbus2 import SMBus
@@ -19,6 +20,9 @@ while(True):
     temperature = bmp280.get_temperature()
     pressure = bmp280.get_pressure()
     altitude = bmp280.get_altitude()
+    print(temperature)
+    print(pressure)
+    print(altitude)
     sense_id = sensors.insert_one({"temperature":temperature,"pressure":pressure,"altitude":altitude}).inserted_id
     time.sleep(10)
 
