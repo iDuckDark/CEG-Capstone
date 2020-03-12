@@ -1,5 +1,6 @@
 const defaultState = {
-    users: 'heree',
+    users: "heree",
+    ssar: "ssar default",
 };
 
 export default function actionReducer(state = defaultState, action) {
@@ -7,6 +8,11 @@ export default function actionReducer(state = defaultState, action) {
     switch (action.type) {
         case "getUsersSuccess": {
             newState.users = action.payload;
+            return newState;
+        }
+        case "getSSARSuccess": {
+            newState.ssar = action.payload.docs;
+            // console.log
             return newState;
         }
         default:

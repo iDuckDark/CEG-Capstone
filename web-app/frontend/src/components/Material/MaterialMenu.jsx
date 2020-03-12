@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
-import NavButton from './NavButton';
-import NavDropDown from './NavDropDown';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
+import NavButton from "./NavButton";
+import NavDropDown from "./NavDropDown";
 
 class MaterialMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
             items: props.items,
-            menuLevel: 1
+            menuLevel: 1,
         };
         this.handleMobileDropdown = this.handleMobileDropdown.bind(this);
     }
@@ -19,10 +19,10 @@ class MaterialMenu extends Component {
     handleMobileDropdown(newItems) {
         const { width } = this.props;
         const { menuLevel } = this.state;
-        if (isWidthDown('sm', width)) {
+        if (isWidthDown("sm", width)) {
             this.setState({
                 items: newItems,
-                menuLevel: menuLevel + 1
+                menuLevel: menuLevel + 1,
             });
         }
     }
@@ -52,7 +52,7 @@ class MaterialMenu extends Component {
                     return (
                         <NavDropDown
                             key={title}
-                            color="inherit"
+                            color='inherit'
                             items={items}
                             component={MenuItem}
                             onClick={() => this.handleMobileDropdown(navItems)}
@@ -71,7 +71,7 @@ MaterialMenu.defaultProps = {
     isOpen: null,
     items: null,
     onClose: null,
-    width: null
+    width: null,
 };
 
 MaterialMenu.propTypes = {
@@ -79,7 +79,7 @@ MaterialMenu.propTypes = {
     isOpen: PropTypes.bool,
     items: PropTypes.any,
     onClose: PropTypes.func,
-    width: PropTypes.any
+    width: PropTypes.any,
 };
 
 export default withWidth()(MaterialMenu);

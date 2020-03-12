@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import stylePropType from 'react-style-proptype';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import stylePropType from "react-style-proptype";
 import {
     FormControl,
     InputLabel,
     MenuItem,
-    Select
-} from '../../helpers/material-ui';
+    Select,
+} from "../../helpers/material-ui";
 
 class MaterialSelect extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = { value: "" };
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -24,11 +24,11 @@ class MaterialSelect extends Component {
     render() {
         const { value: selectedValue } = this.state;
         const { label, items, isRequired, style } = this.props;
-        const name = label.toLowerCase().replace(/ /g, '-');
+        const name = label.toLowerCase().replace(/ /g, "-");
 
         return (
             <FormControl required={isRequired} style={style}>
-                <InputLabel shrink htmlFor="select-placeholder">
+                <InputLabel shrink htmlFor='select-placeholder'>
                     {label}
                 </InputLabel>
                 <Select
@@ -36,7 +36,7 @@ class MaterialSelect extends Component {
                     onChange={this.handleChange}
                     inputProps={{
                         name,
-                        id: `${name}-input`
+                        id: `${name}-input`,
                     }}
                     name={name}
                 >
@@ -54,18 +54,18 @@ MaterialSelect.propTypes = {
     items: PropTypes.arrayOf(
         PropTypes.exact({
             key: PropTypes.string.isRequired,
-            value: PropTypes.any.isRequired
+            value: PropTypes.any.isRequired,
         })
     ).isRequired,
     isRequired: PropTypes.bool,
     onChange: PropTypes.func,
-    style: stylePropType
+    style: stylePropType,
 };
 
 MaterialSelect.defaultProps = {
     isRequired: false,
     onChange: () => {},
-    style: {}
+    style: {},
 };
 
 export default MaterialSelect;

@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Typography, withStyles } from '../../helpers/material-ui';
+import React from "react";
+import PropTypes from "prop-types";
+import { Typography, withStyles } from "../../helpers/material-ui";
 
-const stylePropType = require('react-style-proptype');
+const stylePropType = require("react-style-proptype");
 
 const Title = ({ children, classes, style }) => (
     <Typography
-        variant="h5"
+        variant='h5'
         gutterBottom
         className={`title ${classes.root}`}
         style={style}
@@ -17,22 +17,22 @@ const Title = ({ children, classes, style }) => (
 
 const styles = theme => ({
     root: {
-        '&:after': {
-            borderBottom: `2px solid ${theme.palette.text.primary}`
-        }
-    }
+        "&:after": {
+            borderBottom: `2px solid ${theme.palette.text.primary}`,
+        },
+    },
 });
 
 Title.defaultProps = {
     children: null,
     classes: null,
-    style: null
+    style: null,
 };
 
 Title.propTypes = {
     children: PropTypes.string,
     classes: PropTypes.any,
-    style: stylePropType
+    style: stylePropType,
 };
 
 export default withStyles(styles)(Title);

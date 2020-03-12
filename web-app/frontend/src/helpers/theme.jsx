@@ -7,13 +7,13 @@
 // import moon from '../../static/images/darkmode/moon.png';
 // import sun from '../../static/images/darkmode/sun.png';
 
-export {
-    // BackgroundImage,
-    // Carousel,
-    // WIEflyer,
-    // logo1,
-    // logo2,
-    // mailingListImg,
-    // moon,
-    // sun
-};
+// export {
+// BackgroundImage,
+// Carousel,
+// WIEflyer,
+// logo1,
+// logo2,
+// mailingListImg,
+// moon,
+// sun
+// };
