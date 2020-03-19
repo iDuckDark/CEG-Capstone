@@ -1,15 +1,15 @@
 import React from "react";
+import Gallery from "react-photo-gallery";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Title from "../../components/Titles/Title";
 import logo from "../../images/favicon.png";
-import Gallery from "react-photo-gallery";
 import { isServerSideRendering } from "../../helpers/utils";
 
 const photos = () => {
-    let arr = [];
+    const arr = [];
     if (isServerSideRendering()) return arr;
-    for (let i = 9; i >= 1; i--) {
+    for (let i = 9; i >= 1; i -= 1) {
         const src = require(`../../assets/progress/${String(i)}.jpg`);
         let width = i + 3;
         let height = i + 4;

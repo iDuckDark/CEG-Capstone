@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { TextField } from "@material-ui/core";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
+import Title from "../../components/Titles/Title";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
 import Map from "./Map";
+
+const defaultUrl = "http://45.72.149.128:8000/";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -15,7 +19,9 @@ class Dashboard extends Component {
             altitude: 0,
             temperature: 0,
             index: 0,
+            piUrl: defaultUrl,
         };
+        this.handleURLChange = this.handleURLChange.bind(this);
     }
 
     componentDidMount() {
@@ -50,6 +56,12 @@ class Dashboard extends Component {
             const { altitude, pressure, temperature } = ssar[index];
             this.setState({ index, altitude, pressure, temperature });
         }, 500);
+    }
+
+    handleURLChange(event) {
+        const piUrl = event.target.value;
+        if (piUrl) this.setState({ piUrl });
+        else this.setState({ piUrl: defaultUrl });
     }
 
     renderSpeedometer(val, label) {
@@ -112,6 +124,37 @@ class Dashboard extends Component {
         );
     }
 
+    renderVideo() {
+        const { piUrl } = this.state;
+        return (
+            <div>
+                {/* <Title variant='h5' gutterBottom className='title'>
+                    Live Stream (Input)
+                </Title> */}
+                <div style={{ textAlign: "center" }}>
+                    <TextField
+                        id='input'
+                        type='input'
+                        onChange={this.handleURLChange}
+                        value={piUrl}
+                        // style={{ width: "360px" }}
+                        placeholder={defaultUrl}
+                    />
+                </div>{" "}
+                <iframe
+                    title='3'
+                    width='1080'
+                    height='640'
+                    // style={{ margin: "0 auto" }}
+                    src={piUrl}
+                    frameBorder='0'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    allowFullScreen
+                />
+            </div>
+        );
+    }
+
     render() {
         return (
             <div
@@ -120,6 +163,7 @@ class Dashboard extends Component {
                 {this.renderSpeedometers()}
                 {this.renderTemp()}
                 <Map />
+                {this.renderVideo()}
             </div>
         );
     }

@@ -10,6 +10,7 @@ export const detectMob = () => {
         /BlackBerry/i,
         /Windows Phone/i,
     ];
+    if (isServerSideRendering()) return false;
     return toMatch.some(toMatchItem => {
         return navigator.userAgent.match(toMatchItem);
     });
