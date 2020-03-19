@@ -1,9 +1,10 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import React from "react";
 import Gallery from "react-photo-gallery";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Title from "../../components/Titles/Title";
-import logo from "../../images/favicon.png";
 import { isServerSideRendering } from "../../helpers/utils";
 
 const photos = () => {
@@ -24,12 +25,17 @@ const photos = () => {
 
 const Gallery2 = () => (
     <Layout>
-        <SEO title='CEG Capstone Project' />
+        <SEO title='Gallery' />
         <div
             className='center-horizontal'
             style={{ marginTop: "20px", marginBottom: "18%" }}
         >
-            <Title variant='h5' gutterBottom className='title'>
+            <Title
+                variant='h5'
+                gutterBottom
+                className='title'
+                style={{ color: "#FFFFFF" }}
+            >
                 Gallery
             </Title>
             <Gallery photos={photos()} />

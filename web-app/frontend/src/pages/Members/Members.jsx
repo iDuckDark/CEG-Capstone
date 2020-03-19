@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
+import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
 
@@ -58,8 +59,17 @@ const members = [
 const Members = () => {
     return (
         <Layout>
-            <div className='center-horizontal' style={{ marginTop: "20px" }}>
-                <Title variant='h5' gutterBottom className='title'>
+            <SEO title='Members' />
+            <div
+                className='center-horizontal'
+                style={{ marginTop: "20px", color: "#FFFFFF" }}
+            >
+                <Title
+                    variant='h5'
+                    gutterBottom
+                    className='title'
+                    style={{ color: "#FFFFFF" }}
+                >
                     Members
                 </Title>
                 <div>
@@ -87,17 +97,19 @@ const Members = () => {
                                         title={item.src}
                                         style={imageStyle}
                                     />
-                                    <CardContent>
+                                    <CardContent style={{ color: "#FFFFFF" }}>
                                         <Typography
                                             gutterBottom
                                             variant='h5'
                                             className='center-horizontal'
+                                            style={{ color: "#FFFFFF" }}
                                         >
                                             {item.name}
                                         </Typography>
                                         <Typography
                                             component='p'
                                             className='center-horizontal'
+                                            style={{ color: "#FFFFFF" }}
                                         >
                                             {item.position}
                                         </Typography>

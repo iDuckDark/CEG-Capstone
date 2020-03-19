@@ -1,38 +1,46 @@
 import React, { Component } from "react";
+import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
 
 import design from "../../assets/architecture/Design.png";
-import logo from "../../assets/architecture/Logo.png";
 import arc from "../../assets/architecture/SystemArch.png";
 
 const Architecture = () => {
     return (
         <Layout>
+            <SEO title='Architecture' />
             <div
                 style={{
                     height: "100vh",
                     width: "100%",
-                    marginTop: "2%",
+                    // marginTop: "2%",
                     marginBottom: "15%",
                     textAlign: "center",
                 }}
             >
-                <Title variant='h5' gutterBottom className='title'>
+                <Title
+                    variant='h5'
+                    gutterBottom
+                    className='title'
+                    style={{ color: "#FFFFFF" }}
+                >
                     System Architecture
                 </Title>
 
                 <div style={{ display: "inline-block" }}>
                     <img
                         src={design}
+                        alt={design}
                         style={{ height: "500px", width: "500px" }}
-                    ></img>
+                    />
                 </div>
                 <div style={{ display: "inline-block" }}>
                     <img
                         src={arc}
+                        alt={arc}
                         style={{ height: "500px", width: "700px" }}
-                    ></img>
+                    />
                 </div>
 
                 {/* <img src={logo}></img> */}

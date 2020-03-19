@@ -7,7 +7,6 @@ function isDescendentOf(element, ancestor) {
         }
         element = element.offsetParent;
     }
-
     return false;
 }
 

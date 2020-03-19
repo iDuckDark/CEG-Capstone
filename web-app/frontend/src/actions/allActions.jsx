@@ -3,10 +3,7 @@ import axios from "axios";
 const httpClient = axios.create();
 httpClient.defaults.timeout = 600000;
 
-const BACKEND_URL_DEV = "http://localhost:3000";
-const BACKEND_URL_PROD = "https://ceg-capstone.herokuapp.com";
-
-const BACKEND_URL = BACKEND_URL_PROD;
+const BACKEND_URL = process.env.GATSBY_BACKEND_URL;
 
 export const getUsers = () => {
     return dispatch => {
