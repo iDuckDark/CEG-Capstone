@@ -1,0 +1,14 @@
+[Unit]
+Description=Sensors Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 sensors-mongo.py
+WorkingDirectory=/home/pi/Desktop/CEG-Capstone/drone/sensors
+StandardOutput=inherit
+StandardError=inherit
+Type=simple
+User=pi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,4 +1,9 @@
-from gps import gps
+import os
+from gps import *
+from time import *
+import time
+import threading
+
 gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
 print('latitude\tlongitude\ttime utc\t\t\taltitude\tepv\tept\tspeed\tclimb') # '\t' = TAB to try and output the data in columns.)
 
