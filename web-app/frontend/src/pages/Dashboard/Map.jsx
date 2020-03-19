@@ -42,6 +42,15 @@ const providers = {
     dark: mapbox("dark-v9", MAPBOX_ACCESS_TOKEN),
 };
 
+const MAP_ID = "4ddefb36-c0c7-4aa9-a627-c5ebfd5ae115";
+const MAPTILER_ACCESS_TOKEN = "yltXQh4miTGcI5w3eHbM";
+
+function mapTilerProvider(x, y, z, dpr) {
+    return `https://api.maptiler.com/maps/${MAP_ID}/256/${z}/${x}/${y}${
+        dpr >= 2 ? "@2x" : ""
+    }.png?key=${MAPTILER_ACCESS_TOKEN}`;
+}
+
 const markers = {
     Drone: [[45.423, -75.6838], 13],
     SITE: [[45.4195, -75.6788], 13],
@@ -195,14 +204,24 @@ export default class App extends Component {
         } = this.state;
 
         return (
-            <div style={{ textAlign: "center", marginTop: 50 }}>
+            <div style={{ textAlign: "right", marginTop: 0 }}>
                 {/* <Banner /> */}
-                <div style={{ maxWidth: 600, margin: "0 auto" }}>
+                <div
+                    style={{
+                        maxWidth: 250,
+                        maxHeight: 250,
+                        margin: "0 auto",
+                        // width: 250,
+                        // height: 250,
+                        textAlign: "right",
+                    }}
+                >
                     <Map
                         limitBounds='edge'
                         center={center}
                         zoom={zoom}
                         provider={providers[provider]}
+                        // provider={mapTilerProvider}
                         dprs={[1, 2]}
                         onBoundsChanged={this.handleBoundsChange}
                         onClick={this.handleClick}
@@ -226,7 +245,7 @@ export default class App extends Component {
                             ) : null
                         }
                         defaultWidth={600}
-                        height={400}
+                        height={250}
                         boxClassname='pigeon-filters'
                     >
                         {Object.keys(markers).map(key => (
@@ -257,7 +276,7 @@ export default class App extends Component {
                         )}
                     </Map>
                 </div>
-                <div>
+                {/* <div>
                     <button onClick={this.zoomIn}>Zoom In</button>
                     <button onClick={this.zoomOut}>Zoom Out</button>{" "}
                     {Math.round(center[0] * 10000) / 10000} (
@@ -267,8 +286,8 @@ export default class App extends Component {
                     {Math.round(zoom * 100) / 100}
                     {" - "}
                     {animating ? "animating" : "stopped"}
-                </div>
-                <div style={{ marginTop: 20 }}>
+                </div> */}
+                {/* <div style={{ marginTop: 20 }}>
                     {Object.keys(providers).map(key => (
                         <button
                             key={key}
@@ -291,8 +310,8 @@ export default class App extends Component {
                             {key}
                         </button>
                     ))}
-                </div>
-                <div style={{ marginTop: 20 }}>
+                </div> */}
+                {/* <div style={{ marginTop: 20 }}>
                     <button
                         onClick={() => this.setState({ animate: !animate })}
                     >
@@ -374,7 +393,7 @@ export default class App extends Component {
                             {key}
                         </button>
                     ))}
-                </div>
+                </div> */}
                 <div style={{ marginTop: 20 }}>
                     {/* <a href='https://github.com/mariusandra/pigeon-maps'>Documentation and more on GitHub</a> */}
                 </div>

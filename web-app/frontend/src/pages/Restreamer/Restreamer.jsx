@@ -2,23 +2,13 @@ import React, { Component } from "react";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
 
-const defaultUrl = "http://45.72.149.128:8000/";
-
 class Restreamer extends Component {
     constructor(props) {
         super(props);
-        this.state = { piUrl: defaultUrl };
-        this.handleURLChange = this.handleURLChange.bind(this);
-    }
-
-    handleURLChange(event) {
-        const piUrl = event.target.value;
-        if (piUrl) this.setState({ piUrl });
-        else this.setState({ piUrl: defaultUrl });
+        this.state = {};
     }
 
     render() {
-        const { piUrl } = this.state;
         return (
             <Layout>
                 <div
@@ -29,31 +19,6 @@ class Restreamer extends Component {
                         textAlign: "center",
                     }}
                 >
-                    <div style={{ marginBottom: "20px" }} />
-                    {/* <Title variant='h5' gutterBottom className='title'>
-                        Live Stream (Input)
-                    </Title>
-                    <div style={{ textAlign: "center" }}>
-                        <TextField
-                            id='input'
-                            type='input'
-                            onChange={this.handleURLChange}
-                            value={piUrl}
-                            style={{ width: "100%" }}
-                            placeholder={defaultUrl}
-                        />
-                    </div> */}
-                    {/* <iframe
-                        title='3'
-                        width='100%'
-                        height='100%'
-                        style={{ margin: "0 auto", display: "block" }}
-                        src={piUrl}
-                        frameBorder='0'
-                        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                        allowFullScreen
-                    /> */}
-
                     <div style={{ marginBottom: "20px" }} />
                     <Title variant='h5' gutterBottom className='title'>
                         Live Stream (Sample)

@@ -18,7 +18,8 @@ const Title = ({ children, classes, style }) => (
 const styles = theme => ({
     root: {
         "&:after": {
-            borderBottom: `2px solid ${theme.palette.text.primary}`,
+            // borderBottom: `2px solid ${theme.palette.text.primary}`,
+            borderBottom: `2px solid #FFFFFF`,
         },
     },
 });

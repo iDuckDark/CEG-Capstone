@@ -58,8 +58,16 @@ const members = [
 const Members = () => {
     return (
         <Layout>
-            <div className='center-horizontal' style={{ marginTop: "20px" }}>
-                <Title variant='h5' gutterBottom className='title'>
+            <div
+                className='center-horizontal'
+                style={{ marginTop: "20px", color: "#FFFFFF" }}
+            >
+                <Title
+                    variant='h5'
+                    gutterBottom
+                    className='title'
+                    style={{ color: "#FFFFFF" }}
+                >
                     Members
                 </Title>
                 <div>
@@ -87,17 +95,19 @@ const Members = () => {
                                         title={item.src}
                                         style={imageStyle}
                                     />
-                                    <CardContent>
+                                    <CardContent style={{ color: "#FFFFFF" }}>
                                         <Typography
                                             gutterBottom
                                             variant='h5'
                                             className='center-horizontal'
+                                            style={{ color: "#FFFFFF" }}
                                         >
                                             {item.name}
                                         </Typography>
                                         <Typography
                                             component='p'
                                             className='center-horizontal'
+                                            style={{ color: "#FFFFFF" }}
                                         >
                                             {item.position}
                                         </Typography>

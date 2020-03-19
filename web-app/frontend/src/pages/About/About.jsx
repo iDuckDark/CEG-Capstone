@@ -11,6 +11,7 @@ const About = () => {
             <div
                 style={{
                     textAlign: "center",
+                    color: "#FFFFFF",
                 }}
             >
                 <Header siteTitle='CEG Capstone Project Winter 2020 - Fall 2020' />

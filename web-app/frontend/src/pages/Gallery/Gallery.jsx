@@ -29,7 +29,12 @@ const Gallery2 = () => (
             className='center-horizontal'
             style={{ marginTop: "20px", marginBottom: "18%" }}
         >
-            <Title variant='h5' gutterBottom className='title'>
+            <Title
+                variant='h5'
+                gutterBottom
+                className='title'
+                style={{ color: "#FFFFFF" }}
+            >
                 Gallery
             </Title>
             <Gallery photos={photos()} />

@@ -1,33 +1,48 @@
 const loader = require("path");
 
+const {
+    faGopuram,
+    faSitemap,
+    faImages,
+    faUsers,
+    faAddressCard,
+    faCommentDots,
+} = require("@fortawesome/free-solid-svg-icons");
+
+// const loadable = require("@loadable/component");
+
+// const OtherComponent = loadable(() => import('./pages/Architecture/Architecture'));
+
 const routes = [
     {
         title: "Home",
         path: "/",
-    },
-    {
-        title: "Stream",
-        link: "/Restreamer/Restreamer",
+        icon: faGopuram,
     },
     {
         title: "Architecture",
         link: "/Architecture/Architecture",
+        icon: faSitemap,
     },
     {
         title: "Gallery",
         link: "/Gallery/Gallery",
+        icon: faImages,
     },
     {
         title: "Members",
         link: "/Members/Members",
+        icon: faUsers,
     },
     {
         title: "About",
         link: "/About/About",
+        icon: faAddressCard,
     },
     {
         title: "Feedback",
         link: "/Feedback/Feedback",
+        icon: faCommentDots,
     },
 ];
 

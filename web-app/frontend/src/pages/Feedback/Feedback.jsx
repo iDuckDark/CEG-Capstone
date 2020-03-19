@@ -6,6 +6,12 @@ import Title from "../../components/Titles/Title";
 const data = {
     lanes: [
         {
+            id: "lane2",
+            title: "Completed",
+            label: "0/0",
+            cards: [],
+        },
+        {
             id: "lane1",
             title: "Planned Tasks",
             label: "2/2",
@@ -47,7 +53,12 @@ const Feedback = () => {
                     textAlign: "center",
                 }}
             >
-                <Title variant='h5' gutterBottom className='title'>
+                <Title
+                    variant='h5'
+                    gutterBottom
+                    className='title'
+                    style={{ color: "#FFFFFF" }}
+                >
                     Feedback
                 </Title>
                 <Board data={data} editable />
