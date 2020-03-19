@@ -1,97 +1,32 @@
 import React, { Component } from "react";
-
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-} from "recharts";
-
-const data = [
-    {
-        name: "Temp",
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
-    },
-    {
-        name: "Page B",
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
-    },
-    {
-        name: "Page C",
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        name: "Page D",
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
-    },
-    {
-        name: "Page E",
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: "Page F",
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
-    },
-    {
-        name: "Page G",
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
-    },
-];
+import { AreaChart, Area, XAxis, Tooltip } from "recharts";
+import { shuffle } from "../../helpers/utils";
 
 class Temperature extends Component {
     constructor(props) {
         super(props);
+        // eslint-disable-next-line react/prop-types
+        const { data } = props;
         this.state = { data };
     }
 
     componentDidMount() {
-        // setInterval(() => {
-        //     const { data: data2 } = this.state;
-        //     console.log("shuffle", this.shuffle(data2));
-        //     this.setState({ data: this.shuffle(data2) });
-        // }, 1000);
-    }
-
-    shuffle(array) {
-        let currentIndex = array.length;
-        let temporaryValue;
-        let randomIndex;
-        // While there remain elements to shuffle...
-        while (currentIndex !== 0) {
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-            // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
-        }
-        return array;
+        setInterval(() => {
+            const { data } = this.state;
+            const newData = shuffle(data);
+            this.setState({ data: newData });
+        }, 300);
     }
 
     renderTemperature() {
-        const { data: data2 } = this.state;
+        const { data } = this.state;
+        if (!data) return <div />;
+        const newData = data.filter(item => item != null);
         return (
             <AreaChart
                 height={200}
                 width={375}
-                data={data2}
+                data={newData}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
                 <defs>

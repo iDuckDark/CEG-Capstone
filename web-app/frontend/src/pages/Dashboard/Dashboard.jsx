@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
 import Paper from "@material-ui/core/Paper";
-// import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
@@ -12,7 +11,8 @@ import Map from "./Map";
 import Temperature from "../Graphs/Temperature";
 import Altitude from "../Graphs/Altitude";
 import Pressure from "../Graphs/Pressure";
-import { getVideoUrl } from "../../helpers/settings";
+import { getVideoUrl, setPath, setVideoUrl } from "../../helpers/settings";
+
 // const defaultUrl = "https://45.72.149.128:8000/";
 // const defaultUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
 
@@ -25,24 +25,43 @@ class Dashboard extends Component {
             pressure: 0,
             altitude: 0,
             temperature: 0,
+
+            pressures: [],
+            altitudes: [],
+            temperatures: [],
+
             index: 0,
             width,
             height,
-            // piUrl: defaultUrl,
+            piUrl: getVideoUrl(),
         };
         // this.handleURLChange = this.handleURLChange.bind(this);
         this.updateDimensions = this.updateDimensions.bind(this);
+        setPath("/");
     }
 
     componentDidMount() {
-        // this.setAPIs();
+        this.setAPIs();
         if (!isServerSideRendering())
             window.addEventListener("resize", this.updateDimensions);
+        setPath("/");
     }
 
     componentWillUnmount() {
         if (!isServerSideRendering())
             window.removeEventListener("resize", this.updateDimensions);
+    }
+
+    getArrayfromKey(array, key) {
+        const result = [];
+        for (const item of array) {
+            result.push(item[key]);
+        }
+        return result;
+    }
+
+    getArrayfromKeyPV(array, key) {
+        return this.formatArray(this.getArrayfromKey(array, key));
     }
 
     // eslint-disable-next-line react/sort-comp
@@ -62,17 +81,55 @@ class Dashboard extends Component {
             console.log("API is working: ", users);
         });
         this.setSSAR();
+        this.setIP();
+    }
+
+    formatArray(array) {
+        const data = [];
+        for (const i in array) {
+            const item = array[i];
+            data.push({ pv: item, name: String(i) });
+        }
+        return data;
     }
 
     setSSAR() {
         const { actions } = this.props;
         actions.getSSAR().then(() => {
             const { ssar } = this.props;
+            // All
+            const temperatures = this.getArrayfromKeyPV(ssar, "temperature");
+            const altitudes = this.getArrayfromKeyPV(ssar, "altitude");
+            const pressures = this.getArrayfromKeyPV(ssar, "pressure");
+
+            this.setState({ temperatures, altitudes, pressures });
+            // Cyclic
             const first = ssar[0];
             const { altitude, pressure, temperature } = first;
             this.setState({ altitude, pressure, temperature });
             this.setSSARInterval(ssar);
         });
+    }
+
+    setIP() {
+        const { actions } = this.props;
+        actions
+            .getIP()
+            .then(() => {
+                const { ip: ips } = this.props;
+                const { ip } = ips[ips.length - 1];
+                const formatted = this.formatIP(ip);
+                this.setState({ piUrl: formatted });
+                setVideoUrl(formatted);
+                console.log("Formatted IP:", formatted);
+            })
+            .catch(() => {
+                this.setState({ piUrl: getVideoUrl() });
+            });
+    }
+
+    formatIP(ip) {
+        return `https://${ip}:8080`;
     }
 
     setSSARInterval(ssar) {
@@ -145,7 +202,7 @@ class Dashboard extends Component {
     }
 
     renderVideo() {
-        const piUrl = getVideoUrl();
+        const { piUrl } = this.state;
         const { width, height } = this.state;
         return (
             <div>
@@ -162,6 +219,9 @@ class Dashboard extends Component {
                         height={height / 1.6}
                         src={piUrl}
                         frameBorder='0'
+                        onErrorCapture={error => {
+                            console.log("iframe", error);
+                        }}
                         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                         allowFullScreen
                     />
@@ -172,6 +232,15 @@ class Dashboard extends Component {
 
     render() {
         // const graphs = [<Temperature />, <Altitude />, <Pressure />];
+        const { temperatures, altitudes, pressures } = this.state;
+        if (
+            !(
+                temperatures.length > 0 &&
+                altitudes.length > 0 &&
+                pressures.length > 0
+            )
+        )
+            return <>Loading </>;
         return (
             <div>
                 {this.renderVideo()}
@@ -200,7 +269,7 @@ class Dashboard extends Component {
                                 >
                                     Temperature
                                 </div>
-                                <Temperature />
+                                <Temperature data={temperatures} />
                             </Paper>
                         </Grid>
 
@@ -215,7 +284,7 @@ class Dashboard extends Component {
                                 >
                                     Altitude
                                 </div>
-                                <Altitude />
+                                <Altitude data={altitudes} />
                             </Paper>
                         </Grid>
 
@@ -230,7 +299,7 @@ class Dashboard extends Component {
                                 >
                                     Pressure
                                 </div>
-                                <Pressure />
+                                <Pressure data={pressures} />
                             </Paper>
                         </Grid>
 
@@ -256,6 +325,7 @@ const mapStateToProps = ({ actionReducer }) => {
     return {
         users: actionReducer.users,
         ssar: actionReducer.ssar,
+        ip: actionReducer.ip,
     };
 };
 
@@ -263,12 +333,14 @@ Dashboard.defaultProps = {
     actions: null,
     ssar: null,
     users: null,
+    ip: null,
 };
 
 Dashboard.propTypes = {
     actions: PropTypes.any,
     ssar: PropTypes.any,
     users: PropTypes.any,
+    ip: PropTypes.any,
 };
 
 export default isServerSideRendering()

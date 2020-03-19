@@ -15,3 +15,18 @@ export const detectMob = () => {
         return navigator.userAgent.match(toMatchItem);
     });
 };
+
+export const shuffle = array => {
+    let currentIndex = array.length;
+    let temporaryValue;
+    let randomIndex;
+    const temp = array;
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        temp[currentIndex] = array[randomIndex];
+        temp[randomIndex] = temporaryValue;
+    }
+    return temp;
+};

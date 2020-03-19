@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
@@ -6,7 +6,10 @@ import Title from "../../components/Titles/Title";
 import design from "../../assets/architecture/Design.png";
 import arc from "../../assets/architecture/SystemArch.png";
 
+import { setPath } from "../../helpers/settings";
+
 const Architecture = () => {
+    setPath("/architecture");
     return (
         <Layout>
             <SEO title='Architecture' />
@@ -14,7 +17,7 @@ const Architecture = () => {
                 style={{
                     height: "100vh",
                     width: "100%",
-                    // marginTop: "2%",
+                    marginTop: "2%",
                     marginBottom: "15%",
                     textAlign: "center",
                 }}
