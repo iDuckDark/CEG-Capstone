@@ -61,11 +61,11 @@ class Temperature extends Component {
     }
 
     componentDidMount() {
-        setInterval(() => {
-            const { data: data2 } = this.state;
-            console.log("shuffle", this.shuffle(data2));
-            this.setState({ data: this.shuffle(data2) });
-        }, 1000);
+        // setInterval(() => {
+        //     const { data: data2 } = this.state;
+        //     console.log("shuffle", this.shuffle(data2));
+        //     this.setState({ data: this.shuffle(data2) });
+        // }, 1000);
     }
 
     shuffle(array) {

@@ -13,7 +13,7 @@ const workingUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
 const getVideoUrl = () => {
     if (!isServerSideRendering())
         return localStorage.getItem(KEY_DEFAULT_URL) || defaultUrl;
-    return defaultUrl;
+    return workingUrl;
 };
 
 const setVideoUrl = url => {

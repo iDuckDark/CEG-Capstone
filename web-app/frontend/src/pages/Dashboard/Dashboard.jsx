@@ -19,8 +19,8 @@ import { getVideoUrl } from "../../helpers/settings";
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        const width = isServerSideRendering() ? 0 : window.innerWidth;
-        const height = isServerSideRendering() ? 0 : window.innerHeight;
+        const width = isServerSideRendering() ? 1080 : window.innerWidth;
+        const height = isServerSideRendering() ? 600 : window.innerHeight;
         this.state = {
             pressure: 0,
             altitude: 0,
@@ -149,10 +149,16 @@ class Dashboard extends Component {
         const { width, height } = this.state;
         return (
             <div>
-                <div style={{ textAlign: "center" }}>
+                <div
+                    style={{
+                        textAlign: "center",
+                        marginLeft: "5%",
+                        marginRight: "5%",
+                    }}
+                >
                     <iframe
                         title='3'
-                        width={width}
+                        width={width * 0.9}
                         height={height / 1.6}
                         src={piUrl}
                         frameBorder='0'
