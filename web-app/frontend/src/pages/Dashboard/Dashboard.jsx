@@ -118,8 +118,8 @@ class Dashboard extends Component {
             .then(() => {
                 const { ip: ips } = this.props;
                 const { ip } = ips[ips.length - 1];
-                const formatted = this.formatIP(ip);
-                this.setState({ piUrl: formatted });
+                const formatted = ip;
+                this.setState({ piUrl: ip });
                 setVideoUrl(formatted);
                 console.log("Formatted IP:", formatted);
             })
@@ -129,7 +129,7 @@ class Dashboard extends Component {
     }
 
     formatIP(ip) {
-        return `https://${ip}:8080`;
+        return `https://${ip}:8000`;
     }
 
     setSSARInterval(ssar) {
