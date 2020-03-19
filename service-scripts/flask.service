@@ -1,0 +1,14 @@
+[Unit]
+Description=Flask Service
+After=network.target
+
+[Service]
+ExecStart=/bin/sh flask.sh
+WorkingDirectory=/home/pi/Desktop/CEG-Capstone/drone/test
+StandardOutput=inherit
+StandardError=inherit
+Type=forking
+User=pi
+
+[Install]
+WantedBy=multi-user.target

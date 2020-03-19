@@ -119,20 +119,9 @@ def thermal():
         colorPath = '/home/pi/colorimg/%s.jpg' % (dt_string)
         color = cv2.imread(os.path.abspath(os.path.expanduser(colorPath)))
         
-        font                   = cv2.FONT_HERSHEY_SIMPLEX
-        bottomLeftCornerOfText = (0,50)
-        fontScale              = 0.5
-        fontColor              = (0,0,0)
-        lineType               = 2
-        
-        cv2.putText(color,str(prediction), 
-            bottomLeftCornerOfText, 
-            font, 
-            fontScale,
-            fontColor,
-            lineType)
-        
         numpy_horizontal = np.hstack((color, img))
+        cv2.putText(numpy_horizontal, prediction, (10, numpy_horizontal.shape[0] - 10),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
         #cv2.namedWindow("Numpy Horizontal", cv2.WINDOW_NORMAL)
         #cv2.setWindowProperty("Numpy Horizontal",cv2.WND_PROP_AUTOSIZE,cv2.WINDOW_NORMAL)
         #cv2.waitKey(10)
@@ -166,7 +155,7 @@ def generate():
             bytearray(encodedImage) + b'\r\n')
 
 def thermalgenerate():
-    print('hi')
+    # print('hi')
     # grab global references to the output frame and lock variables
     global thermalFrame, thermalLock
 
@@ -228,7 +217,7 @@ if __name__ == '__main__':
     
 
     # start the flask app
-    app.run(host=args["ip"], port=args["port"], debug=True,
+    app.run(ssl_context=('cert.pem', 'key.pem'), host=args["ip"], port=args["port"], debug=False,
         threaded=True, use_reloader=False)
 
 # release the video stream pointer
