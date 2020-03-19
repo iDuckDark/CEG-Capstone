@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
 
@@ -8,6 +9,7 @@ import arc from "../../assets/architecture/SystemArch.png";
 const Architecture = () => {
     return (
         <Layout>
+            <SEO title='Architecture' />
             <div
                 style={{
                     height: "100vh",

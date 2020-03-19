@@ -1,7 +1,8 @@
 import React from "react";
-import Board from "react-trello";
+// import Board from "react-trello";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
+// import SEO from "../../components/seo";
 
 const data = {
     lanes: [
@@ -44,6 +45,7 @@ const data = {
 const Feedback = () => {
     return (
         <Layout>
+            {/* <SEO title='Feedback' /> */}
             <div
                 style={{
                     height: "100vh",
@@ -61,15 +63,13 @@ const Feedback = () => {
                 >
                     Feedback
                 </Title>
-                <Board data={data} editable />
-                {/* <iframe
-                    width='640'
-                    height='360'
-                    src='https://www.youtube.com/embed/ZG5nE0rd4BM'
-                    frameborder='0'
-                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                    allowfullscreen
-                ></iframe> */}
+                <div
+                    style={{
+                        paddingLeft: "30px",
+                    }}
+                >
+                    {/* <Board data={data} editable /> */}
+                </div>
             </div>
         </Layout>
     );

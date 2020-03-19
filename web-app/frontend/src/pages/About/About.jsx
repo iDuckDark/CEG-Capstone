@@ -7,7 +7,7 @@ import Logo from "../../images/favicon.png";
 const About = () => {
     return (
         <Layout>
-            <SEO title='CEG Capstone Project' />
+            <SEO title='About' />
             <div
                 style={{
                     textAlign: "center",

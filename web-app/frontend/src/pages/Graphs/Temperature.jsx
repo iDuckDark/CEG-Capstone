@@ -57,15 +57,41 @@ const data = [
 class Temperature extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { data };
+    }
+
+    componentDidMount() {
+        setInterval(() => {
+            const { data: data2 } = this.state;
+            console.log("shuffle", this.shuffle(data2));
+            this.setState({ data: this.shuffle(data2) });
+        }, 1000);
+    }
+
+    shuffle(array) {
+        let currentIndex = array.length;
+        let temporaryValue;
+        let randomIndex;
+        // While there remain elements to shuffle...
+        while (currentIndex !== 0) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
     }
 
     renderTemperature() {
+        const { data: data2 } = this.state;
         return (
             <AreaChart
                 height={200}
                 width={375}
-                data={data}
+                data={data2}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
                 <defs>

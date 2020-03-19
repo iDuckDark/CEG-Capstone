@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import List from "@material-ui/core/List";
@@ -10,27 +10,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import // Switch,
-// Route,
-// BrowserRouter,
-// Link,
-// useHistory,
-// "react-router-dom";
 import { routes } from "../../routes";
-
-// import IndexPage from "../../pages/index";
-// import Gallery2 from "../../pages/Gallery/Gallery";
-
+import { getPath, setPath } from "../../helpers/settings";
 import { isServerSideRendering } from "../../helpers/utils";
-
-// const components = {
-//     "/": <IndexPage />,
-//     "/architecture": <Gallery2 />,
-//     "/gallery": <Gallery2 />,
-//     "/members": <Gallery2 />,
-//     "/about": <Gallery2 />,
-//     "/feedback": <Gallery2 />,
-// };
 
 const drawerWidth = 240;
 
@@ -103,7 +85,10 @@ export default function MiniDrawer() {
     );
 
     const handleRoute = path => {
-        if (!isServerSideRendering()) window.location.pathname = path;
+        if (!isServerSideRendering()) {
+            setPath(path);
+            window.location.pathname = path;
+        }
     };
 
     return (
@@ -146,22 +131,12 @@ export default function MiniDrawer() {
                                 <ListItemIcon
                                     style={{
                                         color:
-                                            currentPath === path
+                                            getPath() === path
                                                 ? "#d04290"
                                                 : "#FFFFFF",
                                     }}
                                 >
-                                    {/* <Link
-                                        to={path}
-                                        style={{
-                                            color:
-                                                currentPath === path
-                                                    ? "#d04290"
-                                                    : "#FFFFFF",
-                                        }}
-                                    > */}
                                     <FontAwesomeIcon icon={icon} />
-                                    {/* </Link> */}
                                 </ListItemIcon>
                                 <ListItemText
                                     style={{

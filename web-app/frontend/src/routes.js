@@ -36,11 +36,11 @@ const routes = [
         link: "/About/About",
         icon: faAddressCard,
     },
-    {
-        title: "Feedback",
-        link: "/Feedback/Feedback",
-        icon: faCommentDots,
-    },
+    // {
+    //     title: "Feedback",
+    //     link: "/Feedback/Feedback",
+    //     icon: faCommentDots,
+    // },
     {
         title: "Settings",
         link: "/Settings/Settings",

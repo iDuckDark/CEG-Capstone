@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { AppBar, Toolbar, Button, Hidden, IconButton } from "@material-ui/core";
 import {
     CloseIcon,
@@ -8,9 +8,7 @@ import {
     MenuIcon,
     NavButton,
     NavDropDown,
-    // Toggle
 } from "../../helpers/components";
-// import { sun, moon, logo2 as logo } from '../../helpers/theme';
 import logo from "../../images/favicon.png";
 import { routes } from "../../routes";
 
@@ -77,7 +75,8 @@ class Header extends Component {
                     ) : (
                         <NavDropDown
                             key={title}
-                            color='inherit'
+                            // color='inherit'
+                            // color='primary'
                             items={items}
                             clickbubbledown='true'
                             component={Button}
@@ -94,7 +93,10 @@ class Header extends Component {
         const { isOpen, anchorEl } = this.state;
         return (
             <div>
-                <IconButton onClick={this.handleMenuClick}>
+                <IconButton
+                    onClick={this.handleMenuClick}
+                    style={{ color: "#FFFFFF" }}
+                >
                     {isOpen ? <CloseIcon /> : <MenuIcon />}
                 </IconButton>
                 {isOpen && (
@@ -107,6 +109,8 @@ class Header extends Component {
                         }))}
                         isOpen={isOpen}
                         onClose={this.handleMenuClose}
+                        style={{ color: "#FFFFFF !important" }}
+                        color='primary'
                     />
                 )}
             </div>
@@ -146,7 +150,7 @@ class Header extends Component {
             <AppBar
                 color='default'
                 position='sticky'
-                style={{ padding: "0px 0 0" }}
+                style={{ padding: "0px 0 0", backgroundColor: "#2f3247" }}
             >
                 <Toolbar>
                     {this.renderLogo()}
@@ -170,8 +174,8 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-    theme: PropTypes.string,
-    toggleTheme: PropTypes.func,
+    // theme: PropTypes.string,
+    // toggleTheme: PropTypes.func,
 };
 
 export default Header;

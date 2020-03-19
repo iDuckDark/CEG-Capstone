@@ -45,6 +45,7 @@ class MaterialMenu extends Component {
                                 key={title}
                                 title={title}
                                 link={link}
+                                style={{ color: "#FFFFFF" }}
                                 component={MenuItem}
                                 onClick={onClose}
                             />
@@ -52,7 +53,9 @@ class MaterialMenu extends Component {
                     return (
                         <NavDropDown
                             key={title}
-                            color='inherit'
+                            // color='inherit'
+                            // color='secondary'
+                            style={{ color: "#FFFFFF" }}
                             items={items}
                             component={MenuItem}
                             onClick={() => this.handleMobileDropdown(navItems)}

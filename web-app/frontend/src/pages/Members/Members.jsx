@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
+import SEO from "../../components/seo";
 import Layout from "../../components/layout";
 import Title from "../../components/Titles/Title";
 
@@ -58,6 +59,7 @@ const members = [
 const Members = () => {
     return (
         <Layout>
+            <SEO title='Members' />
             <div
                 className='center-horizontal'
                 style={{ marginTop: "20px", color: "#FFFFFF" }}

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
 import Paper from "@material-ui/core/Paper";
+// import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
@@ -11,25 +12,46 @@ import Map from "./Map";
 import Temperature from "../Graphs/Temperature";
 import Altitude from "../Graphs/Altitude";
 import Pressure from "../Graphs/Pressure";
-
+import { getVideoUrl } from "../../helpers/settings";
 // const defaultUrl = "https://45.72.149.128:8000/";
-const defaultUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
+// const defaultUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
+        const width = isServerSideRendering() ? 0 : window.innerWidth;
+        const height = isServerSideRendering() ? 0 : window.innerHeight;
         this.state = {
             pressure: 0,
             altitude: 0,
             temperature: 0,
             index: 0,
-            piUrl: defaultUrl,
+            width,
+            height,
+            // piUrl: defaultUrl,
         };
-        this.handleURLChange = this.handleURLChange.bind(this);
+        // this.handleURLChange = this.handleURLChange.bind(this);
+        this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     componentDidMount() {
         // this.setAPIs();
+        if (!isServerSideRendering())
+            window.addEventListener("resize", this.updateDimensions);
+    }
+
+    componentWillUnmount() {
+        if (!isServerSideRendering())
+            window.removeEventListener("resize", this.updateDimensions);
+    }
+
+    // eslint-disable-next-line react/sort-comp
+    updateDimensions() {
+        if (!isServerSideRendering())
+            this.setState({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
     }
 
     setAPIs() {
@@ -60,12 +82,6 @@ class Dashboard extends Component {
             const { altitude, pressure, temperature } = ssar[index];
             this.setState({ index, altitude, pressure, temperature });
         }, 500);
-    }
-
-    handleURLChange(event) {
-        const piUrl = event.target.value;
-        if (piUrl) this.setState({ piUrl });
-        else this.setState({ piUrl: defaultUrl });
     }
 
     renderSpeedometer(val, label) {
@@ -129,26 +145,15 @@ class Dashboard extends Component {
     }
 
     renderVideo() {
-        const { piUrl } = this.state;
+        const piUrl = getVideoUrl();
+        const { width, height } = this.state;
         return (
             <div>
-                {/* <div style={{ textAlign: "center", margin: "20px" }}>
-                    <TextField
-                        id='input'
-                        type='input'
-                        style={{ width: "400px" }}
-                        onChange={this.handleURLChange}
-                        value={piUrl}
-                        placeholder={defaultUrl}
-                    />
-                </div> */}
-
                 <div style={{ textAlign: "center" }}>
                     <iframe
                         title='3'
-                        width='1080'
-                        height='440'
-                        // style={{ margin: "0 auto" }}
+                        width={width}
+                        height={height / 1.6}
                         src={piUrl}
                         frameBorder='0'
                         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
