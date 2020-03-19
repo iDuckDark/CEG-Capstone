@@ -7,11 +7,8 @@ const {
     faUsers,
     faAddressCard,
     faCommentDots,
+    faCogs,
 } = require("@fortawesome/free-solid-svg-icons");
-
-// const loadable = require("@loadable/component");
-
-// const OtherComponent = loadable(() => import('./pages/Architecture/Architecture'));
 
 const routes = [
     {
@@ -43,6 +40,11 @@ const routes = [
         title: "Feedback",
         link: "/Feedback/Feedback",
         icon: faCommentDots,
+    },
+    {
+        title: "Settings",
+        link: "/Settings/Settings",
+        icon: faCogs,
     },
 ];
 

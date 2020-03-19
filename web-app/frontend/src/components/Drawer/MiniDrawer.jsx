@@ -10,28 +10,27 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    Switch,
-    Route,
-    BrowserRouter,
-    Link,
-    useHistory,
-} from "react-router-dom";
+// import // Switch,
+// Route,
+// BrowserRouter,
+// Link,
+// useHistory,
+// "react-router-dom";
 import { routes } from "../../routes";
 
-import IndexPage from "../../pages/index";
-import Gallery2 from "../../pages/Gallery/Gallery";
+// import IndexPage from "../../pages/index";
+// import Gallery2 from "../../pages/Gallery/Gallery";
 
 import { isServerSideRendering } from "../../helpers/utils";
 
-const components = {
-    "/": <IndexPage />,
-    "/architecture": <Gallery2 />,
-    "/gallery": <Gallery2 />,
-    "/members": <Gallery2 />,
-    "/about": <Gallery2 />,
-    "/feedback": <Gallery2 />,
-};
+// const components = {
+//     "/": <IndexPage />,
+//     "/architecture": <Gallery2 />,
+//     "/gallery": <Gallery2 />,
+//     "/members": <Gallery2 />,
+//     "/about": <Gallery2 />,
+//     "/feedback": <Gallery2 />,
+// };
 
 const drawerWidth = 240;
 
@@ -109,93 +108,82 @@ export default function MiniDrawer() {
 
     return (
         <div>
-            <BrowserRouter>
-                <CssBaseline />
-                <AppBar
-                    position='fixed'
-                    className={clsx(classes.appBar, {
-                        [classes.appBarShift]: open,
-                    })}
-                />
-                <Drawer
-                    variant='permanent'
-                    className={clsx(classes.drawer, {
+            {/* <BrowserRouter> */}
+            <CssBaseline />
+            <AppBar
+                position='fixed'
+                className={clsx(classes.appBar, {
+                    [classes.appBarShift]: open,
+                })}
+            />
+            <Drawer
+                variant='permanent'
+                className={clsx(classes.drawer, {
+                    [classes.drawerOpen]: open,
+                    [classes.drawerClose]: !open,
+                })}
+                classes={{
+                    paper: clsx({
                         [classes.drawerOpen]: open,
                         [classes.drawerClose]: !open,
-                    })}
-                    classes={{
-                        paper: clsx({
-                            [classes.drawerOpen]: open,
-                            [classes.drawerClose]: !open,
-                        }),
-                    }}
-                >
-                    <Divider />
-                    <List>
-                        {routes.map(item => {
-                            const text = item.title;
-                            const { icon, path } = item;
-                            return (
-                                <ListItem
-                                    button
-                                    key={text}
-                                    onClick={() => {
-                                        handleRoute(path);
-                                        setCurrentPath(path);
+                    }),
+                }}
+            >
+                <Divider />
+                <List>
+                    {routes.map(item => {
+                        const text = item.title;
+                        const { icon, path } = item;
+                        return (
+                            <ListItem
+                                button
+                                key={text}
+                                onClick={() => {
+                                    handleRoute(path);
+                                    setCurrentPath(path);
+                                }}
+                            >
+                                <ListItemIcon
+                                    style={{
+                                        color:
+                                            currentPath === path
+                                                ? "#d04290"
+                                                : "#FFFFFF",
                                     }}
                                 >
-                                    <ListItemIcon
+                                    {/* <Link
+                                        to={path}
                                         style={{
                                             color:
                                                 currentPath === path
                                                     ? "#d04290"
                                                     : "#FFFFFF",
                                         }}
-                                    >
-                                        <Link
-                                            to={path}
-                                            style={{
-                                                color:
-                                                    currentPath === path
-                                                        ? "#d04290"
-                                                        : "#FFFFFF",
-                                            }}
-                                        >
-                                            <FontAwesomeIcon icon={icon} />
-                                        </Link>
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        style={{
-                                            color: "#FFFFFF",
-                                            fontFamily: "Raleway !important",
-                                        }}
-                                        primary={text}
-                                    />
-                                </ListItem>
-                            );
-                        })}
-                    </List>
-                </Drawer>
-                <main>
-                    {/* <BrowserRouter> */}
-                    <Switch>
-                        {/* <Route exact path='/' /> */}
+                                    > */}
+                                    <FontAwesomeIcon icon={icon} />
+                                    {/* </Link> */}
+                                </ListItemIcon>
+                                <ListItemText
+                                    style={{
+                                        color: "#FFFFFF",
+                                        fontFamily: "Raleway !important",
+                                    }}
+                                    primary={text}
+                                />
+                            </ListItem>
+                        );
+                    })}
+                </List>
+            </Drawer>
+            <main>
+                {/* <Switch>
                         {routes.map(item => {
                             const { path } = item;
-                            // const Comp = components[path];
-                            return (
-                                <Route
-                                    key={path}
-                                    exact
-                                    path={path}
-                                    // render={() => <Comp />}
-                                />
-                            );
+                            return <Route key={path} exact path={path} />;
                         })}
-                    </Switch>
-                    {/* </BrowserRouter> */}
-                </main>
-            </BrowserRouter>
+                    </Switch> */}
+            </main>
+            {/* </BrowserRouter> */}
         </div>
     );
 }
