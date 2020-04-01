@@ -82,7 +82,7 @@ class Graph extends Component {
                         />
                     </linearGradient>
                 </defs>
-                <XAxis dataKey='name' />
+                <XAxis dataKey='date' />
                 <YAxis />
                 <CartesianGrid strokeDasharray='3 3' />
                 <Tooltip />

@@ -11,17 +11,18 @@ class Temperature extends Component {
     }
 
     componentDidMount() {
-        setInterval(() => {
+        // setInterval(() => {
             const { data } = this.state;
-            const newData = shuffle(data);
-            this.setState({ data: newData });
-        }, 300);
+            // const newData = shuffle(data);
+            this.setState({ data: data });
+        // }, 300);
     }
 
     renderTemperature() {
         const { data } = this.state;
         if (!data) return <div />;
         const newData = data.filter(item => item != null);
+        console.log(newData);
         return (
             <AreaChart
                 height={200}
@@ -44,7 +45,7 @@ class Temperature extends Component {
                         />
                     </linearGradient>
                 </defs>
-                <XAxis dataKey='name' tick={false} />
+                <XAxis dataKey='date' tick={false} />
                 <Tooltip />
                 <Area
                     type='monotone'

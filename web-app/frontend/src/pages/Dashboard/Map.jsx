@@ -136,7 +136,7 @@ export default class App extends Component {
 
         this.state = {
             // center: [45.423, -75.6838],
-            center: [45.4195, -75.6788],
+            center: [props.lat, props.lon],
             zoom: 18,
             provider: "osm",
             metaWheelZoom: false,
@@ -149,7 +149,7 @@ export default class App extends Component {
             minZoom: 1,
             maxZoom: 18,
             // dragAnchor: [45.423, -75.6838]
-            dragAnchor: [45.4195, -75.6788],
+            dragAnchor: [props.lat,  props.lon],
         };
     }
 

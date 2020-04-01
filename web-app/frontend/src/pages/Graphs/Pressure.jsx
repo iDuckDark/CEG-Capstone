@@ -11,11 +11,11 @@ class Pressure extends Component {
     }
 
     componentDidMount() {
-        setInterval(() => {
+        // setInterval(() => {
             const { data } = this.state;
-            const newData = shuffle(data);
-            this.setState({ data: newData });
-        }, 300);
+            // const newData = shuffle(data);
+            this.setState({ data: data });
+        // }, 300);
     }
 
     renderPressure() {
@@ -44,7 +44,7 @@ class Pressure extends Component {
                         />
                     </linearGradient>
                 </defs>
-                <XAxis dataKey='name' tick={false} />
+                <XAxis dataKey='date' tick={false} />
                 <Tooltip />
                 <Area
                     type='monotone'

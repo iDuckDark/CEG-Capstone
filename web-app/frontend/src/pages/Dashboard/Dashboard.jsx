@@ -55,7 +55,7 @@ class Dashboard extends Component {
     getArrayfromKey(array, key) {
         const result = [];
         for (const item of array) {
-            result.push(item[key]);
+            result.push({ value: item[key], date: item['time'] });
         }
         return result;
     }
@@ -88,7 +88,14 @@ class Dashboard extends Component {
         const data = [];
         for (const i in array) {
             const item = array[i];
-            data.push({ pv: item, name: String(i) });
+            var d = new Date(item.date * 1000),
+                dformat = [d.getMonth() + 1,
+                d.getDate(),
+                d.getFullYear()].join('/') + ' ' +
+                    [d.getHours(),
+                    d.getMinutes(),
+                    d.getSeconds()].join(':');
+            data.push({ date: dformat, pv: Math.round(item.value * 100) / 100 });
         }
         return data;
     }
@@ -97,17 +104,20 @@ class Dashboard extends Component {
         const { actions } = this.props;
         actions.getSSAR().then(() => {
             const { ssar } = this.props;
+            console.log(ssar[343]);
+            let ssar2 = [ssar[343], ssar[342]];
             // All
-            const temperatures = this.getArrayfromKeyPV(ssar, "temperature");
-            const altitudes = this.getArrayfromKeyPV(ssar, "altitude");
-            const pressures = this.getArrayfromKeyPV(ssar, "pressure");
+            const temperatures = this.getArrayfromKeyPV(ssar2, "temperature");
+            const altitudes = this.getArrayfromKeyPV(ssar2, "altitude");
+            const pressures = this.getArrayfromKeyPV(ssar2, "pressure");
+            const gps = { lat: ssar2[0].lat, lon: ssar2[0].lon };
 
-            this.setState({ temperatures, altitudes, pressures });
+            this.setState({ temperatures, altitudes, pressures, gps });
             // Cyclic
-            const first = ssar[0];
+            const first = ssar2[0];
             const { altitude, pressure, temperature } = first;
             this.setState({ altitude, pressure, temperature });
-            this.setSSARInterval(ssar);
+            // this.setSSARInterval(ssar2);
         });
     }
 
@@ -217,7 +227,7 @@ class Dashboard extends Component {
                         title='3'
                         width={width * 0.9}
                         height={height / 1.6}
-                        src={piUrl}
+                        src="https://192.168.2.107:8000"
                         frameBorder='0'
                         onErrorCapture={error => {
                             console.log("iframe", error);
@@ -232,12 +242,13 @@ class Dashboard extends Component {
 
     render() {
         // const graphs = [<Temperature />, <Altitude />, <Pressure />];
-        const { temperatures, altitudes, pressures } = this.state;
+        const { temperatures, altitudes, pressures, gps } = this.state;
         if (
             !(
                 temperatures.length > 0 &&
                 altitudes.length > 0 &&
-                pressures.length > 0
+                pressures.length > 0 &&
+                gps.lat !== null && gps.lon !== null
             )
         )
             return <>Loading </>;
@@ -254,7 +265,7 @@ class Dashboard extends Component {
                                     paddingLeft: "90px",
                                 }}
                             >
-                                <Map />
+                                <Map lat={this.state.gps.lat} lon={this.state.gps.lon} />
                             </div>
                         </Grid>
 
