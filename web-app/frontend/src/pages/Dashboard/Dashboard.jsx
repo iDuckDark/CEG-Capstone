@@ -227,7 +227,8 @@ class Dashboard extends Component {
                         width={width * 0.9}
                         height={height / 1.6}
                         src={piUrl}
-                        // frameBorder='0'
+                        frameBorder='0'
+                        style={{ border: 0 }}
                         onErrorCapture={error => {
                             // eslint-disable-next-line no-console
                             console.log("iframe", error);
