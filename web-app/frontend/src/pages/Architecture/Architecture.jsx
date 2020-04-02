@@ -2,10 +2,8 @@ import React from "react";
 import { SEO, Layout, Title } from "../../helpers/components";
 import design from "../../../static/images/architecture/Design.png";
 import arc from "../../../static/images/architecture/SystemArch.png";
-import { setPath } from "../../helpers/settings";
 
 const Architecture = () => {
-    setPath("/architecture");
     return (
         <Layout>
             <SEO title='Architecture' />
