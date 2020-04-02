@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Peter",
+        "email": "pfara039@uottawa.ca",
+        "position": "Product Owner & Full-Stack Developer",
+        "src": "../../static/images/members/Peter.jpg"
+    },
+    {
+        "name": "Nevin",
+        "email": "ngane103@uottawa.ca",
+        "position": "Scrum Master & Full-Stack Developer",
+        "src": "../../static/images/members/Nevin.jpg"
+    },
+    {
+        "name": "Divyang",
+        "email": "daror101@uottawa.ca",
+        "position": "Machine Learning Developer & UX-Designer ",
+        "src": "../../static/images/members/Divyang.jpg"
+    },
+    {
+        "name": "Paul",
+        "email": "pabou049@uottawa.ca",
+        "position": "Reseacher & Project Consultant ",
+        "src": "../../static/images/members/Paul.jpg"
+    },
+    {
+        "name": "Shail",
+        "email": "spate127@uottawa.ca",
+        "position": "Reseacher & Quality Assurance",
+        "src": "../../static/images/members/Shail.jpg"
+    }
+]

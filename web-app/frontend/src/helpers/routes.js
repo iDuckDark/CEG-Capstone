@@ -6,7 +6,6 @@ const {
     faImages,
     faUsers,
     faAddressCard,
-    faCommentDots,
     faCogs,
 } = require("@fortawesome/free-solid-svg-icons");
 
@@ -36,11 +35,6 @@ const routes = [
         link: "/About/About",
         icon: faAddressCard,
     },
-    // {
-    //     title: "Feedback",
-    //     link: "/Feedback/Feedback",
-    //     icon: faCommentDots,
-    // },
     {
         title: "Settings",
         link: "/Settings/Settings",

@@ -1,18 +1,18 @@
-// import Calendar from '../components/Event/Calendar';
-// import Event from '../components/Event/Event';
+import Altitude from "../components/Graphs/Altitude";
 import ExecCard from "../components/Cards/ExecCard/ExecCard";
-// import Footer from '../components/Footer/Footer';
-// import Form from '../components/Form/Form';
-// import GalleryCard from '../components/Cards/GalleryCard/GalleryCard';
 import Header from "../components/Header/Header";
+import Header2 from "../components/Header/Header2";
+import Layout from "../components/Layout/Layout";
 import Link from "../components/Routers/Link";
+import Map from "../components/Maps/Map";
 import MaterialMenu from "../components/Material/MaterialMenu";
 import NavButton from "../components/Material/NavButton";
 import NavDropDown from "../components/Material/NavDropDown";
-// import Parallax from '../components/Buttons/Parallax';
-// import ServiceItem from '../components/Buttons/ServiceItem/ServiceItem';
-// import Title from '../components/Titles/Title';
-// import Toggle from '../components/Buttons/Toggle/Toggle';
+import Pressure from "../components/Graphs/Pressure";
+import SEO from "../components/SEO/SEO";
+import Temperature from "../components/Graphs/Temperature";
+import Title from "../components/Titles/Title";
+
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
@@ -24,26 +24,25 @@ import {
 } from "../components/Icons/icons";
 
 export {
-    // Calendar,
+    Altitude,
     ChevronLeftIcon,
     ChevronRightIcon,
     CloseIcon,
-    // Event,
     ExecCard,
     FlaskIcon,
-    // Footer,
-    // Form,
-    // GalleryCard,
     Header,
+    Header2,
+    Layout,
     LeadPencilIcon,
     LightBulbIcon,
     Link,
+    Map,
     MaterialMenu,
     MenuIcon,
     NavButton,
     NavDropDown,
-    // Parallax,
-    // ServiceItem,
-    // Title,
-    // Toggle
+    Pressure,
+    SEO,
+    Temperature,
+    Title,
 };

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import Title from "../../components/Titles/Title";
-import Layout from "../../components/layout";
-import SEO from "../../components/seo";
+import { SEO, Layout, Title } from "../../helpers/components";
 import { getVideoUrl, setVideoUrl, workingUrl } from "../../helpers/settings";
 import { isServerSideRendering } from "../../helpers/utils";
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export const isServerSideRendering = () => typeof window === "undefined";
 
 export const detectMob = () => {
@@ -15,6 +16,19 @@ export const detectMob = () => {
         return navigator.userAgent.match(toMatchItem);
     });
 };
+
+const { warn } = console;
+export function logWarning(...warnings) {
+    let showWarning = true;
+    warnings.forEach(warning => {
+        if (warning.includes("UNSAFE_")) showWarning = false;
+        else if (warning.includes("SourceMap")) showWarning = false;
+        else if (warning.includes("DevTools")) showWarning = false;
+    });
+    if (showWarning) warn(...warnings);
+}
+
+console.warn = logWarning;
 
 export const shuffle = array => {
     let currentIndex = array.length;

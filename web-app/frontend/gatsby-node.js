@@ -1,10 +1,4 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-const { getPages } = require(`./src/routes`);
+const { getPages } = require(`./src/helpers/routes`);
 
 exports.createPages = ({ actions }) => {
     const { createPage, createRedirect } = actions;

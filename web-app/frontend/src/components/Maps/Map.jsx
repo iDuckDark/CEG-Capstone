@@ -1,14 +1,15 @@
+/* eslint-disable no-restricted-properties */
 /* eslint-disable no-nested-ternary */
 import React, { Component } from "react";
 
 import Map from "pigeon-maps";
-import Marker from "pigeon-marker";
+// import Marker from "pigeon-marker";
 
 // import pigeonSvg from './incubator/pigeon.svg'
-import pigeonSvg from "../../images/favicon.png";
+import pigeonSvg from "../../../static/images/favicon.png";
 import DraggableOverlay from "./DraggableOverlay";
 
-const mapboxEnabled = false;
+// const mapboxEnabled = false;
 
 // please change this if you take some code from here.
 // otherwise the demo page will run out of credits and that would be very sad :(
@@ -136,7 +137,7 @@ export default class App extends Component {
 
         this.state = {
             // center: [45.423, -75.6838],
-            center: [45.4195, -75.6788],
+            center: [props.lat, props.lon],
             zoom: 18,
             provider: "osm",
             metaWheelZoom: false,
@@ -149,7 +150,7 @@ export default class App extends Component {
             minZoom: 1,
             maxZoom: 18,
             // dragAnchor: [45.423, -75.6838]
-            dragAnchor: [45.4195, -75.6788],
+            dragAnchor: [props.lat,  props.lon],
         };
     }
 
