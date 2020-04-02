@@ -2,8 +2,6 @@ import { isServerSideRendering } from "./utils";
 
 const KEY_DEFAULT_URL = "defaultUrl";
 
-const KEY_DEFAULT_PATH = "/";
-
 const defaultUrl = "https://45.72.149.128:8000/";
 
 const workingUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
