@@ -1,18 +1,20 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import List from "@material-ui/core/List";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    AppBar,
+    CssBaseline,
+    Divider,
+    Drawer,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    makeStyles,
+} from "../../helpers/material-ui";
+import { Link } from "../../helpers/components";
 import { routes } from "../../helpers/routes";
-import { getPath, setPath } from "../../helpers/settings";
-import { isServerSideRendering } from "../../helpers/utils";
+import { getCurrentPath } from "../../helpers/settings";
 
 const drawerWidth = 240;
 
@@ -80,20 +82,9 @@ const useStyles = makeStyles(theme => ({
 export default function MiniDrawer() {
     const classes = useStyles();
     const [open] = React.useState(false);
-    const [currentPath, setCurrentPath] = React.useState(
-        isServerSideRendering() ? "" : window.location.pathname
-    );
-
-    const handleRoute = path => {
-        if (!isServerSideRendering()) {
-            setPath(path);
-            window.location.pathname = path;
-        }
-    };
 
     return (
         <div>
-            {/* <BrowserRouter> */}
             <CssBaseline />
             <AppBar
                 position='fixed'
@@ -120,47 +111,31 @@ export default function MiniDrawer() {
                         const text = item.title;
                         const { icon, path } = item;
                         return (
-                            <ListItem
-                                button
-                                key={text}
-                                onClick={() => {
-                                    handleRoute(path);
-                                    setCurrentPath(path);
-                                }}
-                            >
-                                <ListItemIcon
-                                    style={{
-                                        color:
-                                            getPath() === path
-                                                ? "#d04290"
-                                                : "#FFFFFF",
-                                    }}
-                                >
-                                    <FontAwesomeIcon icon={icon} />
-                                </ListItemIcon>
-                                <ListItemText
-                                    style={{
-                                        color: "#FFFFFF",
-                                        fontFamily: "Raleway !important",
-                                    }}
-                                    primary={text}
-                                />
-                            </ListItem>
+                            <Link key={text} to={path}>
+                                <ListItem button>
+                                    <ListItemIcon
+                                        style={{
+                                            color:
+                                                getCurrentPath() === path
+                                                    ? "#d04290"
+                                                    : "#FFFFFF",
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={icon} />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        style={{
+                                            color: "#FFFFFF",
+                                            fontFamily: "Raleway !important",
+                                        }}
+                                        primary={text}
+                                    />
+                                </ListItem>
+                            </Link>
                         );
                     })}
                 </List>
             </Drawer>
-            <main>
-                {/* <Switch>
-                        {routes.map(item => {
-                            const { path } = item;
-                            return <Route key={path} exact path={path} />;
-                        })}
-                    </Switch> */}
-            </main>
-            {/* </BrowserRouter> */}
         </div>
     );
 }
-
-// color: "#d04290",

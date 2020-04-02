@@ -7,7 +7,7 @@ import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
 import { Map, Temperature, Altitude, Pressure } from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
-import { getVideoUrl, setPath, setVideoUrl } from "../../helpers/settings";
+import { getVideoUrl, setVideoUrl } from "../../helpers/settings";
 
 // const defaultUrl = "https://45.72.149.128:8000/";
 // const defaultUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
@@ -33,14 +33,12 @@ class Dashboard extends Component {
         };
         // this.handleURLChange = this.handleURLChange.bind(this);
         this.updateDimensions = this.updateDimensions.bind(this);
-        setPath("/");
     }
 
     componentDidMount() {
         this.setAPIs();
         if (!isServerSideRendering())
             window.addEventListener("resize", this.updateDimensions);
-        setPath("/");
     }
 
     componentWillUnmount() {
