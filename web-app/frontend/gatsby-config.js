@@ -11,6 +11,13 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-json`,
         {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "dataPrivate",
+                path: `${__dirname}/src/data`,
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `images`,

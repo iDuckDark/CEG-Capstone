@@ -1,44 +1,60 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
 import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 import Gallery from "react-photo-gallery";
 import { SEO, Layout, Title } from "../../helpers/components";
-import { isServerSideRendering } from "../../helpers/utils";
 
-const photos = () => {
-    const arr = [];
-    if (isServerSideRendering()) return arr;
-    for (let i = 9; i >= 1; i -= 1) {
-        const src = require(`../../../static/images/progress/${String(i)}.jpg`);
-        let width = i + 3;
-        let height = i + 4;
-        if (i === 9) {
-            width = 5;
-            height = 4;
+const query = graphql`
+    query {
+        allGalleryJson {
+            nodes {
+                src {
+                    childImageSharp {
+                        fixed {
+                            ...GatsbyImageSharpFixed_withWebp
+                        }
+                    }
+                }
+            }
         }
-        arr.push({ src, width, height });
     }
-    return arr;
-};
+`;
 
 const Gallery2 = () => (
-    <Layout>
-        <SEO title='Gallery' />
-        <div
-            className='center-horizontal'
-            style={{ marginTop: "20px", marginBottom: "18%" }}
-        >
-            <Title
-                variant='h5'
-                gutterBottom
-                className='title'
-                style={{ color: "#FFFFFF" }}
-            >
-                Gallery
-            </Title>
-            <Gallery photos={photos()} />
-        </div>
-    </Layout>
+    <StaticQuery
+        query={query}
+        render={({ allGalleryJson: { nodes } }) => {
+            const pictures = [];
+            for (const i in nodes) {
+                const { src } = nodes[i].src.childImageSharp.fixed;
+                let width = Number(i) + 3;
+                let height = Number(i) + 4;
+                if (Number(i) === 0) {
+                    width = 5;
+                    height = 4;
+                }
+                pictures.push({ src, width, height });
+            }
+            return (
+                <Layout>
+                    <SEO title='Gallery' />
+                    <div
+                        className='center-horizontal'
+                        style={{ marginTop: "20px", marginBottom: "18%" }}
+                    >
+                        <Title
+                            variant='h5'
+                            gutterBottom
+                            className='title'
+                            style={{ color: "#FFFFFF" }}
+                        >
+                            Gallery
+                        </Title>
+                        <Gallery photos={pictures} />
+                    </div>
+                </Layout>
+            );
+        }}
+    />
 );
 
 export default Gallery2;
