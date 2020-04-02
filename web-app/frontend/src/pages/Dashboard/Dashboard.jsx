@@ -228,7 +228,7 @@ class Dashboard extends Component {
                         title='3'
                         width={width * 0.9}
                         height={height / 1.6}
-                        src='https://192.168.2.107:8000'
+                        src={piUrl}
                         // frameBorder='0'
                         onErrorCapture={error => {
                             // eslint-disable-next-line no-console
