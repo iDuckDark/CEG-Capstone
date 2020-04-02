@@ -39,7 +39,7 @@ router.get('/ssar', function(req, res, next) {
       console.log('Connected successfully to server');
       const db = client.db('ssar');
       const collection = db.collection('sensors');
-      collection.find({}).toArray(function(err, docs) {
+      collection.find({lon:{$ne: "n/a", $exists:true}}).toArray(function(err, docs) {
         assert.equal(err, null);
         // console.log('Found the following records', docs);
         // callback(docs);

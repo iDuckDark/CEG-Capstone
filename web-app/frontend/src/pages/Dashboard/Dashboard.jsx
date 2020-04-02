@@ -105,8 +105,7 @@ class Dashboard extends Component {
         const { actions } = this.props;
         actions.getSSAR().then(() => {
             const { ssar } = this.props;
-            // console.log(ssar[343]);
-            const ssar2 = [ssar[343], ssar[342]];
+            const ssar2 = ssar;
             // All
             const temperatures = this.getArrayfromKeyPV(ssar2, "temperature");
             const altitudes = this.getArrayfromKeyPV(ssar2, "altitude");
