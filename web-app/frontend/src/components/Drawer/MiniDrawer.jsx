@@ -10,7 +10,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { routes } from "../../routes";
+import { routes } from "../../helpers/routes";
 import { getPath, setPath } from "../../helpers/settings";
 import { isServerSideRendering } from "../../helpers/utils";
 

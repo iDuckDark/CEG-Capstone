@@ -2,16 +2,14 @@
 /* eslint-disable import/no-dynamic-require */
 import React from "react";
 import Gallery from "react-photo-gallery";
-import Layout from "../../components/layout";
-import SEO from "../../components/seo";
-import Title from "../../components/Titles/Title";
+import { SEO, Layout, Title } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
 
 const photos = () => {
     const arr = [];
     if (isServerSideRendering()) return arr;
     for (let i = 9; i >= 1; i -= 1) {
-        const src = require(`../../assets/progress/${String(i)}.jpg`);
+        const src = require(`../../../static/images/progress/${String(i)}.jpg`);
         let width = i + 3;
         let height = i + 4;
         if (i === 9) {

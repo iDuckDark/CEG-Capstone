@@ -12,9 +12,9 @@ class Temperature extends Component {
 
     componentDidMount() {
         // setInterval(() => {
-            const { data } = this.state;
-            // const newData = shuffle(data);
-            this.setState({ data: data });
+        const { data } = this.state;
+        // const newData = shuffle(data);
+        this.setState({ data });
         // }, 300);
     }
 
@@ -22,7 +22,7 @@ class Temperature extends Component {
         const { data } = this.state;
         if (!data) return <div />;
         const newData = data.filter(item => item != null);
-        console.log(newData);
+
         return (
             <AreaChart
                 height={200}

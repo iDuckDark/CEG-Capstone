@@ -1,15 +1,12 @@
 import React from "react";
 import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
-import SEO from "../../components/seo";
-import Layout from "../../components/layout";
-import Title from "../../components/Titles/Title";
-
+import { SEO, Layout, Title } from "../../helpers/components";
 import "./Members.scss";
-import logo from "../../assets/members/Nevin.jpg";
-import logo2 from "../../assets/members/Peter.jpg";
-import logo3 from "../../assets/members/Divyang.jpg";
-import logo4 from "../../assets/members/Paul.jpg";
-import logo5 from "../../assets/members/Shail.jpg";
+import logo from "../../../static/images/members/Nevin.jpg";
+import logo2 from "../../../static/images/members/Peter.jpg";
+import logo3 from "../../../static/images/members/Divyang.jpg";
+import logo4 from "../../../static/images/members/Paul.jpg";
+import logo5 from "../../../static/images/members/Shail.jpg";
 
 const imageStyle = {
     margin: "16px auto 0",

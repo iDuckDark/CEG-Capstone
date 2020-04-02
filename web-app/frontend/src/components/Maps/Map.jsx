@@ -1,14 +1,15 @@
+/* eslint-disable no-restricted-properties */
 /* eslint-disable no-nested-ternary */
 import React, { Component } from "react";
 
 import Map from "pigeon-maps";
-import Marker from "pigeon-marker";
+// import Marker from "pigeon-marker";
 
 // import pigeonSvg from './incubator/pigeon.svg'
-import pigeonSvg from "../../images/favicon.png";
+import pigeonSvg from "../../../static/images/favicon.png";
 import DraggableOverlay from "./DraggableOverlay";
 
-const mapboxEnabled = false;
+// const mapboxEnabled = false;
 
 // please change this if you take some code from here.
 // otherwise the demo page will run out of credits and that would be very sad :(

@@ -3,14 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import { mapDispatchToProps } from "../../helpers/actions";
+import { Paper, Grid } from "../../helpers/material-ui";
+import { Map, Temperature, Altitude, Pressure } from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
-import Map from "./Map";
-import Temperature from "../Graphs/Temperature";
-import Altitude from "../Graphs/Altitude";
-import Pressure from "../Graphs/Pressure";
 import { getVideoUrl, setPath, setVideoUrl } from "../../helpers/settings";
 
 // const defaultUrl = "https://45.72.149.128:8000/";
@@ -55,7 +51,7 @@ class Dashboard extends Component {
     getArrayfromKey(array, key) {
         const result = [];
         for (const item of array) {
-            result.push({ value: item[key], date: item['time'] });
+            result.push({ value: item[key], date: item.time });
         }
         return result;
     }
@@ -88,14 +84,19 @@ class Dashboard extends Component {
         const data = [];
         for (const i in array) {
             const item = array[i];
-            var d = new Date(item.date * 1000),
-                dformat = [d.getMonth() + 1,
+            const d = new Date(item.date * 1000);
+
+            const dformat = `${[
+                d.getMonth() + 1,
                 d.getDate(),
-                d.getFullYear()].join('/') + ' ' +
-                    [d.getHours(),
-                    d.getMinutes(),
-                    d.getSeconds()].join(':');
-            data.push({ date: dformat, pv: Math.round(item.value * 100) / 100 });
+                d.getFullYear(),
+            ].join("/")} ${[d.getHours(), d.getMinutes(), d.getSeconds()].join(
+                ":"
+            )}`;
+            data.push({
+                date: dformat,
+                pv: Math.round(item.value * 100) / 100,
+            });
         }
         return data;
     }
@@ -104,8 +105,8 @@ class Dashboard extends Component {
         const { actions } = this.props;
         actions.getSSAR().then(() => {
             const { ssar } = this.props;
-            console.log(ssar[343]);
-            let ssar2 = [ssar[343], ssar[342]];
+            // console.log(ssar[343]);
+            const ssar2 = [ssar[343], ssar[342]];
             // All
             const temperatures = this.getArrayfromKeyPV(ssar2, "temperature");
             const altitudes = this.getArrayfromKeyPV(ssar2, "altitude");
@@ -131,6 +132,7 @@ class Dashboard extends Component {
                 const formatted = ip;
                 this.setState({ piUrl: ip });
                 setVideoUrl(formatted);
+                // eslint-disable-next-line no-console
                 console.log("Formatted IP:", formatted);
             })
             .catch(() => {
@@ -227,9 +229,10 @@ class Dashboard extends Component {
                         title='3'
                         width={width * 0.9}
                         height={height / 1.6}
-                        src="https://192.168.2.107:8000"
-                        frameBorder='0'
+                        src='https://192.168.2.107:8000'
+                        // frameBorder='0'
                         onErrorCapture={error => {
+                            // eslint-disable-next-line no-console
                             console.log("iframe", error);
                         }}
                         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
@@ -248,7 +251,8 @@ class Dashboard extends Component {
                 temperatures.length > 0 &&
                 altitudes.length > 0 &&
                 pressures.length > 0 &&
-                gps.lat !== null && gps.lon !== null
+                gps.lat !== null &&
+                gps.lon !== null
             )
         )
             return <>Loading </>;
@@ -265,7 +269,7 @@ class Dashboard extends Component {
                                     paddingLeft: "90px",
                                 }}
                             >
-                                <Map lat={this.state.gps.lat} lon={this.state.gps.lon} />
+                                <Map lat={gps.lat} lon={gps.lon} />
                             </div>
                         </Grid>
 
