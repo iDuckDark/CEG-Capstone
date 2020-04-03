@@ -118,15 +118,15 @@ def thermal():
         img = cv2.imread(os.path.abspath(os.path.expanduser(imgPath)))
         colorPath = '/home/pi/colorimg/%s.jpg' % (dt_string)
         color = cv2.imread(os.path.abspath(os.path.expanduser(colorPath)))
-        cv2.putText(img, prediction, (10, img.shape[0] - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
+        '''cv2.putText(img, prediction, (10, img.shape[0] - 10),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)'''
         
-        cv2.putText(color, prediction, (10, color.shape[0] - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
+        # cv2.putText(color, prediction, (10, color.shape[0] - 10),
+        #     cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
         
         numpy_horizontal = np.hstack((color, img))
         cv2.putText(numpy_horizontal, prediction, (10, numpy_horizontal.shape[0] - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
+            cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 0, 255), 1)
         #cv2.namedWindow("Numpy Horizontal", cv2.WINDOW_NORMAL)
         #cv2.setWindowProperty("Numpy Horizontal",cv2.WND_PROP_AUTOSIZE,cv2.WINDOW_NORMAL)
         #cv2.waitKey(10)
