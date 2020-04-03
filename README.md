@@ -19,9 +19,53 @@ CEG 4912 & CEG 4913 Final Year Project at University of Ottawa
 
 # Group Members
 
-1. Nevin WS Ganesan
-2. Peter Farah
-3. Divyang Arora
-4. Paul-André Abouzeid
-5. Shail Patel
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.idarkduck.com/">
+        <img src="web-app/frontend/static/images/members/Nevin.jpg" width="200px;" alt=""/><br />
+        <sub>
+          <b> Nevin WS Ganesan</b>
+        </sub>
+      </a>
+      <br/>
+    </td>
+    <td align="center">
+      <a href="https://pfarah65.github.io/portfolio/">
+        <img src="web-app/frontend/static/images/members/Peter.jpg" width="200px;" alt=""/><br />
+        <sub>
+          <b> Peter Farah </b>
+        </sub>
+      </a>
+      <br/>
+    </td>
+     <td align="center">
+      <a href="http://divyang.ca/">
+        <img src="web-app/frontend/static/images/members/Divyang.jpg" width="200px;" alt=""/><br />
+        <sub>
+          <b> Divyang Arora</b>
+        </sub>
+      </a>
+      <br/>
+    </td>
+     <td align="center">
+      <a href="https://www.linkedin.com/in/paul-andr%C3%A9-abou-zeid/">
+        <img src="web-app/frontend/static/images/members/Paul.jpg" width="200px;" alt=""/><br />
+        <sub>
+          <b> Paul-André Abouzeid </b>
+        </sub>
+      </a>
+      <br/>
+    </td>
+     <td align="center">
+      <a href="https://www.linkedin.com/in/shail-patel-4a9b3a14a/">
+        <img src="web-app/frontend/static/images/members/Shail.jpg" width="200px;" alt=""/><br />
+        <sub>
+          <b> Shail Patel </b>
+        </sub>
+      </a>
+      <br/>
+    </td>
+  </tr>
+</table>
 
