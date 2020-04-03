@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import "./layout.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import MiniDrawer from "./Drawer/MiniDrawer";
-import Header from "./Header/Header";
-import { isServerSideRendering } from "../helpers/utils";
+import MiniDrawer from "../Drawer/MiniDrawer";
+import Header from "../Header/Header";
+import { isServerSideRendering } from "../../helpers/utils";
 
 const theme = createMuiTheme({
     palette: {

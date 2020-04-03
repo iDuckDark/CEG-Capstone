@@ -11,5 +11,5 @@
 # System Architecture 
 
 <p align="center">
-  <img src="assets/SystemArch.png?raw=true" width="350" title="Capstone Logo">
+  <img src="assets/SystemArch.png?raw=true" width="650" title="Capstone Logo">
 </p>

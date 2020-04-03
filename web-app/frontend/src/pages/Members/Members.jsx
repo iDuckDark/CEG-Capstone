@@ -1,127 +1,127 @@
 import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
-import SEO from "../../components/seo";
-import Layout from "../../components/layout";
-import Title from "../../components/Titles/Title";
-
+import { SEO, Layout, Title } from "../../helpers/components";
 import "./Members.scss";
-import logo from "../../assets/members/Nevin.jpg";
-import logo2 from "../../assets/members/Peter.jpg";
-import logo3 from "../../assets/members/Divyang.jpg";
-import logo4 from "../../assets/members/Paul.jpg";
-import logo5 from "../../assets/members/Shail.jpg";
 
-const imageStyle = {
-    margin: "16px auto 0",
-    borderRadius: "50%",
-    width: "166px",
-    maxWidth: "100%",
-    height: "166px",
-    display: "block",
-    WebkitBorderRadius: "50%",
-    WebkitBoxShadow: "0 0 0 8px rgba(0, 0, 0, 0.06)",
-    boxShadow: "0 0 0 8px rgba(0, 0, 0, 0.06)",
-};
-
-const members = [
-    {
-        name: "Peter",
-        email: "pfara039@uottawa.ca",
-        position: "Product Owner & Full-Stack Developer",
-        src: logo2,
-    },
-    {
-        name: "Nevin",
-        email: "ngane103@uottawa.ca",
-        position: "Scrum Master & Full-Stack Developer",
-        src: logo,
-    },
-    {
-        name: "Divyang",
-        email: "daror101@uottawa.ca",
-        position: "Machine Learning Developer & UX-Designer ",
-        src: logo3,
-    },
-    {
-        name: "Paul",
-        email: "pabou049@uottawa.ca",
-        position: "Reseacher & Project Consultant ",
-        src: logo4,
-    },
-    {
-        name: "Shail",
-        email: "spate127@uottawa.ca",
-        position: "Reseacher & Quality Assurance",
-        src: logo5,
-    },
-];
+const query = graphql`
+    query {
+        allMembersJson {
+            nodes {
+                name
+                email
+                position
+                src {
+                    childImageSharp {
+                        fixed {
+                            ...GatsbyImageSharpFixed_withWebp
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
 
 const Members = () => {
+    const imageStyle = {
+        margin: "16px auto 0",
+        borderRadius: "50%",
+        width: "166px",
+        maxWidth: "100%",
+        height: "166px",
+        display: "block",
+        WebkitBorderRadius: "50%",
+        WebkitBoxShadow: "0 0 0 8px rgba(0, 0, 0, 0.06)",
+        boxShadow: "0 0 0 8px rgba(0, 0, 0, 0.06)",
+    };
     return (
-        <Layout>
-            <SEO title='Members' />
-            <div
-                className='center-horizontal'
-                style={{ marginTop: "20px", color: "#FFFFFF" }}
-            >
-                <Title
-                    variant='h5'
-                    gutterBottom
-                    className='title'
-                    style={{ color: "#FFFFFF" }}
-                >
-                    Members
-                </Title>
-                <div>
-                    {members.map((item, key) => {
-                        return (
-                            <div
-                                key={String(key)}
-                                style={{
-                                    display: "inline-block",
-                                    marginLeft: "1%",
-                                }}
+        <StaticQuery
+            query={query}
+            render={({ allMembersJson: { nodes } }) => {
+                const members = nodes;
+                return (
+                    <Layout>
+                        <SEO title='Members' />
+                        <div
+                            className='center-horizontal'
+                            style={{ marginTop: "20px", color: "#FFFFFF" }}
+                        >
+                            <Title
+                                variant='h5'
+                                gutterBottom
+                                className='title'
+                                style={{ color: "#FFFFFF" }}
                             >
-                                <Card
-                                    style={{
-                                        margin: "16px 16px",
-                                        width: "280px",
-                                        // display:"inline"
-                                    }}
-                                >
-                                    <CardMedia
-                                        component='img'
-                                        height='166'
-                                        image={item.src}
-                                        src={item.src}
-                                        title={item.src}
-                                        style={imageStyle}
-                                    />
-                                    <CardContent style={{ color: "#FFFFFF" }}>
-                                        <Typography
-                                            gutterBottom
-                                            variant='h5'
-                                            className='center-horizontal'
-                                            style={{ color: "#FFFFFF" }}
+                                Members
+                            </Title>
+                            <div>
+                                {members.map((item, key) => {
+                                    return (
+                                        <div
+                                            key={String(key)}
+                                            style={{
+                                                display: "inline-block",
+                                                marginLeft: "1%",
+                                            }}
                                         >
-                                            {item.name}
-                                        </Typography>
-                                        <Typography
-                                            component='p'
-                                            className='center-horizontal'
-                                            style={{ color: "#FFFFFF" }}
-                                        >
-                                            {item.position}
-                                        </Typography>
-                                        {item.email}
-                                    </CardContent>
-                                </Card>
+                                            <Card
+                                                style={{
+                                                    margin: "16px 16px",
+                                                    width: "280px",
+                                                }}
+                                            >
+                                                <CardMedia
+                                                    component='img'
+                                                    height='166'
+                                                    image={
+                                                        item.src.childImageSharp
+                                                            .fixed.src
+                                                    }
+                                                    src={
+                                                        item.src.childImageSharp
+                                                            .fixed.src
+                                                    }
+                                                    title={
+                                                        item.src.childImageSharp
+                                                            .fixed.src
+                                                    }
+                                                    style={imageStyle}
+                                                />
+                                                <CardContent
+                                                    style={{ color: "#FFFFFF" }}
+                                                >
+                                                    <Typography
+                                                        gutterBottom
+                                                        variant='h5'
+                                                        className='center-horizontal'
+                                                        style={{
+                                                            color: "#FFFFFF",
+                                                        }}
+                                                    >
+                                                        {item.name}
+                                                    </Typography>
+                                                    <Typography
+                                                        component='p'
+                                                        className='center-horizontal'
+                                                        style={{
+                                                            color: "#FFFFFF",
+                                                        }}
+                                                    >
+                                                        {item.position}
+                                                    </Typography>
+                                                    {item.email}
+                                                </CardContent>
+                                            </Card>
+                                        </div>
+                                    );
+                                })}
                             </div>
-                        );
-                    })}
-                </div>
-            </div>
-        </Layout>
+                        </div>
+                    </Layout>
+                );
+            }}
+        />
     );
 };
 export default Members;

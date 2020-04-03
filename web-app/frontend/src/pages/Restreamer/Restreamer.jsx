@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../../components/layout";
-import Title from "../../components/Titles/Title";
+import { Layout, Title } from "../../helpers/components";
 
 class Restreamer extends Component {
     constructor(props) {

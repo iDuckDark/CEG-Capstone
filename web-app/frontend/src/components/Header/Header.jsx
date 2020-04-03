@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
 import { AppBar, Toolbar, Button, Hidden, IconButton } from "@material-ui/core";
 import {
     CloseIcon,
@@ -9,8 +8,8 @@ import {
     NavButton,
     NavDropDown,
 } from "../../helpers/components";
-import logo from "../../images/favicon.png";
-import { routes } from "../../routes";
+import logo from "../../../static/images/favicon.png";
+import { routes } from "../../helpers/routes";
 
 class Header extends Component {
     constructor(props) {
@@ -131,20 +130,6 @@ class Header extends Component {
         );
     }
 
-    // renderThemeToggle() {
-    //     const { theme } = this.props;
-    //     return (
-    //         <Toggle
-    //             icons={{
-    //                 checked: this.renderThemeIcon(moon),
-    //                 unchecked: this.renderThemeIcon(sun)
-    //             }}
-    //             checked={theme === 'dark'}
-    //             onClick={this.handleMenuTheme}
-    //         />
-    //     );
-    // }
-
     render() {
         return (
             <AppBar
@@ -171,11 +156,6 @@ class Header extends Component {
 Header.defaultProps = {
     theme: null,
     toggleTheme: null,
-};
-
-Header.propTypes = {
-    // theme: PropTypes.string,
-    // toggleTheme: PropTypes.func,
 };
 
 export default Header;

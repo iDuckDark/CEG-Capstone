@@ -1,6 +1,7 @@
 const defaultState = {
     users: "heree",
     ssar: "ssar default",
+    ip: "",
 };
 
 export default function actionReducer(state = defaultState, action) {
@@ -12,7 +13,10 @@ export default function actionReducer(state = defaultState, action) {
         }
         case "getSSARSuccess": {
             newState.ssar = action.payload.docs;
-            // console.log
+            return newState;
+        }
+        case "getIPSuccess": {
+            newState.ip = action.payload.docs;
             return newState;
         }
         default:

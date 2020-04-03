@@ -22,12 +22,26 @@ export const getUsers = () => {
 export function getSSAR() {
     return dispatch => {
         return axios
-            .get(`${BACKEND_URL}/users/ssar`)
+            .get(`${BACKEND_URL}/mongoDB/ssar`)
             .then(response => {
                 dispatch({ type: "getSSARSuccess", payload: response.data });
             })
             .catch(error => {
                 dispatch({ type: "getSSARFailed", payload: error });
+                throw error;
+            });
+    };
+}
+
+export function getIP() {
+    return dispatch => {
+        return axios
+            .get(`${BACKEND_URL}/mongoDB/ip`)
+            .then(response => {
+                dispatch({ type: "getIPSuccess", payload: response.data });
+            })
+            .catch(error => {
+                dispatch({ type: "getIPFailed", payload: error });
                 throw error;
             });
     };

@@ -1,8 +1,6 @@
 import React from "react";
-import Layout from "../../components/layout";
-import SEO from "../../components/seo";
-import Header from "../../components/header";
-import Logo from "../../images/favicon.png";
+import { SEO, Layout, Header2 as Header } from "../../helpers/components";
+import Logo from "../../../static/images/favicon.png";
 
 const About = () => {
     return (
