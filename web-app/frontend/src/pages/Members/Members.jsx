@@ -68,7 +68,7 @@ const Members = () => {
                                             <Card
                                                 style={{
                                                     margin: "16px 16px",
-                                                    width: "280px",
+                                                    width: "220px",
                                                 }}
                                             >
                                                 <CardMedia

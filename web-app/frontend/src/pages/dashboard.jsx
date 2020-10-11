@@ -1,18 +1,18 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { SEO, Layout } from "../helpers/components";
-import Home from "./Home/Home";
+import Dashboard from "./Dashboard/Dashboard";
 import "./index.scss";
 import store from "../redux/store";
 
-const IndexPage = () => (
+const DashboardPage = () => (
     <Layout>
         <SEO title='CEG Capstone Project' />
         <Provider store={store}>
             <div className='center-horizontal' style={{ marginTop: "20px" }} />
-            <Home />
+            <Dashboard />
         </Provider>
     </Layout>
 );
 
-export default IndexPage;
+export default DashboardPage;

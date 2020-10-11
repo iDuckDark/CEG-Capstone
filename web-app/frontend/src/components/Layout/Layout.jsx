@@ -6,6 +6,8 @@ import { ThemeProvider } from "@material-ui/styles";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
+import gif from "../../pages/Home/200.gif";
+import FadeIn from "react-fade-in";
 
 const theme = createMuiTheme({
     palette: {
@@ -28,13 +30,22 @@ const theme = createMuiTheme({
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.state = { width: isServerSideRendering() ? 0 : window.innerWidth };
+        this.state = {
+            width: isServerSideRendering() ? 0 : window.innerWidth,
+            loading: isServerSideRendering()
+                ? false
+                : window.location.pathname === "/",
+        };
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     componentDidMount() {
-        if (!isServerSideRendering())
+        if (!isServerSideRendering()) {
             window.addEventListener("resize", this.updateDimensions);
+            setTimeout(() => {
+                this.setState({ loading: false });
+            }, 1500);
+        }
     }
 
     componentWillUnmount() {
@@ -50,12 +61,34 @@ class Layout extends Component {
     render() {
         const { children } = this.props;
         const { width } = this.state;
+        const { loading } = this.state;
         return (
             <>
                 <ThemeProvider theme={theme}>
-                    {width > 960 && <MiniDrawer props={children} />}
-                    {width <= 960 && <Header />}
-                    <main>{children} </main>
+                    {loading && (
+                        <div
+                            style={{
+                                textAlign: "center",
+                                color: "#FFFFFF",
+                            }}
+                        >
+                            <img
+                                src={gif}
+                                alt='loading'
+                                style={{ width: "800px", height: "600px" }}
+                            />
+                        </div>
+                    )}
+
+                    {!loading && width > 960 && <MiniDrawer props={children} />}
+                    {!loading && width <= 960 && <Header />}
+                    {!loading && (
+                        <FadeIn transitionDuration={3000}>
+                            <main>{children} </main>
+                        </FadeIn>
+                    )}
+                    {/* <MiniDrawer props={children} /> */}
+                    {/* {!loadingTime && <main>{children} </main>} */}
                 </ThemeProvider>
             </>
         );
