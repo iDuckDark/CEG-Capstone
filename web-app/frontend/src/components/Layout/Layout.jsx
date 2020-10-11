@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import "./layout.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import FadeIn from "react-fade-in";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
 import gif from "../../pages/Home/200.gif";
-import FadeIn from "react-fade-in";
+import loadingGif from "../../../../../assets/animated-logo.gif";
+// import loadingGifDark from "../../../../../assets/animated-logo-dark.gif";
 
 const theme = createMuiTheme({
     palette: {
@@ -59,23 +61,40 @@ class Layout extends Component {
     }
 
     render() {
+        const isIndex = isServerSideRendering()
+            ? false
+            : window.location.pathname === "/";
+
+        const rootStyle = {
+            height: "100vh",
+            minHeight: "100vh",
+            backgroundColor: "#2b2e43",
+            display: isIndex ? "flex" : "block",
+            alignItems: "center",
+            justifyContent: "center",
+        };
         const { children } = this.props;
         const { width } = this.state;
         const { loading } = this.state;
         return (
-            <>
+            <div style={rootStyle}>
                 <ThemeProvider theme={theme}>
                     {loading && (
                         <div
                             style={{
                                 textAlign: "center",
-                                color: "#FFFFFF",
+                                color: "#2b2e43",
+                                backgroundColor: "#2b2e43",
+                                // paddingTop: "100px",
+                                // display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                             }}
                         >
                             <img
-                                src={gif}
+                                src={loadingGif}
                                 alt='loading'
-                                style={{ width: "800px", height: "600px" }}
+                                style={{ width: "600px", height: "600px" }}
                             />
                         </div>
                     )}
@@ -90,7 +109,7 @@ class Layout extends Component {
                     {/* <MiniDrawer props={children} /> */}
                     {/* {!loadingTime && <main>{children} </main>} */}
                 </ThemeProvider>
-            </>
+            </div>
         );
     }
 }

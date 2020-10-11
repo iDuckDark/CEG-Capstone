@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { SEO, Layout, Header2 as Header } from "../../helpers/components";
+import { SEO } from "../../helpers/components";
 import Logo from "../../../static/images/favicon.png";
 // import gif from "./200.gif";
+import loadingGif from "../../../../../assets/animated-logo.gif";
 
 class Home extends Component {
     constructor(props) {
@@ -43,9 +44,9 @@ class Home extends Component {
                     {/* <p>We are gonna build something great!</p> */}
                     {/* <p>Members: Nevin, Peter, Divyang, Paul, Shail</p> */}
                     <img
-                        src={Logo}
+                        src={loadingGif}
                         style={{
-                            maxWidth: `300px`,
+                            maxWidth: `500px`,
                             marginBottom: `1.45rem`,
                             borderRadius: "20%",
                         }}
