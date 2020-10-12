@@ -109,9 +109,11 @@ class Layout extends Component {
                         </div>
                     )}
 
-                    {!loading && width > 960 && <MiniDrawer props={children} />}
-                    {!loading && width <= 960 && <Header />}
-                    {!loading && (
+                    {(!loading || !isIndex) && width > 960 && (
+                        <MiniDrawer props={children} />
+                    )}
+                    {(!loading || !isIndex) && width <= 960 && <Header />}
+                    {(!loading || !isIndex) && (
                         <FadeIn transitionDuration={3000}>
                             <main>{children} </main>
                         </FadeIn>
