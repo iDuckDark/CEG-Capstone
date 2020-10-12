@@ -40,8 +40,8 @@ const Gallery2 = () => (
                             marginTop: "20px",
                             marginBottom: "18%",
                             backgroundColor: "#2b2e43",
-                            paddingLeft: "150px",
-                            paddingRight: "50px",
+                            paddingLeft: "8%",
+                            paddingRight: "5%",
                         }}
                     >
                         <Title

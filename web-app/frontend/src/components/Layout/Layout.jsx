@@ -46,7 +46,7 @@ class Layout extends Component {
             window.addEventListener("resize", this.updateDimensions);
             setTimeout(() => {
                 this.setState({ loading: false });
-            }, 1500);
+            }, 1000);
         }
     }
 
@@ -75,51 +75,60 @@ class Layout extends Component {
             alignItems: "center",
             justifyContent: "center",
         };
-
+        if (loading) {
+            return (
+                <div style={rootStyle}>
+                    <ThemeProvider theme={theme}>
+                        {loading && (
+                            <div
+                                style={{
+                                    textAlign: "center",
+                                    color: "#2b2e43",
+                                    backgroundColor: "#2b2e43",
+                                    // paddingTop: "100px",
+                                    // display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    verticalAlign: "middle",
+                                }}
+                            >
+                                <img
+                                    src={loadingGif}
+                                    alt='loading'
+                                    style={{
+                                        width: "200px",
+                                        height: "200px",
+                                        position: "absolute",
+                                        margin: "auto",
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {!loading && width > 960 && (
+                            <MiniDrawer props={children} />
+                        )}
+                        {!loading && width <= 960 && <Header />}
+                        {!loading && (
+                            <FadeIn transitionDuration={3000}>
+                                <main>{children} </main>
+                            </FadeIn>
+                        )}
+                    </ThemeProvider>
+                </div>
+            );
+        }
         return (
             <div style={rootStyle}>
                 <ThemeProvider theme={theme}>
-                    {loading && (
-                        <div
-                            style={{
-                                textAlign: "center",
-                                color: "#2b2e43",
-                                backgroundColor: "#2b2e43",
-                                // paddingTop: "100px",
-                                // display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                verticalAlign: "middle",
-                            }}
-                        >
-                            <img
-                                src={loadingGif}
-                                alt='loading'
-                                style={{
-                                    width: "200px",
-                                    height: "200px",
-                                    position: "absolute",
-                                    margin: "auto",
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                }}
-                            />
-                        </div>
-                    )}
-
-                    {(!loading || !isIndex) && width > 960 && (
-                        <MiniDrawer props={children} />
-                    )}
-                    {(!loading || !isIndex) && width <= 960 && <Header />}
-                    {(!loading || !isIndex) && (
-                        <FadeIn transitionDuration={3000}>
-                            <main>{children} </main>
-                        </FadeIn>
-                    )}
-                    {/* <MiniDrawer props={children} /> */}
-                    {/* {!loadingTime && <main>{children} </main>} */}
+                    {width > 960 && <MiniDrawer props={children} />}
+                    {width <= 960 && <Header />}
+                    {/* <FadeIn transitionDuration={3000}> */}
+                    <main>{children} </main>
+                    {/* </FadeIn> */}
                 </ThemeProvider>
             </div>
         );

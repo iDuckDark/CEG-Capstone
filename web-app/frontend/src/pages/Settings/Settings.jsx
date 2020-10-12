@@ -46,9 +46,8 @@ class Settings extends Component {
 
     renderSettings() {
         const { piUrl, displayURL } = this.state;
-        // if (!piUrl) return null;
         return (
-            <Layout>
+            <div>
                 <SEO title='Settings' />
                 <div
                     className='center-horizontal'
@@ -95,7 +94,7 @@ class Settings extends Component {
                         Update
                     </Button>
                 </div>
-            </Layout>
+            </div>
         );
     }
 

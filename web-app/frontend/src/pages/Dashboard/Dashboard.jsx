@@ -263,7 +263,7 @@ class Dashboard extends Component {
                 gps.lon !== null
             )
         )
-            return <>Loading </>;
+            return <> </>;
         return (
             <div>
                 {this.renderVideo()}
