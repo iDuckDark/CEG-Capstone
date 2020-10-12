@@ -44,7 +44,7 @@ const routes = [
     // },
     {
         title: "Settings",
-        link: "/Settings/Settings",
+        link: "/settings",
         icon: faCogs,
     },
 ];

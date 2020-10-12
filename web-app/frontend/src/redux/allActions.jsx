@@ -46,3 +46,17 @@ export function getIP() {
             });
     };
 }
+
+export function setIP(ip) {
+    return dispatch => {
+        return axios
+            .post(`${BACKEND_URL}/mongoDB/ip`, { ip })
+            .then(response => {
+                dispatch({ type: "setIPSuccess", payload: response.data });
+            })
+            .catch(error => {
+                dispatch({ type: "setIPFailed", payload: error });
+                throw error;
+            });
+    };
+}

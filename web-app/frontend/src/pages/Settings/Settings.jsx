@@ -1,23 +1,52 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import { mapDispatchToProps } from "../../helpers/actions";
 import { SEO, Layout, Title } from "../../helpers/components";
-import { getVideoUrl, setVideoUrl, workingUrl } from "../../helpers/settings";
 import { isServerSideRendering } from "../../helpers/utils";
 
 class Settings extends Component {
     constructor(props) {
         super(props);
-        this.state = { defaultUrl: "" };
+        this.state = { piUrl: "", displayURL: "" };
         this.handleURLChange = this.handleURLChange.bind(this);
+    }
+
+    componentDidMount() {
+        this.setIP();
+    }
+
+    setIP() {
+        const { actions } = this.props;
+        actions.getIP().then(() => {
+            const { ip: ips } = this.props;
+            const { ip } = ips[ips.length - 1];
+            // eslint-disable-next-line no-console
+            console.log("IP: ", ip);
+            this.setState({ displayURL: ip });
+        });
+    }
+
+    changeIP(piUrl) {
+        const { actions } = this.props;
+        actions.setIP(piUrl).then(() => {
+            // eslint-disable-next-line no-console
+            console.log("Done changing ip.");
+            if (!isServerSideRendering()) {
+                this.setIP();
+            }
+        });
     }
 
     handleURLChange(event) {
         const { value } = event.target;
-        this.setState({ defaultUrl: value });
+        this.setState({ piUrl: value });
     }
 
-    render() {
-        const { defaultUrl } = this.state;
+    renderSettings() {
+        const { piUrl, displayURL } = this.state;
+        // if (!piUrl) return null;
         return (
             <Layout>
                 <SEO title='Settings' />
@@ -32,7 +61,7 @@ class Settings extends Component {
                     <Title variant='h5' gutterBottom className='title'>
                         Settings
                     </Title>
-                    <div> Current URL: {getVideoUrl()}</div>
+                    <div> Current URL: {displayURL}</div>
                     <div
                         style={{
                             textAlign: "center",
@@ -52,17 +81,15 @@ class Settings extends Component {
                                 borderRadius: "5px",
                             }}
                             onChange={e => this.handleURLChange(e)}
-                            value={defaultUrl}
-                            placeholder={workingUrl}
+                            value={piUrl}
+                            // placeholder={workingUrl}
                         />
                     </div>
                     <Button
                         variant='contained'
                         color='secondary'
                         onClick={() => {
-                            setVideoUrl(defaultUrl);
-                            if (!isServerSideRendering())
-                                window.location.reload(false);
+                            this.changeIP(piUrl);
                         }}
                     >
                         Update
@@ -71,5 +98,30 @@ class Settings extends Component {
             </Layout>
         );
     }
+
+    render() {
+        return <>{this.renderSettings()}</>;
+    }
 }
-export default Settings;
+
+const mapStateToProps = ({ actionReducer }) => {
+    return {
+        users: actionReducer.users,
+        ssar: actionReducer.ssar,
+        ip: actionReducer.ip,
+    };
+};
+
+Settings.defaultProps = {
+    actions: null,
+    ip: null,
+};
+
+Settings.propTypes = {
+    actions: PropTypes.any,
+    ip: PropTypes.any,
+};
+
+export default isServerSideRendering()
+    ? Settings
+    : connect(mapStateToProps, mapDispatchToProps)(Settings);

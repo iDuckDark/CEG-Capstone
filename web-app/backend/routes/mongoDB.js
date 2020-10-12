@@ -31,6 +31,26 @@ router.get('/ip', (req, res, next) => {
     });
 });
 
+router.post('/ip', (req, res, next) => {
+  const { ip } = req.body;
+  MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then((client, err) => {
+      assert.equal(null, err);
+      console.log('Connected successfully to server changing ip...');
+      const db = client.db('ssar');
+      const collection = db.collection('ip');
+      collection.remove({});
+      collection.insertOne({
+        ip: ip,
+      }).then(response=> {
+        res.json({ response });
+      });
+    })
+    .catch(error => {
+      console.log('IP Update Error: ', error);
+    });
+});
+
 router.get('/ssar', function(req, res, next) {
   MongoClient.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
     .then((client, err) => {
@@ -38,13 +58,15 @@ router.get('/ssar', function(req, res, next) {
       console.log('Connected successfully to server');
       const db = client.db('ssar');
       const collection = db.collection('sensors');
-      collection.find({lon:{$ne: "n/a", $exists:true}}).toArray(function(err, docs) {
-        assert.equal(err, null);
-        // console.log('Found the following records', docs);
-        // callback(docs);
-        client.close();
-        res.json({ docs });
-      });
+      collection
+        .find({ lon: { $ne: 'n/a', $exists: true } })
+        .toArray(function(err, docs) {
+          assert.equal(err, null);
+          // console.log('Found the following records', docs);
+          // callback(docs);
+          client.close();
+          res.json({ docs });
+        });
 
       // const admin = db.admin();
       // admin.listDatabases(function(err, result) {

@@ -7,10 +7,7 @@ import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
 import { Map, Temperature, Altitude, Pressure } from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
-import { getVideoUrl, setVideoUrl } from "../../helpers/settings";
-
-// const defaultUrl = "https://45.72.149.128:8000/";
-// const defaultUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
+import "./Dashboard.css";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -29,7 +26,7 @@ class Dashboard extends Component {
             index: 0,
             width,
             height,
-            piUrl: getVideoUrl(),
+            piUrl: null,
         };
         // this.handleURLChange = this.handleURLChange.bind(this);
         this.updateDimensions = this.updateDimensions.bind(this);
@@ -126,19 +123,14 @@ class Dashboard extends Component {
             .then(() => {
                 const { ip: ips } = this.props;
                 const { ip } = ips[ips.length - 1];
-                const formatted = ip;
-                this.setState({ piUrl: ip });
-                setVideoUrl(formatted);
+                // setVideoUrl(ip);
                 // eslint-disable-next-line no-console
-                console.log("Formatted IP:", formatted);
+                this.setState({ piUrl: ip });
+                console.log("Video URL Address:", ip);
             })
             .catch(() => {
-                this.setState({ piUrl: getVideoUrl() });
+                // this.setState({ piUrl: getVideoUrl() });
             });
-    }
-
-    formatIP(ip) {
-        return `https://${ip}:8000`;
     }
 
     setSSARInterval(ssar) {
@@ -218,14 +210,15 @@ class Dashboard extends Component {
                 <div
                     style={{
                         textAlign: "center",
-                        marginLeft: "5%",
-                        marginRight: "5%",
+                        marginLeft: "8%",
+                        marginRight: "10%",
                     }}
+                    className='container'
                 >
                     <iframe
                         title='3'
-                        width={width * 0.9}
-                        height={height / 1.6}
+                        // width={width * 0.9}
+                        // height={height / 1.6}
                         src={piUrl}
                         frameBorder='0'
                         style={{ border: 0 }}
@@ -235,6 +228,7 @@ class Dashboard extends Component {
                         }}
                         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                         allowFullScreen
+                        className='responsive-iframe'
                     />
                 </div>
             </div>
@@ -242,8 +236,24 @@ class Dashboard extends Component {
     }
 
     render() {
-        // const graphs = [<Temperature />, <Altitude />, <Pressure />];
         const { temperatures, altitudes, pressures, gps } = this.state;
+        const graphs = [
+            {
+                name: "Temperature",
+                component: <Temperature data={temperatures} />,
+                color: "#02aab0",
+            },
+            {
+                name: "Altitude",
+                component: <Altitude data={altitudes} />,
+                color: "#ef629f",
+            },
+            {
+                name: "Pressure",
+                component: <Pressure data={pressures} />,
+                color: "#ffd194",
+            },
+        ];
         if (
             !(
                 temperatures.length > 0 &&
@@ -271,58 +281,27 @@ class Dashboard extends Component {
                             </div>
                         </Grid>
 
-                        <Grid item xs={3}>
-                            <Paper style={{ backgroundColor: "#2f3247" }}>
-                                <div
-                                    style={{
-                                        color: "#02aab0",
-                                        paddingTop: "10px",
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Temperature
-                                </div>
-                                <Temperature data={temperatures} />
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={3}>
-                            <Paper style={{ backgroundColor: "#2f3247" }}>
-                                <div
-                                    style={{
-                                        color: "#ef629f",
-                                        paddingTop: "10px",
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Altitude
-                                </div>
-                                <Altitude data={altitudes} />
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={3}>
-                            <Paper style={{ backgroundColor: "#2f3247" }}>
-                                <div
-                                    style={{
-                                        color: "#ffd194",
-                                        paddingTop: "10px",
-                                        marginLeft: "10px",
-                                    }}
-                                >
-                                    Pressure
-                                </div>
-                                <Pressure data={pressures} />
-                            </Paper>
-                        </Grid>
-
-                        {/* {graphs.map((graph, key) => {
+                        {graphs.map(graph => {
+                            const { component, name, color } = graph;
                             return (
-                                <Grid key={String(key)} item xs={3}>
-                                    <Paper>{graph}</Paper>
+                                <Grid item xs={3} key={name}>
+                                    <Paper
+                                        style={{ backgroundColor: "#2f3247" }}
+                                    >
+                                        <div
+                                            style={{
+                                                color,
+                                                paddingTop: "10px",
+                                                marginLeft: "10px",
+                                            }}
+                                        >
+                                            {name}
+                                        </div>
+                                        {component}
+                                    </Paper>
                                 </Grid>
                             );
-                        })} */}
+                        })}
                     </Grid>
                 </div>
 

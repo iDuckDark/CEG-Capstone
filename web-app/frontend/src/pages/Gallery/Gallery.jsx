@@ -14,6 +14,8 @@ const query = graphql`
                         }
                     }
                 }
+                width
+                height
             }
         }
     }
@@ -26,12 +28,7 @@ const Gallery2 = () => (
             const pictures = [];
             for (const i in nodes) {
                 const { src } = nodes[i].src.childImageSharp.fixed;
-                let width = Number(i) + 3;
-                let height = Number(i) + 4;
-                if (Number(i) === 0) {
-                    width = 5;
-                    height = 4;
-                }
+                const { width, height } = nodes[i];
                 pictures.push({ src, width, height });
             }
             return (
@@ -43,6 +40,8 @@ const Gallery2 = () => (
                             marginTop: "20px",
                             marginBottom: "18%",
                             backgroundColor: "#2b2e43",
+                            paddingLeft: "150px",
+                            paddingRight: "50px",
                         }}
                     >
                         <Title
