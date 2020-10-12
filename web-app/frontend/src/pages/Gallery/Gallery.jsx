@@ -39,7 +39,11 @@ const Gallery2 = () => (
                     <SEO title='Gallery' />
                     <div
                         className='center-horizontal'
-                        style={{ marginTop: "20px", marginBottom: "18%" }}
+                        style={{
+                            marginTop: "20px",
+                            marginBottom: "18%",
+                            backgroundColor: "#2b2e43",
+                        }}
                     >
                         <Title
                             variant='h5'

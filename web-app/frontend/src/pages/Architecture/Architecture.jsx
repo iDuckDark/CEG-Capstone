@@ -14,6 +14,7 @@ const Architecture = () => {
                     marginTop: "2%",
                     marginBottom: "15%",
                     textAlign: "center",
+                    backgroundColor: "#2b2e43",
                 }}
             >
                 <Title

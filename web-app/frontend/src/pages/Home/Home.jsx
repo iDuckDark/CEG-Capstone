@@ -1,25 +1,38 @@
 import React, { Component } from "react";
 import { SEO } from "../../helpers/components";
-import Logo from "../../../static/images/favicon.png";
+// import Logo from "../../../static/images/favicon.png";
 // import gif from "./200.gif";
 import loadingGif from "../../../../../assets/animated-logo.gif";
+import { isServerSideRendering } from "../../helpers/utils";
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // loadingTime: true,
+            width: isServerSideRendering() ? 0 : window.innerWidth,
         };
+        this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     componentDidMount() {
-        // setTimeout(() => {
-        //     this.setState({ loadingTime: false });
-        // }, 5000);
+        if (!isServerSideRendering()) {
+            window.addEventListener("resize", this.updateDimensions);
+        }
+    }
+
+    componentWillUnmount() {
+        if (!isServerSideRendering())
+            window.removeEventListener("resize", this.updateDimensions);
+    }
+
+    updateDimensions() {
+        if (!isServerSideRendering())
+            this.setState({ width: window.innerWidth });
     }
 
     render() {
-        // const { loadingTime } = this.state;
+        const { width } = this.state;
+        const isMobile = width <= 960;
         return (
             <>
                 <SEO title='Home' />
@@ -28,6 +41,7 @@ class Home extends Component {
                     style={{
                         textAlign: "center",
                         color: "#FFFFFF",
+                        backgroundColor: "#2b2e43",
                     }}
                 >
                     {/* {loadingTime && (
@@ -46,7 +60,7 @@ class Home extends Component {
                     <img
                         src={loadingGif}
                         style={{
-                            maxWidth: `500px`,
+                            maxWidth: `300px`,
                             marginBottom: `1.45rem`,
                             borderRadius: "20%",
                         }}

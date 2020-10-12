@@ -7,7 +7,7 @@ import FadeIn from "react-fade-in";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
-import gif from "../../pages/Home/200.gif";
+// import gif from "../../pages/Home/200.gif";
 import loadingGif from "../../../../../assets/animated-logo.gif";
 // import loadingGifDark from "../../../../../assets/animated-logo-dark.gif";
 
@@ -64,18 +64,18 @@ class Layout extends Component {
         const isIndex = isServerSideRendering()
             ? false
             : window.location.pathname === "/";
-
+        const { children } = this.props;
+        const { width, loading } = this.state;
+        const isMobile = width <= 960;
         const rootStyle = {
             height: "100vh",
             minHeight: "100vh",
             backgroundColor: "#2b2e43",
-            display: isIndex ? "flex" : "block",
+            display: isIndex && !isMobile ? "flex" : "block",
             alignItems: "center",
             justifyContent: "center",
         };
-        const { children } = this.props;
-        const { width } = this.state;
-        const { loading } = this.state;
+
         return (
             <div style={rootStyle}>
                 <ThemeProvider theme={theme}>
@@ -89,12 +89,22 @@ class Layout extends Component {
                                 // display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                verticalAlign: "middle",
                             }}
                         >
                             <img
                                 src={loadingGif}
                                 alt='loading'
-                                style={{ width: "600px", height: "600px" }}
+                                style={{
+                                    width: "200px",
+                                    height: "200px",
+                                    position: "absolute",
+                                    margin: "auto",
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                }}
                             />
                         </div>
                     )}
