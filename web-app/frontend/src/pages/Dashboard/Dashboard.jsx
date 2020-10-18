@@ -18,9 +18,10 @@ import {
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
 import Example from "./Example";
 // import pigeonSvg from "../../../static/images/favicon.png";
-import pigeonSvg from "../../../static/images/animated-logo.gif";
+// import pigeonSvg from "../../../static/images/animated-logo.gif";
 import "./Dashboard.css";
 // import SpeedDash from "./SpeedDash";
+import Music from "./Music";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Dashboard extends Component {
             index: 0,
             width,
             height,
+            gps2: null,
             piUrl: null,
         };
         // this.handleURLChange = this.handleURLChange.bind(this);
@@ -88,6 +90,20 @@ class Dashboard extends Component {
         this.setIP();
     }
 
+    generateGPS() {
+        setInterval(() => {
+            const { gps } = this.state;
+            const { lat, lon } = gps;
+            const rand = (min, max) => Math.random() * (max - min) + min;
+            const intervals = 5;
+            const newGps = {
+                lat: rand(lat - intervals, lat + intervals),
+                lon: rand(lon - intervals, lon + intervals),
+            };
+            this.setState({ gps2: newGps });
+        }, 300);
+    }
+
     formatArray(array) {
         const data = [];
         for (const i in array) {
@@ -126,6 +142,7 @@ class Dashboard extends Component {
             const { altitude, pressure, temperature } = first;
             this.setState({ altitude, pressure, temperature });
             // this.setSSARInterval(ssar2);
+            // this.generateGPS();
         });
     }
 
@@ -367,6 +384,11 @@ class Dashboard extends Component {
                 component: <Pressure data={pressures} name='Pressure' />,
                 color: "#ffd194",
             },
+            {
+                name: "Sound (dB)",
+                component: <Music />,
+                color: "#74b9ff",
+            },
         ];
         if (
             !(
@@ -417,6 +439,7 @@ class Dashboard extends Component {
                 {/* {this.renderTemp()} */}
                 {/* <MapChart /> */}
                 {/* <SpeedDash /> */}
+                {/* <Music /> */}
             </div>
         );
     }

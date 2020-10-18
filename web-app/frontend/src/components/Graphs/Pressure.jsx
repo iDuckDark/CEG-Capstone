@@ -27,7 +27,7 @@ class Pressure extends Component {
         // console.log(data);
         const newData = data.filter(item => item != null);
         return (
-            <div style={{ width: 310, height: 220 }}>
+            <div style={{ width: 260, height: 220 }}>
                 <ResponsiveContainer>
                     <AreaChart
                         width={375}

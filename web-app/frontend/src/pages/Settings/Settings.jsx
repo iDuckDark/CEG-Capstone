@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { SEO, Title, SignIn } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
+// import Music from "../Dashboard/Music";
 
 class Settings extends Component {
     constructor(props) {
@@ -95,6 +96,7 @@ class Settings extends Component {
                     </Button>
                 </div>
                 {/* <SignIn /> */}
+                {/* <Music /> */}
             </div>
         );
     }

@@ -26,7 +26,7 @@ class Altitude extends Component {
         if (!data) return <div />;
         const newData = data.filter(item => item != null);
         return (
-            <div style={{ width: 310, height: 220 }}>
+            <div style={{ width: 260, height: 220 }}>
                 <ResponsiveContainer>
                     <AreaChart
                         width={375}
