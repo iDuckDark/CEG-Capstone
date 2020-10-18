@@ -6,7 +6,7 @@ import Map from "pigeon-maps";
 // import Marker from "pigeon-marker";
 
 // import pigeonSvg from './incubator/pigeon.svg'
-import pigeonSvg from "../../../static/images/favicon.png";
+import pigeonSvg from "../../../static/images/animated-logo.gif";
 import DraggableOverlay from "./DraggableOverlay";
 
 // const mapboxEnabled = false;
@@ -260,7 +260,7 @@ export default class App extends Component {
                         ))} */}
                         <DraggableOverlay
                             anchor={this.state.dragAnchor}
-                            //   offset={[60, 87]}
+                              offset={[100, 100]}
                             // onDragMove={(anchor) => console.log('moving pigeon', anchor)}
                             onDragEnd={anchor => {
                                 this.setState({ dragAnchor: anchor });
@@ -271,7 +271,7 @@ export default class App extends Component {
                                 }
                             }
                         >
-                            <img src={pigeonSvg} width={50} height={50} />
+                            <img src={pigeonSvg} width={200} height={200} />
                         </DraggableOverlay>
                         {isMapBox(provider) && (
                             <span className='mapbox-wordmark' />

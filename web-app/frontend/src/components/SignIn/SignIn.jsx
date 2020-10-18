@@ -40,9 +40,13 @@ const useStyles = makeStyles(theme => ({
     form: {
         width: "100%", // Fix IE 11 issue.
         marginTop: theme.spacing(1),
+        color: "white",
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    multilineColor: {
+        color: "white",
     },
 }));
 
@@ -52,11 +56,15 @@ export default function SignIn() {
     return (
         <Container component='main' maxWidth='xs'>
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={classes.paper} style={{ color: "white" }}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component='h1' variant='h5'>
+                <Typography
+                    component='h1'
+                    variant='h5'
+                    style={{ color: "white" }}
+                >
                     Sign in
                 </Typography>
                 <form className={classes.form} noValidate>
@@ -70,6 +78,10 @@ export default function SignIn() {
                         name='email'
                         autoComplete='email'
                         autoFocus
+                        color='white'
+                        InputLabelProps={{
+                            className: classes.multilineColor,
+                        }}
                     />
                     <TextField
                         variant='outlined'
@@ -81,6 +93,9 @@ export default function SignIn() {
                         type='password'
                         id='password'
                         autoComplete='current-password'
+                        InputLabelProps={{
+                            className: classes.multilineColor,
+                        }}
                     />
                     <FormControlLabel
                         control={<Checkbox value='remember' color='primary' />}
