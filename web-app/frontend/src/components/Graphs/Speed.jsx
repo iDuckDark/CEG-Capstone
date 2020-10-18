@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { shuffle } from "../../helpers/utils";
 
-class Temperature extends Component {
+class Speed extends Component {
     constructor(props) {
         super(props);
         const { data, name } = props;
@@ -16,8 +16,8 @@ class Temperature extends Component {
     componentDidMount() {
         setInterval(() => {
             const { data } = this.state;
-            this.setState({ data: shuffle(data) });
-        }, 3000);
+            this.setState({ data: shuffle(data.reverse()) });
+        }, 300);
     }
 
     renderTemperature() {
@@ -38,33 +38,39 @@ class Temperature extends Component {
                         <defs>
                             {/* #02aab0 → #00cdac */}
                             <linearGradient
-                                id='colorPv1'
+                                id='colorPv0'
                                 x1='0'
                                 y1='0'
                                 x2='0'
                                 y2='1'
                             >
                                 <stop
-                                    offset='0'
-                                    stopColor='#8884d8'
+                                    offset='5%'
+                                    stopColor='#02aab0'
                                     stopOpacity={0.4}
                                 />
                                 <stop
-                                    offset='1'
-                                    stopColor='#8e44ad'
+                                    offset='95%'
+                                    stopColor='#02aab0'
                                     stopOpacity={0.1}
                                 />
                             </linearGradient>
                         </defs>
                         <XAxis dataKey='date' tick={false} />
                         <Tooltip />
-
+                        {/* <Legend
+                            wrapperStyle={{
+                                fontSize: "20px",
+                                color: "#02aab0",
+                            }}
+                            height={60}
+                        /> */}
                         <Area
                             type='monotone'
                             dataKey={name}
-                            stroke='#8884d8'
+                            stroke='#02aab0'
                             fillOpacity={1}
-                            fill='url(#colorPv1)'
+                            fill='url(#colorPv0)'
                         />
                     </AreaChart>
                 </ResponsiveContainer>
@@ -77,4 +83,4 @@ class Temperature extends Component {
     }
 }
 
-export default Temperature;
+export default Speed;

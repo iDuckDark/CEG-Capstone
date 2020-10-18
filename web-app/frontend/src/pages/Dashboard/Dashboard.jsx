@@ -3,11 +3,23 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
+import Map from "pigeon-maps";
+import Marker from "pigeon-marker";
+import Overlay from "pigeon-overlay";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
-import { Map, Temperature, Altitude, Pressure } from "../../helpers/components";
+import {
+    Temperature,
+    Altitude,
+    Pressure,
+    Speed,
+} from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
+import Example from "./Example";
+// import pigeonSvg from "../../../static/images/favicon.png";
+import pigeonSvg from "../../../static/images/animated-logo.gif";
 import "./Dashboard.css";
+// import SpeedDash from "./SpeedDash";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -204,14 +216,17 @@ class Dashboard extends Component {
 
     renderVideo() {
         const { piUrl } = this.state;
-        const { width, height } = this.state;
+        // const { width, height } = this.state;
         return (
-            <div>
+            <Paper>
                 <div
+                    id='_id'
                     style={{
-                        textAlign: "center",
-                        marginLeft: "8%",
-                        marginRight: "10%",
+                        // textAlign: "center",
+                        // marginLeft: "8%",
+                        // marginRight: "10%",
+                        borderRadius: "20px",
+                        float: "left",
                     }}
                     className='container'
                 >
@@ -231,6 +246,92 @@ class Dashboard extends Component {
                         className='responsive-iframe'
                     />
                 </div>
+                {this.renderMap()}
+            </Paper>
+        );
+    }
+
+    renderMap() {
+        const { gps } = this.state;
+        if (!gps) return null;
+        const { lat, lon } = gps;
+
+        //     <Paper
+        //     key={name}
+        //     style={{ backgroundColor: "#2f3247" }}
+        // >
+        //     <div
+        //         style={{
+        //             color,
+        //             paddingTop: "15px",
+        //             marginLeft: "10px",
+        //             fontSize: "20px",
+        //         }}
+        //     >
+        //         {name}
+        //     </div>
+        //     {component}
+        // </Paper>
+        return (
+            <div
+                style={{
+                    // paddingTop: "20px",
+                    // width: "30%",
+                    marginLeft: "10px",
+                    float: "left",
+                    // borderRadius: "25px",
+                    // textAlign: "right",
+                    // float: "right",
+                }}
+            >
+                <Paper
+                    style={{
+                        backgroundColor: "#2f3247",
+                        paddingTop: "15px",
+                    }}
+                >
+                    <div
+                        style={{
+                            color: "#bdc3c7",
+                            marginLeft: "10px",
+                            marginBottom: "10px",
+                            fontSize: "20px",
+                            textAlign: "center",
+                        }}
+                    >
+                        <a
+                            href={`https://www.google.pl/maps/place/${lat},${lon}/@${lat},${lon},10z`}
+                            style={{
+                                color: "#bdc3c7",
+                            }}
+                        >
+                            GPS <br />({lat},{lon})
+                        </a>
+                    </div>
+                    <div>
+                        <Map
+                            center={[lat, lon]}
+                            zoom={12}
+                            width={350}
+                            height={350}
+                            borderRadius='25px'
+                        >
+                            <Marker
+                                anchor={[lat, lon]}
+                                payload={1}
+                                // onClick={({ event, anchor, payload }) => {}}
+                            />
+                            <Overlay anchor={[lat, lon]} offset={[120, 79]}>
+                                <img
+                                    src={pigeonSvg}
+                                    width={100}
+                                    height={100}
+                                    alt=''
+                                />
+                            </Overlay>
+                        </Map>
+                    </div>
+                </Paper>
             </div>
         );
     }
@@ -239,18 +340,26 @@ class Dashboard extends Component {
         const { temperatures, altitudes, pressures, gps } = this.state;
         const graphs = [
             {
-                name: "Temperature",
-                component: <Temperature data={temperatures} />,
+                name: "Speed (mph)",
+                component: <Speed data={[...temperatures]} name='Speed' />,
                 color: "#02aab0",
             },
             {
-                name: "Altitude",
-                component: <Altitude data={altitudes} />,
+                name: "Temperature °C",
+                component: (
+                    <Temperature data={temperatures} name='Temperature' />
+                ),
+                color: "#8884d8",
+            },
+            {
+                name: "Altitude (ft)",
+                component: <Altitude data={altitudes} name='Altitude' />,
+                component2: <Example data={altitudes} />,
                 color: "#ef629f",
             },
             {
-                name: "Pressure",
-                component: <Pressure data={pressures} />,
+                name: "Pressure (Pa)",
+                component: <Pressure data={pressures} name='Pressure' />,
                 color: "#ffd194",
             },
         ];
@@ -264,42 +373,36 @@ class Dashboard extends Component {
             )
         )
             return <> </>;
+        if (!gps) return null;
         return (
-            <div>
+            <div
+                style={{
+                    backgroundColor: "#2b2e43",
+                    paddingLeft: "8%",
+                }}
+            >
                 {this.renderVideo()}
                 <div>
-                    <Grid container spacing={2}>
-                        <Grid item xs={3}>
-                            <div
-                                style={{
-                                    backgroundColor: "#2b2e43",
-                                    textAlign: "right",
-                                    paddingLeft: "90px",
-                                }}
-                            >
-                                <Map lat={gps.lat} lon={gps.lon} />
-                            </div>
-                        </Grid>
-
+                    <Grid container spacing={1}>
                         {graphs.map(graph => {
-                            const { component, name, color } = graph;
+                            const { component, color, name } = graph;
                             return (
-                                <Grid item xs={3} key={name}>
-                                    <Paper
-                                        style={{ backgroundColor: "#2f3247" }}
+                                <Paper
+                                    key={name}
+                                    style={{ backgroundColor: "#2f3247" }}
+                                >
+                                    <div
+                                        style={{
+                                            color,
+                                            paddingTop: "15px",
+                                            marginLeft: "10px",
+                                            fontSize: "20px",
+                                        }}
                                     >
-                                        <div
-                                            style={{
-                                                color,
-                                                paddingTop: "10px",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            {name}
-                                        </div>
-                                        {component}
-                                    </Paper>
-                                </Grid>
+                                        {name}
+                                    </div>
+                                    {component}
+                                </Paper>
                             );
                         })}
                     </Grid>
@@ -308,6 +411,7 @@ class Dashboard extends Component {
                 {/* {this.renderSpeedometers()} */}
                 {/* {this.renderTemp()} */}
                 {/* <MapChart /> */}
+                {/* <SpeedDash /> */}
             </div>
         );
     }

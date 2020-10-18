@@ -11,6 +11,7 @@ import NavDropDown from "../components/Material/NavDropDown";
 import Pressure from "../components/Graphs/Pressure";
 import SEO from "../components/SEO/SEO";
 import Temperature from "../components/Graphs/Temperature";
+import Speed from "../components/Graphs/Speed";
 import Title from "../components/Titles/Title";
 
 import {
@@ -43,6 +44,7 @@ export {
     NavDropDown,
     Pressure,
     SEO,
+    Speed,
     Temperature,
     Title,
 };
