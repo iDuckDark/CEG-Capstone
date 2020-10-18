@@ -13,6 +13,7 @@ import {
     Altitude,
     Pressure,
     Speed,
+    Map as PigeonMap,
 } from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
 import Example from "./Example";
@@ -277,7 +278,7 @@ class Dashboard extends Component {
                 style={{
                     // paddingTop: "20px",
                     // width: "30%",
-                    marginLeft: "10px",
+                    // marginLeft: "10px",
                     float: "left",
                     // borderRadius: "25px",
                     // textAlign: "right",
@@ -305,11 +306,15 @@ class Dashboard extends Component {
                                 color: "#bdc3c7",
                             }}
                         >
-                            GPS <br />({lat},{lon})
+                            GPS <br />
+                            <div style={{ fontSize: "20px" }}>
+                                ({lat},{lon})
+                            </div>
                         </a>
                     </div>
                     <div>
-                        <Map
+                        <PigeonMap lat={gps.lat} lon={gps.lon} />
+                        {/* <Map
                             center={[lat, lon]}
                             zoom={12}
                             width={350}
@@ -329,7 +334,7 @@ class Dashboard extends Component {
                                     alt=''
                                 />
                             </Overlay>
-                        </Map>
+                        </Map> */}
                     </div>
                 </Paper>
             </div>

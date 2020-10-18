@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
-import { SEO, Layout, Title } from "../../helpers/components";
+import { SEO, Title, SignIn } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
 
 class Settings extends Component {
@@ -94,6 +94,7 @@ class Settings extends Component {
                         Update
                     </Button>
                 </div>
+                {/* <SignIn /> */}
             </div>
         );
     }

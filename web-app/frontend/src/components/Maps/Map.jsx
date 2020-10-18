@@ -210,8 +210,8 @@ export default class App extends Component {
                 {/* <Banner /> */}
                 <div
                     style={{
-                        maxWidth: 250,
-                        maxHeight: 250,
+                        maxWidth: 280,
+                        maxHeight: 300,
                         margin: "0 auto",
                         // width: 250,
                         // height: 250,
@@ -247,7 +247,7 @@ export default class App extends Component {
                             ) : null
                         }
                         defaultWidth={600}
-                        height={250}
+                        height={300}
                         boxClassname='pigeon-filters'
                     >
                         {/* {Object.keys(markers).map(key => (

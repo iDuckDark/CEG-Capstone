@@ -9,6 +9,7 @@ import MaterialMenu from "../components/Material/MaterialMenu";
 import NavButton from "../components/Material/NavButton";
 import NavDropDown from "../components/Material/NavDropDown";
 import Pressure from "../components/Graphs/Pressure";
+import SignIn from "../components/SignIn/SignIn";
 import SEO from "../components/SEO/SEO";
 import Temperature from "../components/Graphs/Temperature";
 import Speed from "../components/Graphs/Speed";
@@ -44,6 +45,7 @@ export {
     NavDropDown,
     Pressure,
     SEO,
+    SignIn,
     Speed,
     Temperature,
     Title,
