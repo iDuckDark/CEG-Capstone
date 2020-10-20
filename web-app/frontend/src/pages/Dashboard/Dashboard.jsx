@@ -1,11 +1,10 @@
+/* eslint-disable react/sort-comp */
+/* eslint-disable no-console */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Thermometer from "react-thermometer-component";
 import ReactSpeedometer from "react-d3-speedometer";
-import Map from "pigeon-maps";
-import Marker from "pigeon-marker";
-import Overlay from "pigeon-overlay";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
 import {
@@ -17,11 +16,21 @@ import {
 } from "../../helpers/components";
 import { isServerSideRendering, detectMob } from "../../helpers/utils";
 import Example from "./Example";
-// import pigeonSvg from "../../../static/images/favicon.png";
-// import pigeonSvg from "../../../static/images/animated-logo.gif";
 import "./Dashboard.css";
-// import SpeedDash from "./SpeedDash";
 import Music from "./Music";
+
+const stopVideo = element => {
+    const iframe = element.querySelector("iframe");
+    const video = element.querySelector("video");
+    if (iframe) {
+        const iframeSrc = iframe.src;
+        iframe.src = iframeSrc;
+        console.log(video);
+    }
+    if (video) {
+        video.pause();
+    }
+};
 
 class Dashboard extends Component {
     constructor(props) {
@@ -70,7 +79,6 @@ class Dashboard extends Component {
         return this.formatArray(this.getArrayfromKey(array, key));
     }
 
-    // eslint-disable-next-line react/sort-comp
     updateDimensions() {
         if (!isServerSideRendering())
             this.setState({
@@ -153,14 +161,10 @@ class Dashboard extends Component {
             .then(() => {
                 const { ip: ips } = this.props;
                 const { ip } = ips[ips.length - 1];
-                // setVideoUrl(ip);
-                // eslint-disable-next-line no-console
                 this.setState({ piUrl: ip });
                 console.log("Video URL Address:", ip);
             })
-            .catch(() => {
-                // this.setState({ piUrl: getVideoUrl() });
-            });
+            .catch(() => {});
     }
 
     setSSARInterval(ssar) {
@@ -240,9 +244,6 @@ class Dashboard extends Component {
                 <div
                     id='_id'
                     style={{
-                        // textAlign: "center",
-                        // marginLeft: "8%",
-                        // marginRight: "10%",
                         borderRadius: "20px",
                         float: "left",
                     }}
@@ -253,12 +254,16 @@ class Dashboard extends Component {
                         // width={width * 0.9}
                         // height={height / 1.6}
                         src={piUrl}
+                        modestbranding='1'
                         frameBorder='0'
+                        controls='0'
                         style={{ border: 0 }}
                         onErrorCapture={error => {
-                            // eslint-disable-next-line no-console
                             console.log("iframe", error);
                         }}
+                        // onLoadStart={() => {
+                        //     console.log("loaded");
+                        // }}
                         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                         allowFullScreen
                         className='responsive-iframe'
@@ -274,32 +279,10 @@ class Dashboard extends Component {
         if (!gps) return null;
         const { lat, lon } = gps;
 
-        //     <Paper
-        //     key={name}
-        //     style={{ backgroundColor: "#2f3247" }}
-        // >
-        //     <div
-        //         style={{
-        //             color,
-        //             paddingTop: "15px",
-        //             marginLeft: "10px",
-        //             fontSize: "20px",
-        //         }}
-        //     >
-        //         {name}
-        //     </div>
-        //     {component}
-        // </Paper>
         return (
             <div
                 style={{
-                    // paddingTop: "20px",
-                    // width: "30%",
-                    // marginLeft: "10px",
                     float: "left",
-                    // borderRadius: "25px",
-                    // textAlign: "right",
-                    // float: "right",
                 }}
             >
                 <Paper
@@ -331,27 +314,6 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <PigeonMap lat={gps.lat} lon={gps.lon} />
-                        {/* <Map
-                            center={[lat, lon]}
-                            zoom={12}
-                            width={350}
-                            height={350}
-                            borderRadius='25px'
-                        >
-                            <Marker
-                                anchor={[lat, lon]}
-                                payload={1}
-                                // onClick={({ event, anchor, payload }) => {}}
-                            />
-                            <Overlay anchor={[lat, lon]} offset={[120, 79]}>
-                                <img
-                                    src={pigeonSvg}
-                                    width={100}
-                                    height={100}
-                                    alt=''
-                                />
-                            </Overlay>
-                        </Map> */}
                     </div>
                 </Paper>
             </div>
@@ -402,12 +364,7 @@ class Dashboard extends Component {
             return <> </>;
         if (!gps) return null;
         return (
-            <div
-                style={{
-                    backgroundColor: "#2b2e43",
-                    paddingLeft: "8%",
-                }}
-            >
+            <div style={{ backgroundColor: "#2b2e43", paddingLeft: "8%" }}>
                 {this.renderVideo()}
                 <div>
                     <Grid container spacing={1}>
@@ -434,12 +391,6 @@ class Dashboard extends Component {
                         })}
                     </Grid>
                 </div>
-
-                {/* {this.renderSpeedometers()} */}
-                {/* {this.renderTemp()} */}
-                {/* <MapChart /> */}
-                {/* <SpeedDash /> */}
-                {/* <Music /> */}
             </div>
         );
     }

@@ -1,4 +1,9 @@
 [
+    { "src": "../../static/images/progress/21.jpg" , "width": 4, "height": 6 },
+    { "src": "../../static/images/progress/20.jpg" , "width": 6, "height": 4 },
+    { "src": "../../static/images/progress/19.jpg" , "width": 4, "height": 6 },
+    { "src": "../../static/images/progress/18.jpg" , "width": 6, "height": 4 },
+    { "src": "../../static/images/progress/17.jpg" , "width": 4, "height": 6 },
     { "src": "../../static/images/progress/16.jpg" , "width": 4, "height": 6 },
     { "src": "../../static/images/progress/15.jpg" , "width": 4, "height": 6 },
     { "src": "../../static/images/progress/14.jpg" , "width": 4, "height": 6 },

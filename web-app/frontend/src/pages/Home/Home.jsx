@@ -4,6 +4,7 @@ import { SEO } from "../../helpers/components";
 // import gif from "./200.gif";
 import loadingGif from "../../../../../assets/animated-logo.gif";
 import { isServerSideRendering } from "../../helpers/utils";
+// import Members from "../Members/Members";
 
 class Home extends Component {
     constructor(props) {

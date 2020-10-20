@@ -37,7 +37,7 @@ const Architecture = () => {
                     <img
                         src={arc}
                         alt={arc}
-                        style={{ height: "500px", width: "700px" }}
+                        style={{ height: "500px", width: "750px" }}
                     />
                 </div>
             </div>
