@@ -8,29 +8,34 @@ import ReactSpeedometer from "react-d3-speedometer";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
 import {
-    Temperature,
     Altitude,
-    Pressure,
-    Speed,
     Map as PigeonMap,
+    Pressure,
+    Sound,
+    Speed,
+    Temperature,
 } from "../../helpers/components";
-import { isServerSideRendering, detectMob } from "../../helpers/utils";
+import {
+    isServerSideRendering,
+    detectMob,
+    cleanerFloat,
+} from "../../helpers/utils";
 import Example from "./Example";
 import "./Dashboard.css";
-import Music from "./Music";
+// import Music from "./Music";
 
-const stopVideo = element => {
-    const iframe = element.querySelector("iframe");
-    const video = element.querySelector("video");
-    if (iframe) {
-        const iframeSrc = iframe.src;
-        iframe.src = iframeSrc;
-        console.log(video);
-    }
-    if (video) {
-        video.pause();
-    }
-};
+// const stopVideo = element => {
+//     const iframe = element.querySelector("iframe");
+//     const video = element.querySelector("video");
+//     if (iframe) {
+//         const iframeSrc = iframe.src;
+//         iframe.src = iframeSrc;
+//         console.log(video);
+//     }
+//     if (video) {
+//         video.pause();
+//     }
+// };
 
 class Dashboard extends Component {
     constructor(props) {
@@ -325,7 +330,9 @@ class Dashboard extends Component {
         const graphs = [
             {
                 name: "Speed (mph)",
-                component: <Speed data={[...temperatures]} name='Speed' />,
+                component: (
+                    <Speed data={[...temperatures.slice(0, 20)]} name='Speed' />
+                ),
                 color: "#02aab0",
             },
             {
@@ -348,7 +355,7 @@ class Dashboard extends Component {
             },
             {
                 name: "Sound (dB)",
-                component: <Music />,
+                component: <Sound data={pressures} name='Sound' />,
                 color: "#74b9ff",
             },
         ];

@@ -12,6 +12,7 @@ import Pressure from "../components/Graphs/Pressure";
 import SEO from "../components/SEO/SEO";
 import Temperature from "../components/Graphs/Temperature";
 import Speed from "../components/Graphs/Speed";
+import Sound from "../components/Graphs/Sound";
 import Title from "../components/Titles/Title";
 
 import {
@@ -45,6 +46,7 @@ export {
     Pressure,
     SEO,
     Speed,
+    Sound,
     Temperature,
     Title,
 };

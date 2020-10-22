@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer, YAxis } from "recharts";
 import { shuffle } from "../../helpers/utils";
 
 class Speed extends Component {
@@ -11,6 +11,7 @@ class Speed extends Component {
             item[name] = item.pv;
         }
         this.state = { data };
+        console.log(data);
     }
 
     componentDidMount() {
@@ -57,6 +58,7 @@ class Speed extends Component {
                             </linearGradient>
                         </defs>
                         <XAxis dataKey='date' tick={false} />
+                        <YAxis />
                         <Tooltip />
                         {/* <Legend
                             wrapperStyle={{

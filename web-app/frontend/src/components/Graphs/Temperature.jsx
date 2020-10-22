@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
+} from "recharts";
 import { shuffle } from "../../helpers/utils";
 
 class Temperature extends Component {
@@ -57,6 +64,7 @@ class Temperature extends Component {
                             </linearGradient>
                         </defs>
                         <XAxis dataKey='date' tick={false} />
+                        <YAxis />
                         <Tooltip />
 
                         <Area

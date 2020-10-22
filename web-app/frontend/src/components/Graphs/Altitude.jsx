@@ -1,16 +1,24 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { shuffle } from "../../helpers/utils";
+import {
+    AreaChart,
+    Area,
+    XAxis,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
+} from "recharts";
+import { shuffle, cleaner } from "../../helpers/utils";
 
 class Altitude extends Component {
     constructor(props) {
         super(props);
         const { data, name } = props;
         for (const item of data) {
-            item[name] = item.pv;
+            item[name] = item.pv / 100;
         }
-        this.state = { data };
+        const newData = cleaner(name, 25, 50, 20);
+        this.state = { data: newData };
     }
 
     componentDidMount() {
@@ -56,6 +64,7 @@ class Altitude extends Component {
                             </linearGradient>
                         </defs>
                         <XAxis dataKey='date' tick={false} />
+                        <YAxis />
                         <Tooltip />
                         {/* <Legend
                             wrapperStyle={{

@@ -8,16 +8,17 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
-import { shuffle } from "../../helpers/utils";
+import { shuffle, cleaner } from "../../helpers/utils";
 
-class Pressure extends Component {
+class Sound extends Component {
     constructor(props) {
         super(props);
         const { data, name } = props;
         for (const item of data) {
-            item[name] = item.pv;
+            item[name] = item.pv / 100;
         }
-        this.state = { data };
+        const newData = cleaner(name, 50, 75, 35);
+        this.state = { data: newData };
     }
 
     componentDidMount() {
@@ -27,14 +28,13 @@ class Pressure extends Component {
         }, 300);
     }
 
-    renderPressure() {
+    renderSound() {
         const { data } = this.state;
         const { name } = this.props;
         if (!data) return <div />;
-        // console.log(data);
         const newData = data.filter(item => item != null);
         return (
-            <div style={{ width: 260, height: 220 }}>
+            <div style={{ width: 240, height: 220 }}>
                 <ResponsiveContainer>
                     <AreaChart
                         width={375}
@@ -43,9 +43,9 @@ class Pressure extends Component {
                         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                     >
                         <defs>
-                            {/* #70e1f5 → #ffd194 */}
+                            {/* #2c3e50 #fd746c */}
                             <linearGradient
-                                id='colorPv3'
+                                id='colorPv5'
                                 x1='0'
                                 y1='0'
                                 x2='0'
@@ -53,12 +53,12 @@ class Pressure extends Component {
                             >
                                 <stop
                                     offset='5%'
-                                    stopColor='#ffd194'
+                                    stopColor='#74b9ff'
                                     stopOpacity={0.4}
                                 />
                                 <stop
                                     offset='95%'
-                                    stopColor='#ffd194'
+                                    stopColor='#74b9ff'
                                     stopOpacity={0.1}
                                 />
                             </linearGradient>
@@ -66,12 +66,19 @@ class Pressure extends Component {
                         <XAxis dataKey='date' tick={false} />
                         <YAxis />
                         <Tooltip />
+                        {/* <Legend
+                            wrapperStyle={{
+                                fontSize: "20px",
+                                color: "#ef629f",
+                            }}
+                            height={60}
+                        /> */}
                         <Area
                             type='monotone'
                             dataKey={name}
-                            stroke='#ffd194'
+                            stroke='#74b9ff'
                             fillOpacity={1}
-                            fill='url(#colorPv3)'
+                            fill='url(#colorPv5)'
                         />
                     </AreaChart>
                 </ResponsiveContainer>
@@ -80,8 +87,8 @@ class Pressure extends Component {
     }
 
     render() {
-        return <>{this.renderPressure()}</>;
+        return <>{this.renderSound()}</>;
     }
 }
 
-export default Pressure;
+export default Sound;
