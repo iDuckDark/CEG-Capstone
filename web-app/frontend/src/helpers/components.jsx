@@ -1,5 +1,6 @@
 import Altitude from "../components/Graphs/Altitude";
 import ExecCard from "../components/Cards/ExecCard/ExecCard";
+import Graph from "../components/Graphs/Graph";
 import Header from "../components/Header/Header";
 import Header2 from "../components/Header/Header2";
 import Layout from "../components/Layout/Layout";
@@ -32,6 +33,7 @@ export {
     CloseIcon,
     ExecCard,
     FlaskIcon,
+    Graph,
     Header,
     Header2,
     Layout,

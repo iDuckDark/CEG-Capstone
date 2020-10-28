@@ -12,7 +12,6 @@ class Music extends Component {
         }, 300);
     }
 
-    // Main programm (repeats)
     setRandomBars() {
         const bars = document.getElementsByClassName("equalizer-bar");
         for (let i = 0; i < bars.length; i += 1) {
@@ -36,31 +35,24 @@ class Music extends Component {
         }
     }
 
-    // Returns the number of active spans
     getActiveSpans(spans) {
         let counter = 0;
-
         for (let i = 0; i < spans.length; i += 1) {
             if (spans[i].style.opacity > 0) counter += 1;
         }
-
         return counter;
     }
 
-    // Returns a random number between 1 and 20
     getRandomHeight(maxBarHeight) {
         return Math.round(Math.random() * (maxBarHeight - 1)) + 1;
     }
 
-    // Add the default spans
     addBarSpans() {
         const bars = document.getElementsByClassName("equalizer-bar");
-
         let html = "";
         for (let j = 0; j < MAX_BAR_HEIGHT; j += 1) {
             html += "<span></span>";
         }
-
         for (let i = 0; i < bars.length; i += 1) {
             bars[i].innerHTML = html;
         }
@@ -80,14 +72,12 @@ class Music extends Component {
         }
 
         return (
-            <>
-                <div
-                    className='equalizer'
-                    style={{ width: "200px", height: "100px" }}
-                >
-                    {rows}
-                </div>
-            </>
+            <div
+                className='equalizer'
+                style={{ width: "200px", height: "100px" }}
+            >
+                {rows}
+            </div>
         );
     }
 }

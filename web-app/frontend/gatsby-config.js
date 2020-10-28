@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: `CEG Capstone Project Winter 2020 - Fall 2020`,
-        description: `CEG Capstone Project by Nevin, Peter, Divyang and Paul`,
+        title: `HoverX`,
+        description: `CEG Capstone Project by Nevin, Peter, Divyang, Paul & Shail`,
         author: `@Nevin`,
     },
     plugins: [

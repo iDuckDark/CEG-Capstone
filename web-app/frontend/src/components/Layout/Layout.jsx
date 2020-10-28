@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import "./layout.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import FadeIn from "react-fade-in";
+// import FadeIn from "react-fade-in";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
-// import gif from "../../pages/Home/200.gif";
 import loadingGif from "../../../../../assets/animated-logo.gif";
-// import loadingGifDark from "../../../../../assets/animated-logo-dark.gif";
 
 const theme = createMuiTheme({
     palette: {
@@ -18,7 +16,6 @@ const theme = createMuiTheme({
         },
         secondary: {
             main: "#d04290",
-            // contrastText: "#ffcc00",
         },
         contrastThreshold: 3,
         tonalOffset: 0.2,
@@ -72,7 +69,7 @@ class Layout extends Component {
             minHeight: "100vh",
             backgroundColor: "#2b2e43",
             display: isIndex && !isMobile ? "flex" : "block",
-            alignItems: "center",
+            // alignItems: "center",
             justifyContent: "center",
         };
         if (loading) {
@@ -112,11 +109,11 @@ class Layout extends Component {
                             <MiniDrawer props={children} />
                         )}
                         {!loading && width <= 960 && <Header />}
-                        {!loading && (
+                        {/* {!loading && (
                             <FadeIn transitionDuration={3000}>
                                 <main>{children} </main>
                             </FadeIn>
-                        )}
+                        )} */}
                     </ThemeProvider>
                 </div>
             );

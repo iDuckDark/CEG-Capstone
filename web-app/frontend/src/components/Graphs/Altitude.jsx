@@ -66,13 +66,6 @@ class Altitude extends Component {
                         <XAxis dataKey='date' tick={false} />
                         <YAxis />
                         <Tooltip />
-                        {/* <Legend
-                            wrapperStyle={{
-                                fontSize: "20px",
-                                color: "#ef629f",
-                            }}
-                            height={60}
-                        /> */}
                         <Area
                             type='monotone'
                             dataKey={name}

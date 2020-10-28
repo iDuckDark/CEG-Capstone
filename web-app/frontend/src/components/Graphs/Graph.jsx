@@ -1,40 +1,54 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
     AreaChart,
     Area,
     XAxis,
-    YAxis,
     Tooltip,
     ResponsiveContainer,
+    YAxis,
 } from "recharts";
 import { shuffle, cleaner } from "../../helpers/utils";
 
-class Sound extends Component {
+class Graph extends Component {
     constructor(props) {
         super(props);
-        const { data, name } = props;
+        // eslint-disable-next-line prefer-const
+        let { data, name, color, refresh, width, height } = props;
         for (const item of data) {
-            item[name] = item.pv / 100;
+            item[name] = item.pv;
         }
-        const newData = cleaner(name, 50, 75, 35);
-        this.state = { data: newData };
+        if (name === "Sound") {
+            data = cleaner(name, 50, 75, 35);
+        } else if (name === "Altitude") {
+            data = cleaner(name, 25, 50, 20);
+        }
+        this.state = {
+            data,
+            name,
+            color,
+            refresh: refresh || false,
+            width,
+            height,
+        };
     }
 
     componentDidMount() {
-        setInterval(() => {
-            const { data } = this.state;
-            this.setState({ data: shuffle(data) });
-        }, 300);
+        const { refresh } = this.state;
+        if (refresh) {
+            setInterval(() => {
+                const { data } = this.state;
+                this.setState({ data: shuffle(data) });
+            }, 300);
+        }
     }
 
-    renderSound() {
-        const { data } = this.state;
-        const { name } = this.props;
-        if (!data) return <div />;
+    renderGraph() {
+        const { data, name, color, width, height } = this.state;
+        if (!data || !name || !color) return <div />;
         const newData = data.filter(item => item != null);
         return (
-            <div style={{ width: 240, height: 220 }}>
+            <div style={{ width, height }}>
                 <ResponsiveContainer>
                     <AreaChart
                         width={375}
@@ -43,9 +57,8 @@ class Sound extends Component {
                         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                     >
                         <defs>
-                            {/* #2c3e50 #fd746c */}
                             <linearGradient
-                                id='colorPv5'
+                                id={name}
                                 x1='0'
                                 y1='0'
                                 x2='0'
@@ -53,12 +66,12 @@ class Sound extends Component {
                             >
                                 <stop
                                     offset='5%'
-                                    stopColor='#74b9ff'
+                                    stopColor={color}
                                     stopOpacity={0.4}
                                 />
                                 <stop
                                     offset='95%'
-                                    stopColor='#74b9ff'
+                                    stopColor={color}
                                     stopOpacity={0.1}
                                 />
                             </linearGradient>
@@ -69,9 +82,9 @@ class Sound extends Component {
                         <Area
                             type='monotone'
                             dataKey={name}
-                            stroke='#74b9ff'
+                            stroke={color}
                             fillOpacity={1}
-                            fill='url(#colorPv5)'
+                            fill={`url(#${name})`}
                         />
                     </AreaChart>
                 </ResponsiveContainer>
@@ -80,8 +93,26 @@ class Sound extends Component {
     }
 
     render() {
-        return <>{this.renderSound()}</>;
+        return <>{this.renderGraph()}</>;
     }
 }
 
-export default Sound;
+export default Graph;
+
+Graph.defaultProps = {
+    data: null,
+    name: null,
+    color: null,
+    refresh: false,
+    width: 260,
+    height: 220,
+};
+
+Graph.propTypes = {
+    data: PropTypes.any,
+    name: PropTypes.any,
+    color: PropTypes.any,
+    refresh: PropTypes.bool,
+    width: PropTypes.number,
+    height: PropTypes.number,
+};

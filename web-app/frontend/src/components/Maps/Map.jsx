@@ -150,7 +150,7 @@ export default class App extends Component {
             minZoom: 1,
             maxZoom: 18,
             // dragAnchor: [45.423, -75.6838]
-            dragAnchor: [props.lat,  props.lon],
+            dragAnchor: [props.lat, props.lon],
         };
     }
 
@@ -247,7 +247,7 @@ export default class App extends Component {
                             ) : null
                         }
                         defaultWidth={600}
-                        height={300}
+                        height={270}
                         boxClassname='pigeon-filters'
                     >
                         {/* {Object.keys(markers).map(key => (
@@ -260,7 +260,7 @@ export default class App extends Component {
                         ))} */}
                         <DraggableOverlay
                             anchor={this.state.dragAnchor}
-                              offset={[100, 100]}
+                            offset={[100, 100]}
                             // onDragMove={(anchor) => console.log('moving pigeon', anchor)}
                             onDragEnd={anchor => {
                                 this.setState({ dragAnchor: anchor });
@@ -271,7 +271,12 @@ export default class App extends Component {
                                 }
                             }
                         >
-                            <img src={pigeonSvg} width={200} height={200} />
+                            <img
+                                src={pigeonSvg}
+                                alt='svg'
+                                width={200}
+                                height={200}
+                            />
                         </DraggableOverlay>
                         {isMapBox(provider) && (
                             <span className='mapbox-wordmark' />

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import {
     Area,
-    Bar,
     CartesianGrid,
     ComposedChart,
     Legend,
-    Line,
     ResponsiveContainer,
     Tooltip,
     XAxis,
