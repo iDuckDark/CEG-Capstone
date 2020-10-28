@@ -58,17 +58,17 @@ class Layout extends Component {
     }
 
     render() {
-        const isIndex = isServerSideRendering()
-            ? false
-            : window.location.pathname === "/";
+        // const isIndex = isServerSideRendering()
+        //     ? false
+        //     : window.location.pathname === "/";
         const { children } = this.props;
         const { width, loading } = this.state;
-        const isMobile = width <= 960;
+        // const isMobile = width <= 960;
         const rootStyle = {
             height: "100vh",
             minHeight: "100vh",
             backgroundColor: "#2b2e43",
-            display: isIndex && !isMobile ? "flex" : "block",
+            // display: isIndex && !isMobile ? "flex" : "block",
             // alignItems: "center",
             justifyContent: "center",
         };

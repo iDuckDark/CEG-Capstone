@@ -19,7 +19,7 @@ const IndexPage = () => (
                 src={hoverX}
                 style={{
                     borderRadius: "20%",
-                    width: "80%",
+                    width: "50%",
                 }}
                 alt='hoverx'
             />
