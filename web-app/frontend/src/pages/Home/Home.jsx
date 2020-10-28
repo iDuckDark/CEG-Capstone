@@ -21,17 +21,17 @@ class Home extends Component {
                         marginTop: "10px",
                     }}
                 >
-                    <img
+                    {/* <img
                         src={hoverX}
                         style={{
                             borderRadius: "20%",
                             width: "80%",
                         }}
                         alt='hoverx'
-                    />
+                    /> */}
                     <br />
-                    {/* <h2>Smart Search &amp; Rescue Drone</h2> */}
-                    {/* <p>CEG Capstone 4912/4913</p> */}
+                    <h2>Smart Search &amp; Rescue Drone</h2>
+                    <p>CEG Capstone 4912/4913</p>
                     <img
                         src={loadingGif}
                         style={{

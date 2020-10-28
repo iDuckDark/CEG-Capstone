@@ -2,11 +2,13 @@ import React from "react";
 import { SEO, Layout } from "../helpers/components";
 import loadingGif from "../../static/images/animated-logo.gif";
 import hoverX from "../../static/images/HoverX.jpg";
+import Home from "./Home/Home";
 import "./index.scss";
 
 const IndexPage = () => (
     <Layout>
-        <SEO title='Home' />
+        <Home />
+        {/* <SEO title='Home' />
         <div
             style={{
                 textAlign: "center",
@@ -16,6 +18,14 @@ const IndexPage = () => (
             }}
         >
             <img
+                src={loadingGif}
+                style={{
+                    maxWidth: `300px`,
+                    borderRadius: "20%",
+                }}
+                alt='logo'
+            />
+            <img
                 src={hoverX}
                 style={{
                     borderRadius: "20%",
@@ -24,15 +34,7 @@ const IndexPage = () => (
                 alt='hoverx'
             />
             <br />
-            <img
-                src={loadingGif}
-                style={{
-                    maxWidth: `300px`,
-                    borderRadius: "20%",
-                }}
-                alt='logo'
-            />
-        </div>
+        </div> */}
     </Layout>
 );
 

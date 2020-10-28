@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import { SEO, Layout } from "../helpers/components";
 import "./index.scss";
-
 import Settings from "./Settings/Settings";
 
 const SettingsPage = () => {
