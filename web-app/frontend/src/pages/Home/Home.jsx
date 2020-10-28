@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { SEO } from "../../helpers/components";
 import loadingGif from "../../../../../assets/animated-logo.gif";
-import hoverX from "../../../static/images/HoverX.jpg";
+import hoverX from "../../../../../assets/specs/2/hover-x.png";
 
 class Home extends Component {
     constructor(props) {
@@ -18,18 +18,11 @@ class Home extends Component {
                         textAlign: "center",
                         color: "#FFFFFF",
                         backgroundColor: "#2b2e43",
-                        marginTop: "10px",
+                        paddingLeft: "2px",
+                        paddingRight: "2px",
+                        marginTop: "3%",
                     }}
                 >
-                    {/* <img
-                        src={hoverX}
-                        style={{
-                            borderRadius: "20%",
-                            width: "80%",
-                        }}
-                        alt='hoverx'
-                    /> */}
-                    <br />
                     <h2>Smart Search &amp; Rescue Drone</h2>
                     <p>CEG Capstone 4912/4913</p>
                     <img
@@ -40,6 +33,14 @@ class Home extends Component {
                             borderRadius: "20%",
                         }}
                         alt='logo'
+                    />
+                    <br />
+                    <img
+                        src={hoverX}
+                        style={{
+                            width: "450px",
+                        }}
+                        alt='hoverx'
                     />
                 </div>
             </>
