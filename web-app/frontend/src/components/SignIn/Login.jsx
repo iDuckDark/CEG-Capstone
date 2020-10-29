@@ -221,7 +221,6 @@ class Login extends Component {
                             type='password'
                             id='password'
                             autoComplete='current-password'
-                            defaultValue='color'
                             InputLabelProps={{
                                 classes: {},
                                 style: { color: "#fff" },
