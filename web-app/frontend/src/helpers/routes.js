@@ -5,8 +5,6 @@ const {
     faSitemap,
     faImages,
     faUsers,
-    // faAddressCard,
-    // tachometerAlt,
     faCogs,
     faCamera,
 } = require("@fortawesome/free-solid-svg-icons");
@@ -19,7 +17,7 @@ const routes = [
     },
     {
         title: "Dashboard",
-        link: "/dashboard",
+        link: "/Dashboard/Dashboard",
         icon: faCamera,
     },
     {
@@ -37,14 +35,9 @@ const routes = [
         link: "/Members/Members",
         icon: faUsers,
     },
-    // {
-    //     title: "About",
-    //     link: "/About/About",
-    //     icon: faAddressCard,
-    // },
     {
         title: "Settings",
-        link: "/settings",
+        link: "/Settings/Settings",
         icon: faCogs,
     },
 ];

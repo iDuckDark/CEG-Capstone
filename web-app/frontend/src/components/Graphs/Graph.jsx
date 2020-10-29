@@ -18,10 +18,31 @@ class Graph extends Component {
         for (const item of data) {
             item[name] = item.pv;
         }
-        if (name === "Sound") {
-            data = cleaner(name, 50, 75, 35);
-        } else if (name === "Altitude") {
-            data = cleaner(name, 25, 50, 20);
+
+        switch (name) {
+            case "Sound":
+                data = cleaner(name, 50, 75, 35);
+                break;
+            case "Altitude":
+                data = cleaner(name, 25, 50, 20);
+                break;
+            case "Battery":
+                data = cleaner(name, 90, 100, 15);
+                break;
+            case "CPUTemperature":
+                data = cleaner(name, 80, 95, 27);
+                break;
+            case "CPUUsage":
+                data = cleaner(name, 80, 98, 27);
+                break;
+            case "RAMUsage":
+                data = cleaner(name, 0.5, 1, 27);
+                break;
+            case "DiskUsage":
+                data = cleaner(name, 60, 100, 27);
+                break;
+            default:
+                break;
         }
         this.state = {
             data,
@@ -31,16 +52,23 @@ class Graph extends Component {
             width,
             height,
         };
+        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
         const { refresh } = this.state;
         if (refresh) {
-            setInterval(() => {
-                const { data } = this.state;
-                this.setState({ data: shuffle(data) });
-            }, 300);
+            setInterval(() => this.update(), 300);
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.update);
+    }
+
+    update() {
+        const { data } = this.state;
+        this.setState({ data: shuffle(data) });
     }
 
     renderGraph() {

@@ -119,7 +119,7 @@ export default function MiniDrawer() {
                                                 getCurrentPath() === path
                                                     ? "#d04290"
                                                     : "#FFFFFF",
-                                            height: "80px",
+                                            height: "90px",
                                         }}
                                     >
                                         <FontAwesomeIcon

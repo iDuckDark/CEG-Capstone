@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./layout.css";
+import { Provider } from "react-redux";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-// import FadeIn from "react-fade-in";
+import store from "../../redux/store";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
 import loadingGif from "../../../../../assets/animated-logo.gif";
+import "./layout.css";
 
 const theme = createMuiTheme({
     palette: {
@@ -58,18 +59,12 @@ class Layout extends Component {
     }
 
     render() {
-        // const isIndex = isServerSideRendering()
-        //     ? false
-        //     : window.location.pathname === "/";
         const { children } = this.props;
         const { width, loading } = this.state;
-        // const isMobile = width <= 960;
         const rootStyle = {
             height: "100vh",
             minHeight: "100vh",
             backgroundColor: "#2b2e43",
-            // display: isIndex && !isMobile ? "flex" : "block",
-            // alignItems: "center",
             justifyContent: "center",
         };
         if (loading) {
@@ -82,8 +77,6 @@ class Layout extends Component {
                                     textAlign: "center",
                                     color: "#2b2e43",
                                     backgroundColor: "#2b2e43",
-                                    // paddingTop: "100px",
-                                    // display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
                                     verticalAlign: "middle",
@@ -109,24 +102,19 @@ class Layout extends Component {
                             <MiniDrawer props={children} />
                         )}
                         {!loading && width <= 960 && <Header />}
-                        {/* {!loading && (
-                            <FadeIn transitionDuration={3000}>
-                                <main>{children} </main>
-                            </FadeIn>
-                        )} */}
                     </ThemeProvider>
                 </div>
             );
         }
         return (
             <div style={rootStyle}>
-                <ThemeProvider theme={theme}>
-                    {width > 960 && <MiniDrawer props={children} />}
-                    {width <= 960 && <Header />}
-                    {/* <FadeIn transitionDuration={3000}> */}
-                    <main>{children} </main>
-                    {/* </FadeIn> */}
-                </ThemeProvider>
+                <Provider store={store}>
+                    <ThemeProvider theme={theme}>
+                        {width > 960 && <MiniDrawer props={children} />}
+                        {width <= 960 && <Header />}
+                        <main>{children} </main>
+                    </ThemeProvider>
+                </Provider>
             </div>
         );
     }

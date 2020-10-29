@@ -4,8 +4,8 @@ import loadingGif from "../../../../../assets/animated-logo.gif";
 import hoverX from "../../../../../assets/specs/2/hover-x.png";
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
     }
 
@@ -38,7 +38,7 @@ class Home extends Component {
                     <img
                         src={hoverX}
                         style={{
-                            width: "450px",
+                            width: "400px",
                         }}
                         alt='hoverx'
                     />
