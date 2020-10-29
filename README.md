@@ -1,5 +1,5 @@
 <table align="center"><tr><td align="center" width="9999">
-<img width="200" align="center" src="assets/Logo.png?raw=true" width="350" alt="Capstone Logo" title="Capstone Logo">
+<img width="300" align="center" src="assets/animated-logo.gif?raw=true" alt="Capstone Logo" title="Capstone Logo">
 
 # Computer Engineering Capstone Project
 # Smart Search and Rescue Drone
