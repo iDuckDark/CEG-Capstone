@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
-import { SEO, Title, Layout } from "../../helpers/components";
+import { SEO, Title } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
 
 class Settings extends Component {
@@ -47,7 +47,7 @@ class Settings extends Component {
     renderSettings() {
         const { piUrl, displayURL } = this.state;
         return (
-            <Layout>
+            <>
                 <SEO title='Settings' />
                 <div
                     className='center-horizontal'
@@ -60,7 +60,16 @@ class Settings extends Component {
                     <Title variant='h5' gutterBottom className='title'>
                         Settings
                     </Title>
-                    <div> Current URL: {displayURL}</div>
+                    <br />
+                    <div
+                        style={{
+                            // width: "90%",
+                            textAlign: "center",
+                        }}
+                    >
+                        <b> Current URL: </b> <br />
+                        {displayURL}
+                    </div>
                     <div
                         style={{
                             textAlign: "center",
@@ -94,7 +103,7 @@ class Settings extends Component {
                         Update
                     </Button>
                 </div>
-            </Layout>
+            </>
         );
     }
 

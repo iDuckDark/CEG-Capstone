@@ -2,11 +2,10 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
 import { SEO, Layout } from "../../helpers/components";
-// import Settings from "./SettingsPage";
 import Login from "../../components/SignIn/Login";
 import "../index.scss";
 
-const SettingsPage = () => {
+const Profile = () => {
     return (
         <Layout>
             <SEO title='CEG Capstone Project' />
@@ -16,10 +15,9 @@ const SettingsPage = () => {
                     style={{ marginTop: "20px" }}
                 />
                 <Login />
-                {/* <Settings /> */}
             </Provider>
         </Layout>
     );
 };
 
-export default SettingsPage;
+export default Profile;

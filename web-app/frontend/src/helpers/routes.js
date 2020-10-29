@@ -1,24 +1,25 @@
 const loader = require("path");
 
 const {
-    faGopuram,
+    // faGopuram,
     faSitemap,
     faImages,
     faUsers,
-    faCogs,
-    faCamera,
+    faHouseDamage,
+    faTachometerAlt,
+    faUserLock,
 } = require("@fortawesome/free-solid-svg-icons");
 
 const routes = [
     {
         title: "Home",
         path: "/",
-        icon: faGopuram,
+        icon: faHouseDamage,
     },
     {
         title: "Dashboard",
         link: "/Dashboard/Dashboard",
-        icon: faCamera,
+        icon: faTachometerAlt,
     },
     {
         title: "Architecture",
@@ -38,7 +39,7 @@ const routes = [
     {
         title: "Settings",
         link: "/Settings/Settings",
-        icon: faCogs,
+        icon: faUserLock,
     },
 ];
 

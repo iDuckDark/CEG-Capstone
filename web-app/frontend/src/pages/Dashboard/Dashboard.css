@@ -1,8 +1,8 @@
 .container {
     position: relative;
     overflow: hidden;
-    width: 70%;
-    padding-top: 25%
+    width: 72%;
+    padding-top: 26.25%
     /* padding-top: 56.25%; 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   }
   
