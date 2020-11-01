@@ -3,6 +3,7 @@ import ExecCard from "../components/Cards/ExecCard/ExecCard";
 import Graph from "../components/Graphs/Graph";
 import Header from "../components/Header/Header";
 import Header2 from "../components/Header/Header2";
+import Loader from "../components/Loader/Loader";
 import Layout from "../components/Layout/Layout";
 import Link from "../components/Routers/Link";
 import Map from "../components/Maps/Map";
@@ -37,6 +38,7 @@ export {
     Header,
     Header2,
     Layout,
+    Loader,
     LeadPencilIcon,
     LightBulbIcon,
     Link,

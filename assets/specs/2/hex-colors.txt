@@ -1,2 +1,4 @@
-purple: 4658a6
-pink: cd4391
+purple: #4658a6
+pink: #cd4391
+
+background: #2b2e43

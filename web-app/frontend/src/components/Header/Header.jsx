@@ -51,7 +51,7 @@ class Header extends Component {
                     style={{
                         maxWidth: "80px",
                         paddingTop: "15px",
-                        paddingLeft: "32px",
+                        paddingLeft: "15px",
                         display: "flex",
                         justifyContent: "space-between",
                     }}

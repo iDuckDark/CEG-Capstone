@@ -23,8 +23,10 @@ class Home extends Component {
                         marginTop: "3%",
                     }}
                 >
-                    <h2>Smart Search &amp; Rescue Drone</h2>
-                    <p>CEG Capstone 4912/4913</p>
+                    <h2 style={{ fontSize: "28px" }}>
+                        Smart Search &amp; Rescue Drone
+                    </h2>
+                    <p style={{ fontSize: "20px" }}>CEG Capstone 4912/4913</p>
                     <img
                         src={loadingGif}
                         style={{

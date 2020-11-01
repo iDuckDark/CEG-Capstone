@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
-import { Graph, Map as PigeonMap, SEO } from "../../helpers/components";
+import { Graph, Map as PigeonMap, SEO, Loader } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
 import "./Dashboard.css";
 
@@ -250,6 +250,7 @@ class DashboardPage extends Component {
             return (
                 <>
                     <SEO title='Dashboard' />
+                    <Loader />
                 </>
             );
         return (

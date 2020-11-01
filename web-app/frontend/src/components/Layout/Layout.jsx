@@ -44,7 +44,7 @@ class Layout extends Component {
             window.addEventListener("resize", this.updateDimensions);
             setTimeout(() => {
                 this.setState({ loading: false });
-            }, 1000);
+            }, 800);
         }
     }
 
@@ -98,10 +98,8 @@ class Layout extends Component {
                                 />
                             </div>
                         )}
-                        {!loading && width > 960 && (
-                            <MiniDrawer props={children} />
-                        )}
-                        {!loading && width <= 960 && <Header />}
+                        {width > 960 && <MiniDrawer props={children} />}
+                        {width <= 960 && <Header />}
                     </ThemeProvider>
                 </div>
             );
