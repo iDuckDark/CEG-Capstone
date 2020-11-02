@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import logo from "../../../static/images/animated-logo.gif";
-import { mapDispatchToProps } from "../../helpers/actions";
+import {
+    mapDispatchToProps,
+    connectPropsWithStyles,
+} from "../../helpers/actions";
+import {
+    Button,
+    CssBaseline,
+    TextField,
+    FormControlLabel,
+    Checkbox,
+    Typography,
+    Container,
+} from "../../helpers/material-ui";
 import { SEO, Title } from "../../helpers/components";
 import { isServerSideRendering } from "../../helpers/utils";
+import logo from "../../../static/images/animated-logo.gif";
 
 const styles = theme => ({
     paper: {
@@ -35,19 +37,15 @@ const styles = theme => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-    //
     cssLabel: {
         color: "#cd4391",
     },
-
     cssOutlinedInput: {
         "&$cssFocused $notchedOutline": {
             borderColor: `${theme.palette.secondary.main} !important`,
         },
     },
-
     cssFocused: {},
-
     notchedOutline: {
         borderWidth: "1px",
         borderColor: "white !important",
@@ -68,18 +66,16 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        this.setIP();
-    }
-
-    setIP() {
         const { actions } = this.props;
-        actions.getIP().then(() => {
-            const { ip: ips } = this.props;
-            const { ip } = ips[ips.length - 1];
-            // eslint-disable-next-line no-console
-            console.log("IP: ", ip);
-            this.setState({ displayURL: ip });
-        });
+        if (actions) {
+            actions.getIP().then(() => {
+                const { ip: ips } = this.props;
+                const { ip } = ips[ips.length - 1];
+                // eslint-disable-next-line no-console
+                console.log("IP: ", ip);
+                this.setState({ displayURL: ip });
+            });
+        }
     }
 
     changeIP(piUrl) {
@@ -204,7 +200,7 @@ class Login extends Component {
                                 },
                                 inputMode: "numeric",
                                 style: { color: "#fff" },
-                                className: { color: "white" },
+                                // className: { color: "white" },
                             }}
                             color='secondary'
                         />
@@ -224,7 +220,6 @@ class Login extends Component {
                             InputLabelProps={{
                                 classes: {},
                                 style: { color: "#fff" },
-                                className: { color: "white" },
                             }}
                             InputProps={{
                                 classes: {
@@ -234,7 +229,6 @@ class Login extends Component {
                                 },
                                 inputMode: "numeric",
                                 style: { color: "#fff" },
-                                className: { color: "white" },
                             }}
                             color='secondary'
                         />
@@ -298,8 +292,9 @@ Login.propTypes = {
     ip: PropTypes.any,
 };
 
-export default withStyles(styles, { withTheme: true })(
-    isServerSideRendering()
-        ? Login
-        : connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connectPropsWithStyles(
+    Login,
+    mapStateToProps,
+    mapDispatchToProps,
+    styles
 );

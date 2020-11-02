@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { SEO } from "../../helpers/components";
 import loadingGif from "../../../../../assets/animated-logo.gif";
 import hoverX from "../../../../../assets/specs/2/hover-x.png";
+// import logo from "../../../../../assets/Logo2.png";
 
 class Home extends Component {
     constructor() {

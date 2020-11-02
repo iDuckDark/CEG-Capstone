@@ -125,8 +125,6 @@ class Graph extends Component {
     }
 }
 
-export default Graph;
-
 Graph.defaultProps = {
     data: null,
     name: null,
@@ -144,3 +142,5 @@ Graph.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
 };
+
+export default Graph;

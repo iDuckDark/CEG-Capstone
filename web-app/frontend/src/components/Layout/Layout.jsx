@@ -70,37 +70,39 @@ class Layout extends Component {
         if (loading) {
             return (
                 <div style={rootStyle}>
-                    <ThemeProvider theme={theme}>
-                        {loading && (
-                            <div
-                                style={{
-                                    textAlign: "center",
-                                    color: "#2b2e43",
-                                    backgroundColor: "#2b2e43",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    verticalAlign: "middle",
-                                }}
-                            >
-                                <img
-                                    src={loadingGif}
-                                    alt='loading'
+                    <Provider store={store}>
+                        <ThemeProvider theme={theme}>
+                            {loading && (
+                                <div
                                     style={{
-                                        width: "200px",
-                                        height: "200px",
-                                        position: "absolute",
-                                        margin: "auto",
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
+                                        textAlign: "center",
+                                        color: "#2b2e43",
+                                        backgroundColor: "#2b2e43",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        verticalAlign: "middle",
                                     }}
-                                />
-                            </div>
-                        )}
-                        {width > 960 && <MiniDrawer props={children} />}
-                        {width <= 960 && <Header />}
-                    </ThemeProvider>
+                                >
+                                    <img
+                                        src={loadingGif}
+                                        alt='loading'
+                                        style={{
+                                            width: "200px",
+                                            height: "200px",
+                                            position: "absolute",
+                                            margin: "auto",
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            {width > 960 && <MiniDrawer props={children} />}
+                            {width <= 960 && <Header />}
+                        </ThemeProvider>
+                    </Provider>
                 </div>
             );
         }

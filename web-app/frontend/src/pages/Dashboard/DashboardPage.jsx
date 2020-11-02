@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { mapDispatchToProps } from "../../helpers/actions";
 import { Paper, Grid } from "../../helpers/material-ui";
+import { mapDispatchToProps, connectProps } from "../../helpers/actions";
 import { Graph, Map as PigeonMap, SEO, Loader } from "../../helpers/components";
-import { isServerSideRendering } from "../../helpers/utils";
 import "./Dashboard.css";
 
 class DashboardPage extends Component {
@@ -317,6 +315,4 @@ DashboardPage.propTypes = {
     ip: PropTypes.any,
 };
 
-export default isServerSideRendering()
-    ? DashboardPage
-    : connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
+export default connectProps(DashboardPage, mapStateToProps, mapDispatchToProps);

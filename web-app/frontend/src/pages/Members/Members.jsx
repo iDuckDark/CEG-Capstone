@@ -74,7 +74,7 @@ const Members = () => {
                                                     margin: "16px 16px",
                                                     width: "220px",
                                                 }}
-                                                boxShadow={3}
+                                                boxshadow={3}
                                                 elevation={10}
                                             >
                                                 <CardMedia
