@@ -3,7 +3,7 @@ import { SEO, Layout } from "../../helpers/components";
 import Login from "../../components/SignIn/Login";
 import "../index.scss";
 
-const SettingsPage = () => {
+const Settings = () => {
     return (
         <Layout>
             <SEO title='CEG Capstone Project' />
@@ -13,4 +13,4 @@ const SettingsPage = () => {
     );
 };
 
-export default SettingsPage;
+export default Settings;

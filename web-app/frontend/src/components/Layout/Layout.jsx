@@ -34,7 +34,7 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: isServerSideRendering() ? 0 : window.innerWidth,
+            width: isServerSideRendering() ? 1000 : window.innerWidth,
             loading: isServerSideRendering()
                 ? false
                 : window.location.pathname === "/",
