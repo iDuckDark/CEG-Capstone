@@ -13,12 +13,9 @@ import { shuffle, cleaner } from "../../helpers/utils";
 class Graph extends Component {
     constructor(props) {
         super(props);
-        // eslint-disable-next-line prefer-const
-        let { data, name, color, refresh, width, height } = props;
-        for (const item of data) {
-            item[name] = item.pv;
-        }
-
+        const { name, color, refresh, width, height } = props;
+        let { data } = props;
+        for (const item of data) item[name] = item.pv;
         switch (name) {
             case "Sound":
                 data = cleaner(name, 50, 75, 35);
@@ -51,6 +48,7 @@ class Graph extends Component {
             refresh: refresh || false,
             width,
             height,
+            updateFunction: null,
         };
         this.update = this.update.bind(this);
     }
@@ -58,12 +56,14 @@ class Graph extends Component {
     componentDidMount() {
         const { refresh } = this.state;
         if (refresh) {
-            setInterval(() => this.update(), 300);
+            const updateFunction = setInterval(() => this.update(), 300);
+            this.setState({ updateFunction });
         }
     }
 
     componentWillUnmount() {
-        clearInterval(this.update);
+        const { updateFunction } = this.state;
+        if (updateFunction) clearInterval(updateFunction);
     }
 
     update() {

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 import {
     mapDispatchToProps,
     connectPropsWithStyles,
@@ -78,6 +79,26 @@ class Login extends Component {
         }
     }
 
+    responseGoogle = response => {
+        // eslint-disable-next-line no-console
+        console.log("Google Response: ", response);
+        const { email, password } = this.state;
+        const { profileObj } = response;
+        const authorized = [
+            "ngane103@uottawa.ca",
+            "nevinganesan@gmail.com",
+            "pfara039@uottawa.ca",
+            "daror101@uottawa.ca",
+            "pabou049@uottawa.ca",
+            "spate127@uottawa.ca",
+        ];
+        const valid =
+            authorized.includes(profileObj.email) &&
+            email === "capstone" &&
+            password === "capstone";
+        this.setState({ valid });
+    };
+
     changeIP(piUrl) {
         const { actions } = this.props;
         actions.setIP(piUrl).then(() => {
@@ -96,6 +117,7 @@ class Login extends Component {
 
     renderSettings() {
         const { piUrl, displayURL } = this.state;
+        const { classes } = this.props;
         return (
             <>
                 <SEO title='Settings' />
@@ -152,6 +174,26 @@ class Login extends Component {
                     >
                         Update
                     </Button>
+                    <br />
+                    <GoogleLogout
+                        render={renderProps => (
+                            <Button
+                                onClick={() => {
+                                    renderProps.onClick();
+                                    this.setState({ valid: false });
+                                }}
+                                variant='contained'
+                                color='secondary'
+                                className={classes.submit}
+                            >
+                                Logout
+                            </Button>
+                        )}
+                        clientId={process.env.GATSBY_GOOGLE_CLIENT_ID}
+                        buttonText='Logout'
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                    />
                 </div>
             </>
         );
@@ -159,7 +201,6 @@ class Login extends Component {
 
     renderLogin() {
         const { classes } = this.props;
-        const { email, password } = this.state;
         return (
             <Container component='main' maxWidth='xs'>
                 <SEO title='Login' />
@@ -242,21 +283,25 @@ class Login extends Component {
                             }
                             label='Remember me'
                         />
-                        <Button
-                            // type='submit'
-                            fullWidth
-                            variant='contained'
-                            color='secondary'
-                            className={classes.submit}
-                            onClick={() => {
-                                const valid =
-                                    email === "capstone" &&
-                                    password === "capstone";
-                                this.setState({ valid });
-                            }}
-                        >
-                            Sign In
-                        </Button>
+                        <GoogleLogin
+                            render={renderProps => (
+                                <Button
+                                    onClick={() => {
+                                        renderProps.onClick();
+                                    }}
+                                    fullWidth
+                                    variant='contained'
+                                    color='secondary'
+                                    className={classes.submit}
+                                >
+                                    Sign In
+                                </Button>
+                            )}
+                            clientId={process.env.GATSBY_GOOGLE_CLIENT_ID}
+                            buttonText='Login'
+                            onSuccess={this.responseGoogle}
+                            onFailure={this.responseGoogle}
+                        />
                     </form>
                 </div>
             </Container>
