@@ -24,7 +24,7 @@ class Graph extends Component {
                 data = cleaner(name, 25, 50, 20);
                 break;
             case "Battery":
-                data = cleaner(name, 90, 100, 15);
+                data = cleaner(name, 80, 100, 15);
                 break;
             case "CPUTemperature":
                 data = cleaner(name, 80, 95, 27);
@@ -68,7 +68,16 @@ class Graph extends Component {
 
     update() {
         const { data } = this.state;
-        this.setState({ data: shuffle(data) });
+        const { name } = this.props;
+        let newData = shuffle(data);
+        if (name === "Battery") {
+            newData = newData.sort(this.sortFloat);
+        }
+        this.setState({ data: newData });
+    }
+
+    sortFloat(a, b) {
+        return b.Battery - a.Battery;
     }
 
     renderGraph() {
