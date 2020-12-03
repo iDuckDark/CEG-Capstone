@@ -4,7 +4,7 @@
 # Computer Engineering Capstone Project
 # Smart Search and Rescue Drone
 
-CEG 4912 & CEG 4913 Final Year Project at University of Ottawa
+CEG 4912 & CEG 4913 Final Year Project at University of Ottawa 
 </td></tr></table>
 
 &nbsp;
