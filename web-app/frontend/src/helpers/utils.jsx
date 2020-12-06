@@ -29,23 +29,3 @@ export function logWarning(...warnings) {
 }
 
 console.warn = logWarning;
-
-export const cleaner = (name, min, max, size) => {
-    const data = [];
-    for (let i = 0; i < size; i += 1) {
-        const temp = Math.random() * (max - min) + min;
-        const obj = {};
-        obj[name] = temp;
-        data.push(obj);
-    }
-    return data;
-};
-
-export const cleanerFloat = (min, max) => {
-    const decimalPlaces = 9;
-    const rand = Math.random() * (max - min) + min;
-    // eslint-disable-next-line no-restricted-properties
-    const power = Math.pow(10, decimalPlaces);
-    const temp = Math.floor(rand * power) / power;
-    return temp;
-};
