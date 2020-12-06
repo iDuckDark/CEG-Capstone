@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/bin/sh flask.sh
-WorkingDirectory=/home/pi/Desktop/CEG-Capstone/drone/test
+WorkingDirectory=/home/pi/Desktop/CEG-Capstone/drone/flask
 StandardOutput=inherit
 StandardError=inherit
 Type=forking
