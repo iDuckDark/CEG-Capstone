@@ -1,3 +1,9 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
 
 function isDescendentOf(element, ancestor) {
@@ -11,32 +17,6 @@ function isDescendentOf(element, ancestor) {
 }
 
 export default class DraggableOverlay extends Component {
-    // static propTypes = {
-    //   // input
-    //   anchor: PropTypes.array.isRequired,
-    //   offset: PropTypes.array,
-
-    //   // passed to div
-    //   className: PropTypes.string,
-
-    //   // pigeon variables
-    //   left: PropTypes.number,
-    //   top: PropTypes.number,
-
-    //   // map state
-    //   mapState: PropTypes.shape({
-    //     center: PropTypes.array,
-    //     zoom: PropTypes.number,
-    //     bounds: PropTypes.array,
-    //     width: PropTypes.number,
-    //     height: PropTypes.number
-    //   }),
-
-    //   // pigeon functions
-    //   latLngToPixel: PropTypes.func,
-    //   pixelToLatLng: PropTypes.func,
-    // }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -57,6 +37,7 @@ export default class DraggableOverlay extends Component {
     }
 
     wa = (e, t, o) => window.addEventListener(e, t, o);
+
     wr = (e, t) => window.removeEventListener(e, t);
 
     bindMouseEvents = () => {

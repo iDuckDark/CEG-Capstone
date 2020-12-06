@@ -16,10 +16,16 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            speed: [],
             pressures: [],
             altitudes: [],
             temperatures: [],
             sound: [],
+            battery: [],
+            cpu_temp: [],
+            cpu_usage: [],
+            ram_usage: [],
+            disk_usage: [],
             piUrl: null,
         };
     }
@@ -56,11 +62,31 @@ class Dashboard extends Component {
         actions.getSSAR().then(() => {
             const { ssar } = this.props;
             const ssar2 = ssar;
+            const speed = this.getArrayfromKeyPV(ssar2, "speed");
             const temperatures = this.getArrayfromKeyPV(ssar2, "temperature");
             const altitudes = this.getArrayfromKeyPV(ssar2, "altitude");
             const pressures = this.getArrayfromKeyPV(ssar2, "pressure");
+            const sound = this.getArrayfromKeyPV(ssar2, "sound");
+            const battery = this.getArrayfromKeyPV(ssar2, "battery");
+            const cpu_temp = this.getArrayfromKeyPV(ssar2, "cpu_temp");
+            const cpu_usage = this.getArrayfromKeyPV(ssar2, "cpu_usage");
+            const ram_usage = this.getArrayfromKeyPV(ssar2, "ram_usage");
+            const disk_usage = this.getArrayfromKeyPV(ssar2, "disk_usage");
+
             const gps = { lat: ssar2[0].lat, lon: ssar2[0].lon };
-            this.setState({ temperatures, altitudes, pressures, gps });
+            this.setState({
+                speed,
+                temperatures,
+                altitudes,
+                pressures,
+                gps,
+                sound,
+                battery,
+                cpu_temp,
+                cpu_usage,
+                ram_usage,
+                disk_usage,
+            });
         });
     }
 
@@ -145,7 +171,6 @@ class Dashboard extends Component {
                         style={{
                             color: "#bdc3c7",
                             marginLeft: "10px",
-                            // marginBottom: "10px",
                             fontSize: "20px",
                             textAlign: "center",
                         }}
@@ -169,13 +194,25 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { temperatures, altitudes, pressures, gps, sound } = this.state;
+        const {
+            speed,
+            temperatures,
+            altitudes,
+            pressures,
+            gps,
+            sound,
+            battery,
+            cpu_temp,
+            cpu_usage,
+            ram_usage,
+            disk_usage,
+        } = this.state;
 
         const array = [
             {
                 name: "Speed",
                 units: "(mph)",
-                data: [...temperatures.slice(0, 20)],
+                data: speed,
                 color: "#02aab0",
                 refresh: true,
             },
@@ -210,39 +247,40 @@ class Dashboard extends Component {
             {
                 name: "Battery",
                 units: "(%)",
-                data: [...temperatures.slice(0, 20)],
+                data: battery,
                 color: "#2ecc71",
                 refresh: true,
             },
             {
                 name: "CPU Temperature",
                 units: "(°C)",
-                data: temperatures,
+                data: cpu_temp,
                 color: "#eb4d4b",
                 refresh: true,
             },
             {
                 name: "CPU Usage",
                 units: "(%)",
-                data: altitudes,
+                data: cpu_usage,
                 color: "#e056fd",
                 refresh: true,
             },
             {
                 name: "RAM Usage",
                 units: "(GB)",
-                data: pressures,
+                data: ram_usage,
                 color: "#FEA47F",
                 refresh: true,
             },
             {
                 name: "Disk Usage",
                 units: "(%)",
-                data: pressures,
+                data: disk_usage,
                 color: "#D6A2E8",
                 refresh: true,
             },
         ];
+        // if one of these are null then wait
         if (
             !(
                 temperatures.length > 0 &&

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { SEO } from "../../helpers/components";
 import loadingGif from "../../../../../assets/animated-logo.gif";
 import hoverX from "../../../../../assets/specs/2/hover-x.png";
-// import logo from "../../../../../assets/Logo2.png";
 
 class Home extends Component {
     constructor() {
@@ -32,7 +31,6 @@ class Home extends Component {
                         src={loadingGif}
                         style={{
                             maxWidth: `300px`,
-                            // marginBottom: `1.45rem`,
                             borderRadius: "20%",
                         }}
                         alt='logo'

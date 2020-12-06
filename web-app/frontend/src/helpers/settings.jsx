@@ -4,14 +4,10 @@ const KEY_DEFAULT_URL = "defaultUrl";
 
 const defaultUrl = "https://45.72.149.128:8000/";
 
-const workingUrl = "https://www.youtube.com/embed/Q-TEYBltFis";
-
-// Video
-
 const getVideoUrl = () => {
     if (!isServerSideRendering())
         return localStorage.getItem(KEY_DEFAULT_URL) || defaultUrl;
-    return workingUrl;
+    return defaultUrl;
 };
 
 const setVideoUrl = url => {
@@ -30,4 +26,4 @@ const getCurrentPath = () => {
     return "/";
 };
 
-export { defaultUrl, getCurrentPath, getVideoUrl, setVideoUrl, workingUrl };
+export { defaultUrl, getCurrentPath, getVideoUrl, setVideoUrl };
