@@ -1,7 +1,9 @@
 import Altitude from "../components/Graphs/Altitude";
 import ExecCard from "../components/Cards/ExecCard/ExecCard";
+import Graph from "../components/Graphs/Graph";
 import Header from "../components/Header/Header";
 import Header2 from "../components/Header/Header2";
+import Loader from "../components/Loader/Loader";
 import Layout from "../components/Layout/Layout";
 import Link from "../components/Routers/Link";
 import Map from "../components/Maps/Map";
@@ -11,6 +13,8 @@ import NavDropDown from "../components/Material/NavDropDown";
 import Pressure from "../components/Graphs/Pressure";
 import SEO from "../components/SEO/SEO";
 import Temperature from "../components/Graphs/Temperature";
+import Speed from "../components/Graphs/Speed";
+import Sound from "../components/Graphs/Sound";
 import Title from "../components/Titles/Title";
 
 import {
@@ -30,9 +34,11 @@ export {
     CloseIcon,
     ExecCard,
     FlaskIcon,
+    Graph,
     Header,
     Header2,
     Layout,
+    Loader,
     LeadPencilIcon,
     LightBulbIcon,
     Link,
@@ -43,6 +49,8 @@ export {
     NavDropDown,
     Pressure,
     SEO,
+    Speed,
+    Sound,
     Temperature,
     Title,
 };

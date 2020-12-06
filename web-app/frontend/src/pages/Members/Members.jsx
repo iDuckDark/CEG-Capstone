@@ -45,7 +45,11 @@ const Members = () => {
                         <SEO title='Members' />
                         <div
                             className='center-horizontal'
-                            style={{ marginTop: "20px", color: "#FFFFFF" }}
+                            style={{
+                                marginTop: "20px",
+                                color: "#FFFFFF",
+                                backgroundColor: "#2b2e43",
+                            }}
                         >
                             <Title
                                 variant='h5'
@@ -68,8 +72,10 @@ const Members = () => {
                                             <Card
                                                 style={{
                                                     margin: "16px 16px",
-                                                    width: "280px",
+                                                    width: "220px",
                                                 }}
+                                                boxshadow={3}
+                                                elevation={10}
                                             >
                                                 <CardMedia
                                                     component='img'

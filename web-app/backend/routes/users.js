@@ -5,8 +5,7 @@ var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const url =
-  'mongodb+srv://root:root@cluster0-8kwlj.mongodb.net/test?retryWrites=true&w=majority';
+const url = process.env.MONGODB_CLIENT_URL;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
-        title: `CEG Capstone Project Winter 2020 - Fall 2020`,
-        description: `CEG Capstone Project by Nevin, Peter, Divyang and Paul`,
+        title: `HoverX`,
+        description: `CEG Capstone Project by Nevin, Peter, Divyang, Paul & Shail`,
         author: `@Nevin`,
     },
     plugins: [
@@ -10,6 +10,17 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-json`,
+        {
+            resolve: `gatsby-plugin-material-ui`,
+            options: {
+                stylesProvider: {
+                    injectFirst: true,
+                },
+            },
+        },
+        {
+            resolve: `gatsby-plugin-styled-components`,
+        },
         {
             resolve: "gatsby-source-filesystem",
             options: {
@@ -33,7 +44,8 @@ module.exports = {
                 background_color: `#663399`,
                 theme_color: `#663399`,
                 display: `minimal-ui`,
-                icon: `static/images/favicon.png`,
+                // icon: `static/images/favicon.png`,
+                icon: `static/images/animated-logo.gif`,
             },
         },
     ],

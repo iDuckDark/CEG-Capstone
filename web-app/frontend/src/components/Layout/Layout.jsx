@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./layout.css";
+import { Provider } from "react-redux";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import store from "../../redux/store";
 import MiniDrawer from "../Drawer/MiniDrawer";
 import Header from "../Header/Header";
 import { isServerSideRendering } from "../../helpers/utils";
+import loadingGif from "../../../../../assets/animated-logo.gif";
+import "./layout.css";
 
 const theme = createMuiTheme({
     palette: {
@@ -14,7 +17,9 @@ const theme = createMuiTheme({
         },
         secondary: {
             main: "#d04290",
-            // contrastText: "#ffcc00",
+        },
+        third: {
+            main: "#FFFFFF !important",
         },
         contrastThreshold: 3,
         tonalOffset: 0.2,
@@ -28,13 +33,22 @@ const theme = createMuiTheme({
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.state = { width: isServerSideRendering() ? 0 : window.innerWidth };
+        this.state = {
+            width: isServerSideRendering() ? 1000 : window.innerWidth,
+            loading: isServerSideRendering()
+                ? false
+                : window.location.pathname === "/",
+        };
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     componentDidMount() {
-        if (!isServerSideRendering())
+        if (!isServerSideRendering()) {
             window.addEventListener("resize", this.updateDimensions);
+            setTimeout(() => {
+                this.setState({ loading: false });
+            }, 800);
+        }
     }
 
     componentWillUnmount() {
@@ -49,15 +63,62 @@ class Layout extends Component {
 
     render() {
         const { children } = this.props;
-        const { width } = this.state;
+        const { width, loading } = this.state;
+        const rootStyle = {
+            height: "100vh",
+            minHeight: "100vh",
+            backgroundColor: "#2b2e43",
+            justifyContent: "center",
+        };
+        if (loading) {
+            return (
+                <div style={rootStyle}>
+                    <Provider store={store}>
+                        <ThemeProvider theme={theme}>
+                            {loading && (
+                                <div
+                                    style={{
+                                        textAlign: "center",
+                                        color: "#2b2e43",
+                                        backgroundColor: "#2b2e43",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        verticalAlign: "middle",
+                                    }}
+                                >
+                                    <img
+                                        src={loadingGif}
+                                        alt='loading'
+                                        style={{
+                                            width: "200px",
+                                            height: "200px",
+                                            position: "absolute",
+                                            margin: "auto",
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            {width > 960 && <MiniDrawer props={children} />}
+                            {width <= 960 && <Header />}
+                        </ThemeProvider>
+                    </Provider>
+                </div>
+            );
+        }
         return (
-            <>
-                <ThemeProvider theme={theme}>
-                    {width > 960 && <MiniDrawer props={children} />}
-                    {width <= 960 && <Header />}
-                    <main>{children} </main>
-                </ThemeProvider>
-            </>
+            <div style={rootStyle}>
+                <Provider store={store}>
+                    <ThemeProvider theme={theme}>
+                        {width > 960 && <MiniDrawer props={children} />}
+                        {width <= 960 && <Header />}
+                        <main>{children} </main>
+                    </ThemeProvider>
+                </Provider>
+            </div>
         );
     }
 }

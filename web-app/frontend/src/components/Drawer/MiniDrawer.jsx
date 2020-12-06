@@ -119,9 +119,13 @@ export default function MiniDrawer() {
                                                 getCurrentPath() === path
                                                     ? "#d04290"
                                                     : "#FFFFFF",
+                                            height: "90px",
                                         }}
                                     >
-                                        <FontAwesomeIcon icon={icon} />
+                                        <FontAwesomeIcon
+                                            icon={icon}
+                                            size='2x'
+                                        />
                                     </ListItemIcon>
                                     <ListItemText
                                         style={{

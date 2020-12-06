@@ -6,7 +6,7 @@ import Map from "pigeon-maps";
 // import Marker from "pigeon-marker";
 
 // import pigeonSvg from './incubator/pigeon.svg'
-import pigeonSvg from "../../../static/images/favicon.png";
+import pigeonSvg from "../../../static/images/animated-logo.gif";
 import DraggableOverlay from "./DraggableOverlay";
 
 // const mapboxEnabled = false;
@@ -150,7 +150,7 @@ export default class App extends Component {
             minZoom: 1,
             maxZoom: 18,
             // dragAnchor: [45.423, -75.6838]
-            dragAnchor: [props.lat,  props.lon],
+            dragAnchor: [props.lat, props.lon],
         };
     }
 
@@ -210,8 +210,8 @@ export default class App extends Component {
                 {/* <Banner /> */}
                 <div
                     style={{
-                        maxWidth: 250,
-                        maxHeight: 250,
+                        maxWidth: 280,
+                        maxHeight: 300,
                         margin: "0 auto",
                         // width: 250,
                         // height: 250,
@@ -247,7 +247,7 @@ export default class App extends Component {
                             ) : null
                         }
                         defaultWidth={600}
-                        height={250}
+                        height={270}
                         boxClassname='pigeon-filters'
                     >
                         {/* {Object.keys(markers).map(key => (
@@ -260,7 +260,7 @@ export default class App extends Component {
                         ))} */}
                         <DraggableOverlay
                             anchor={this.state.dragAnchor}
-                            //   offset={[60, 87]}
+                            offset={[100, 100]}
                             // onDragMove={(anchor) => console.log('moving pigeon', anchor)}
                             onDragEnd={anchor => {
                                 this.setState({ dragAnchor: anchor });
@@ -271,7 +271,12 @@ export default class App extends Component {
                                 }
                             }
                         >
-                            <img src={pigeonSvg} width={50} height={50} />
+                            <img
+                                src={pigeonSvg}
+                                alt='svg'
+                                width={200}
+                                height={200}
+                            />
                         </DraggableOverlay>
                         {isMapBox(provider) && (
                             <span className='mapbox-wordmark' />

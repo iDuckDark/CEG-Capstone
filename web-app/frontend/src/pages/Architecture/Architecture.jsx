@@ -14,6 +14,7 @@ const Architecture = () => {
                     marginTop: "2%",
                     marginBottom: "15%",
                     textAlign: "center",
+                    backgroundColor: "#2b2e43",
                 }}
             >
                 <Title
@@ -36,7 +37,7 @@ const Architecture = () => {
                     <img
                         src={arc}
                         alt={arc}
-                        style={{ height: "500px", width: "700px" }}
+                        style={{ height: "500px", width: "750px" }}
                     />
                 </div>
             </div>
