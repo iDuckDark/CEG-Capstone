@@ -1,4 +1,6 @@
 # import the necessary packages
+# Credit from https://thedatafrog.com/en/articles/human-detection-video/ for detection code
+
 from imutils.video import VideoStream
 from flask import Response
 from flask import Flask
