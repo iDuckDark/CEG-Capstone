@@ -20,12 +20,6 @@ class Header extends Component {
         };
         this.handleMenuClick = this.handleMenuClick.bind(this);
         this.handleMenuClose = this.handleMenuClose.bind(this);
-        // this.handleMenuTheme = this.handleMenuTheme.bind(this)
-    }
-
-    handleMenuTheme() {
-        // const { theme, toggleTheme } = this.props
-        // toggleTheme(theme === "light" ? "dark" : "light")
     }
 
     handleMenuClick({ currentTarget }) {
@@ -139,14 +133,8 @@ class Header extends Component {
             >
                 <Toolbar>
                     {this.renderLogo()}
-                    <Hidden smDown>
-                        {this.renderMenuItems()}
-                        {/* {this.renderThemeToggle()} */}
-                    </Hidden>
-                    <Hidden mdUp>
-                        {/* {this.renderThemeToggle()} */}
-                        {this.renderMobileMenuItems()}
-                    </Hidden>
+                    <Hidden smDown>{this.renderMenuItems()}</Hidden>
+                    <Hidden mdUp>{this.renderMobileMenuItems()}</Hidden>
                 </Toolbar>
             </AppBar>
         );

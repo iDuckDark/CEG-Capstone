@@ -145,7 +145,6 @@ class Dashboard extends Component {
                         style={{
                             color: "#bdc3c7",
                             marginLeft: "10px",
-                            // marginBottom: "10px",
                             fontSize: "20px",
                             textAlign: "center",
                         }}

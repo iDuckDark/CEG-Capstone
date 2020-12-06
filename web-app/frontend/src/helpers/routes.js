@@ -1,7 +1,6 @@
 const loader = require("path");
 
 const {
-    // faGopuram,
     faSitemap,
     faImages,
     faUsers,

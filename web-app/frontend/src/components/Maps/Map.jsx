@@ -3,16 +3,9 @@
 import React, { Component } from "react";
 
 import Map from "pigeon-maps";
-// import Marker from "pigeon-marker";
-
-// import pigeonSvg from './incubator/pigeon.svg'
 import pigeonSvg from "../../../static/images/animated-logo.gif";
 import DraggableOverlay from "./DraggableOverlay";
 
-// const mapboxEnabled = false;
-
-// please change this if you take some code from here.
-// otherwise the demo page will run out of credits and that would be very sad :(
 const MAPBOX_ACCESS_TOKEN =
     "pk.eyJ1IjoicGlnZW9uLW1hcHMiLCJhIjoiY2l3eW01Y2E2MDA4dzJ6cWh5dG9pYWlwdiJ9.cvdCf-7PymM1Y3xp5j71NQ";
 
@@ -56,11 +49,6 @@ function mapTilerProvider(x, y, z, dpr) {
 const markers = {
     Drone: [[45.423, -75.6838], 13],
     SITE: [[45.4195, -75.6788], 13],
-    //   leuven1: [[50.879, 4.6997], 13],
-    //   leuven2: [[50.874, 4.6947], 13],
-    //   brussels: [[50.85050, 4.35149], 11],
-    //   ghent: [[51.0514, 3.7103], 12],
-    //   coast: [[51.2214, 2.9541], 10]
 };
 
 const lng2tile = (lon, zoom) => ((lon + 180) / 360) * Math.pow(2, zoom);
@@ -250,14 +238,6 @@ export default class App extends Component {
                         height={270}
                         boxClassname='pigeon-filters'
                     >
-                        {/* {Object.keys(markers).map(key => (
-                            <Marker
-                                key={key}
-                                anchor={markers[key][0]}
-                                payload={key}
-                                onClick={this.handleMarkerClick}
-                            />
-                        ))} */}
                         <DraggableOverlay
                             anchor={this.state.dragAnchor}
                             offset={[100, 100]}
@@ -283,127 +263,7 @@ export default class App extends Component {
                         )}
                     </Map>
                 </div>
-                {/* <div>
-                    <button onClick={this.zoomIn}>Zoom In</button>
-                    <button onClick={this.zoomOut}>Zoom Out</button>{" "}
-                    {Math.round(center[0] * 10000) / 10000} (
-                    {lat2tile(center[0], zoom)}){" x "}
-                    {Math.round(center[1] * 10000) / 10000} (
-                    {lng2tile(center[1], zoom)}){" @ "}
-                    {Math.round(zoom * 100) / 100}
-                    {" - "}
-                    {animating ? "animating" : "stopped"}
-                </div> */}
-                {/* <div style={{ marginTop: 20 }}>
-                    {Object.keys(providers).map(key => (
-                        <button
-                            key={key}
-                            onClick={() =>
-                                isMapBox(key) && !mapboxEnabled
-                                    ? window.alert(
-                                          "Mapbox tiles disabled! See issue #33 for details!"
-                                      )
-                                    : this.setState({ provider: key })
-                            }
-                            style={{
-                                fontWeight:
-                                    provider === key ? "bold" : "normal",
-                                color:
-                                    isMapBox(key) && !mapboxEnabled
-                                        ? "#aaa"
-                                        : "#000",
-                            }}
-                        >
-                            {key}
-                        </button>
-                    ))}
-                </div> */}
-                {/* <div style={{ marginTop: 20 }}>
-                    <button
-                        onClick={() => this.setState({ animate: !animate })}
-                    >
-                        {animate ? "[X] animation" : "[ ] animation"}
-                    </button>
-                    <button
-                        onClick={() =>
-                            this.setState({ twoFingerDrag: !twoFingerDrag })
-                        }
-                    >
-                        {twoFingerDrag
-                            ? "[X] two finger drag"
-                            : "[ ] two finger drag"}
-                    </button>
-                    <button
-                        onClick={() =>
-                            this.setState({ metaWheelZoom: !metaWheelZoom })
-                        }
-                    >
-                        {metaWheelZoom
-                            ? "[X] meta wheel zoom"
-                            : "[ ] meta wheel zoom"}
-                    </button>
-                    <button
-                        onClick={() => this.setState({ zoomSnap: !zoomSnap })}
-                    >
-                        {zoomSnap ? "[X] zoom snap" : "[ ] zoom snap"}
-                    </button>
-                    <button
-                        onClick={() =>
-                            this.setState({ mouseEvents: !mouseEvents })
-                        }
-                    >
-                        {mouseEvents ? "[X] mouse events" : "[ ] mouse events"}
-                    </button>
-                    <button
-                        onClick={() =>
-                            this.setState({ touchEvents: !touchEvents })
-                        }
-                    >
-                        {touchEvents ? "[X] touch events" : "[ ] touch events"}
-                    </button>
-                </div>
-                <div style={{ marginTop: 20 }}>
-                    minZoom:{" "}
-                    <input
-                        onChange={e =>
-                            this.setState({
-                                minZoom: parseInt(e.target.value) || 1,
-                            })
-                        }
-                        value={minZoom}
-                        type='number'
-                        style={{ width: 40 }}
-                    />{" "}
-                    maxZoom:{" "}
-                    <input
-                        onChange={e =>
-                            this.setState({
-                                maxZoom: parseInt(e.target.value) || 18,
-                            })
-                        }
-                        value={maxZoom}
-                        type='number'
-                        style={{ width: 40 }}
-                    />
-                </div>
-                <div style={{ marginTop: 20 }}>
-                    {Object.keys(markers).map(key => (
-                        <button
-                            key={key}
-                            onClick={() =>
-                                this.setState({
-                                    center: markers[key][0],
-                                    zoom: markers[key][1],
-                                })
-                            }
-                        >
-                            {key}
-                        </button>
-                    ))}
-                </div> */}
-                <div style={{ marginTop: 20 }}>
-                    {/* <a href='https://github.com/mariusandra/pigeon-maps'>Documentation and more on GitHub</a> */}
-                </div>
+                <div style={{ marginTop: 20 }}></div>
             </div>
         );
     }

@@ -1,4 +1,3 @@
-import Altitude from "../components/Graphs/Altitude";
 import ExecCard from "../components/Cards/ExecCard/ExecCard";
 import Graph from "../components/Graphs/Graph";
 import Header from "../components/Header/Header";
@@ -10,11 +9,7 @@ import Map from "../components/Maps/Map";
 import MaterialMenu from "../components/Material/MaterialMenu";
 import NavButton from "../components/Material/NavButton";
 import NavDropDown from "../components/Material/NavDropDown";
-import Pressure from "../components/Graphs/Pressure";
 import SEO from "../components/SEO/SEO";
-import Temperature from "../components/Graphs/Temperature";
-import Speed from "../components/Graphs/Speed";
-import Sound from "../components/Graphs/Sound";
 import Title from "../components/Titles/Title";
 
 import {
@@ -28,7 +23,6 @@ import {
 } from "../components/Icons/icons";
 
 export {
-    Altitude,
     ChevronLeftIcon,
     ChevronRightIcon,
     CloseIcon,
@@ -47,10 +41,6 @@ export {
     MenuIcon,
     NavButton,
     NavDropDown,
-    Pressure,
     SEO,
-    Speed,
-    Sound,
-    Temperature,
     Title,
 };
