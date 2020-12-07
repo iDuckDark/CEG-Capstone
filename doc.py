@@ -6,7 +6,7 @@ root = os.path.abspath(os.getcwd())
 file_paths = []
 for path, subdirs, files in os.walk(root):
     for name in files:
-        if name.endswith(('.py', 'jsx', 'js')):
+        if name.endswith(('.py', '.jsx', '.js')):
             current_path = os.path.join(path, name)
             file_paths.append(current_path)
 
