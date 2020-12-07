@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', function(_req, res, next) {
   res.render('index', {
-    title: 'CEG-Capstone Group by Nevin, Peter, Divyang, Paul',
+    title: 'CEG-Capstone Group by Nevin, Peter, Divyang, Paul, Shail',
   });
 });
 
