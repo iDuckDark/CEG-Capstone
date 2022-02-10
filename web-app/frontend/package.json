@@ -30,7 +30,7 @@
     "gatsby-transformer-json": "^2.3.1",
     "gatsby-transformer-sharp": "^2.3.7",
     "google-map-react": "^1.1.6",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nuka-carousel": "^4.6.3",
     "pigeon-maps": "^0.14.0",
     "pigeon-marker": "^0.3.4",
